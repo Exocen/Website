@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'static_pages/state'
+  get 'state' => 'static_pages#state'
 
-  get 'static_pages/cv'
+  get 'cv' => 'static_pages#cv'
 
-  get 'static_pages/term'
+  get 'term' => 'static_pages#term'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
