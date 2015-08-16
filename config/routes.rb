@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'chat' => 'static_pages#chat'
 
+  get 'musique' => 'static_pages#musique'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
