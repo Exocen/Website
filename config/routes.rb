@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   get 'state' => 'static_pages#state'
 
-  get 'cv' => 'static_pages#cv'
-
   get 'term' => 'static_pages#term'
+
+  get 'chat' => 'static_pages#chat'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
