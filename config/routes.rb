@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   get 'state' => 'static_pages#state'
 
-  get 'term' => 'static_pages#term'
-
   get 'chat' => 'static_pages#chat'
 
   get 'musique' => 'static_pages#musique'
