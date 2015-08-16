@@ -1,6 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.jumbotron h1, .jumbotron .h1{
+  font-size: 40px;
+
+}
+
 $bginverse      : #00d27f;
 $bgHighlight    : #333333;
 $colinverse     : #ecf0f1;
