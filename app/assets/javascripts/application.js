@@ -40,10 +40,14 @@
             var minutes = Math.floor((distance % _hour) / _minute);
             var seconds = Math.floor((distance % _minute) / _second);
 
-            document.getElementById(id).innerHTML = days + ' Jours ';
-            document.getElementById(id).innerHTML += hours + ' hrs ';
-            document.getElementById(id).innerHTML += minutes + ' mins ';
-            document.getElementById(id).innerHTML += seconds + ' secs';
+            var countdown = document.getElementById(id);
+
+            if (!countdown) return;
+
+            countdown.innerHTML = days + ' Jours ';
+            countdown.innerHTML += hours + ' hrs ';
+            countdown.innerHTML += minutes + ' mins ';
+            countdown.innerHTML += seconds + ' secs';
         }
 
         timer = setInterval(showRemaining, 1000);
