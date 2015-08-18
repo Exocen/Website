@@ -10,7 +10,7 @@ $bginverse      : #00d27f;
 $bgHighlight    : #333333;
 $colinverse     : #ecf0f1;
 $colHighlight       : #333333;
-.navbar-inverse {
+.navbar-default {
   background-color: $bginverse;
   border-color: $bgHighlight;
   .navbar-brand {
@@ -47,7 +47,7 @@ $colHighlight       : #333333;
     &:hover {
       color: $colHighlight; }}}
 @media (max-width: 767px) {
-  .navbar-inverse .navbar-nav .open .dropdown-menu {
+  .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
       color: $colinverse;
       &:hover, &:focus {
