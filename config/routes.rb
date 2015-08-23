@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'state' => 'static_pages#state'
-
   get 'chat' => 'static_pages#chat'
 
   get 'musique' => 'static_pages#musique'
