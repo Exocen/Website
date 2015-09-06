@@ -2,10 +2,8 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def state
-  end
-
-  def term
+  def musique
+    @videos = Video.all
   end
 
   def chat

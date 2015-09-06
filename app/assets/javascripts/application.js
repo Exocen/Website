@@ -32,7 +32,7 @@
             if (distance < 0) {
 
                 clearInterval(timer);
-                document.getElementById(id).innerHTML = 'EXPIRED!';
+                document.getElementById(id).innerHTML = 'Boujour mon amour !';
 
                 return;
             }
