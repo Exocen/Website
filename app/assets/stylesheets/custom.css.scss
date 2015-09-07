@@ -3,7 +3,10 @@
 
 .jumbotron h1, .jumbotron .h1{
   font-size: 40px;
+}
 
+.jumbotron{
+    text-align: center;
 }
 
 .carousel-inner > .item > img {
@@ -79,8 +82,4 @@ $colHighlight       : #333333;
 #logo:hover {
     color: #333333;
     text-decoration: none;
-}
-
-#countdown {
-
 }
