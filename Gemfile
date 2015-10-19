@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+#add paper-clip (pictures)
+gem "paperclip",  "~> 4.3"
 #add angular
 gem 'angularjs-rails'
 #Add angular with bootstrap
@@ -50,4 +51,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
