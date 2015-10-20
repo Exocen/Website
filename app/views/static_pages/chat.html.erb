@@ -107,3 +107,6 @@ glyphicon-chevron-right" aria-hidden="true"></span>
 <span class="sr-only">Next</span>
 </a>
 </div>
+<% @chats.each do |chat| %>
+    <%= link_to image_tag(@chat.image.url(:med)), @chat.image.url %>
+<% end %>

@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def chat
-
+    @chats = Chat.all
   end
 
 end
