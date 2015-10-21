@@ -15,7 +15,7 @@ module StaticPagesHelper
 	#return videos
 	def getLinkedVideo(video)
 		$videolink = video.link
-		li ='<iframe width="560" height="315" src=' + $videolink + ' frameborder="0" allowfullscreen></iframe>'
+		li ='<iframe width="560" height="315" src=' + $videolink + ' allowfullscreen></iframe>'
 		return li.html_safe
 	end
 	
