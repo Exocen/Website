@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
+/public/system
 /public/assets
 /config/secrets.yml
 
