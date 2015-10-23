@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'chat' => 'static_pages#chat'
-
+  get 'chat' => 'chats#index'
+  resources :chats
   get 'musique' => 'static_pages#musique'
 
   # The priority is based upon order of creation: first created -> highest priority.
