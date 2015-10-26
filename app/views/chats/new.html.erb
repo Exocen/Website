@@ -1,7 +1,7 @@
 <div class="page-header"><h1>Upload Chat</h1></div>
 
 <%= form_for @chat do |f| %>
-
+<%= render 'layouts/errors', object: @chat %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>

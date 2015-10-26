@@ -1,17 +1,17 @@
 <% provide(:title,"Chat") %>
 <script type="text/javascript">
 window.onload =  $(document).ready(function() {$(".owl-carousel").owlCarousel(
-{
+  {
 
-        navigation : false, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        autoHeight : true,
-        responsive : true,
-        lazyLoad : true
+    navigation : false, // Show next and prev buttons
+    slideSpeed : 300,
+    paginationSpeed : 400,
+    singleItem:true,
+    autoHeight : true,
+    responsive : true,
+    lazyLoad : true
 
-    }
+  }
 
 );});
 </script>
@@ -19,25 +19,22 @@ window.onload =  $(document).ready(function() {$(".owl-carousel").owlCarousel(
 <h2>Upload</h2>
 
 <%= form_for @chat do |f| %>
+<%= render 'layouts/errors', object: @chat %>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class: 'form-control' %>
-  </div>
-
-  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+  <%= f.label :image %>
+  <%= f.file_field :image, class: 'form-control' %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary' %>
 <% end %>
 
 <h2>Carrousel</h2>
 <div class="owl-carousel">
-<% @chats.each do |chat| %>
+  <% @chats.each do |chat| %>
   <div>
-  <%= link_to image_tag(chat.image.url(:med)), chat.image.url %>
-    </div>
-<% end %>
+    <%= link_to image_tag(chat.image.url(:large)), chat.image.url %>
+  </div>
+  <% end %>
 </div>
