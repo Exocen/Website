@@ -1,6 +1,7 @@
 class ChatsController < ApplicationController
   def index
    @chats = Chat.order('created_at')
+   @chat = Chat.new
  end
 
  def new
@@ -11,7 +12,7 @@ class ChatsController < ApplicationController
    @chat = Chat.new(chat_params)
    if @chat.save
      flash[:success] = "The chat was added!"
-     redirect_to root_path
+     redirect_to chat_path
    else
      render 'new'
    end

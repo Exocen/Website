@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+//= require owl.carousel
+
 
     function CountDownTimer(dt, id)
     {

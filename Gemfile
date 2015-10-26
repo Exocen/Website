@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+#add carrousel
+gem 'owlcarousel-rails'
 #add paper-clip (pictures)
 gem "paperclip",  "~> 4.3"
 #add angular

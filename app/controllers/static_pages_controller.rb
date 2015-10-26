@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
 
   def chat
     @chats = Chat.all
+    @nchat = Chat.count
   end
 
 end
