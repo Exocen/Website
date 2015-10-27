@@ -15,4 +15,5 @@ function GoCarrousel()
 
       }
   );
+  $(".owl-carousel").css( "display", "inline");
 }
