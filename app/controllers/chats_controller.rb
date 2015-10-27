@@ -27,6 +27,6 @@ class ChatsController < ApplicationController
  private
 
  def chat_params
-   params.require(:chat).permit(:image, :title)
+   params.permit(:image, :title)
  end
 end
