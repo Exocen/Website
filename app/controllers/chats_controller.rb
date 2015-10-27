@@ -1,6 +1,7 @@
 class ChatsController < ApplicationController
 
   def index
+    @nchat = Chat.count
    @chat = Chat.new
    @chats = Chat.order('created_at')
  end

@@ -1,46 +1,35 @@
 <% provide(:title,"Chat") %>
 <script type="text/javascript">
-window.onload =  $(document).ready(function() {$(".owl-carousel").owlCarousel(
+window.onload = $( document ).ready( GoCarrousel);
+window.onload = $(document).bind('keypress', function(e) {
+  if (e.keyCode == 32)
   {
-
-    navigation : false, // Show next and prev buttons
-    slideSpeed : 300,
-    paginationSpeed : 400,
-    singleItem:true,
-    autoHeight : true,
-    responsive : true,
-    lazyLoad : true
-
+    $(".admin").toggle();
   }
-
-);});
+});
 </script>
 
-<h2>Upload</h2>
-<%= form_for @chat do |f| %>
-<%= render 'layouts/errors', object: @chat %>
-<div class="form-group">
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
-
-  <%= f.label :image %>
-  <%= f.file_field :image, class: 'form-control' %>
+<div class="admin">
+  <%= form_for @chat do |f| %>
+  <%= render 'layouts/errors', object: @chat %>
+  <div class="form-group">
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+  <% end %>
+<br />
+  <% @chats.each do |chat| %>
+  <%= link_to image_tag(chat.image.url(:small)),root_path %>
+  <%= link_to 'Remove', chat_path(chat), class: 'btn btn-danger',
+  method: :delete %>
+  <br />
+  <% end %>
 </div>
-<%= f.submit 'Upload', class: 'btn btn-primary' %>
-<% end %>
 
 <div class="owl-carousel">
   <% @chats.each do |chat| %>
   <div>
     <%= link_to image_tag(chat.image.url(:large)), chat.image.url %>
   </div>
-  <% end %>
-</div>
-
-<div class="admin">
-  <% @chats.each do |chat| %>
-  <%= link_to image_tag(chat.image.url(:small)),root_path %>
-  <%= link_to 'Remove', chat_path(chat), class: 'btn btn-danger',
-  method: :delete %>
   <% end %>
 </div>
