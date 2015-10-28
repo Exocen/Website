@@ -1,7 +1,6 @@
 class ChatsController < ApplicationController
 
   def index
-    @nchat = Chat.count
    @chat = Chat.new
    @chats = Chat.order('created_at')
  end
@@ -27,6 +26,6 @@ class ChatsController < ApplicationController
  private
 
  def chat_params
-   params.permit(:image, :title)
+   params.require(:chat).permit(:image, :title)
  end
 end
