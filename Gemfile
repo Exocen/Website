@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 
 #add carrousel
-gem 'owlcarousel-rails'
+gem 'jquery-slick-rails'
 #add paper-clip (pictures)
-gem "paperclip",  "~> 4.3"
+gem 'paperclip'
 #add angular
 gem 'angularjs-rails'
 #Add angular with bootstrap

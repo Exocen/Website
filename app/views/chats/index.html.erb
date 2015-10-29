@@ -14,7 +14,7 @@ window.onload = $( document ).ready( GoCarrousel);
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        <div class="owl-carousel">
+        <div class="carrousel">
           <% @chats.each do |chat| %>
           <div>
             <%= link_to image_tag(chat.image.url(:large)), chat.image.url %>
