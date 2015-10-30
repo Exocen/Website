@@ -9,4 +9,5 @@ function GoCarrousel()
     arrows: false
 
   });
+    $('.slick-list').css( 'height', 'auto');
 }
