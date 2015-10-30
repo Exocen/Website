@@ -6,15 +6,18 @@ class ChatsController < ApplicationController
   end
 
   def create
-    if(chat_params.has_key?(:chat))
+    @chats = Chat.order('created_at')
+    if(params.has_key?(:chat))
       @chat = Chat.new(chat_params)
-      @chats = Chat.order('created_at')
       if @chat.save
         flash[:success] = "The chat was added!"
         redirect_to chats_path
       else
         render 'index'
       end
+    else
+      @chat = Chat.new()
+      render 'index'
     end
   end
 
@@ -28,8 +31,6 @@ class ChatsController < ApplicationController
   private
 
   def chat_params
-    if(params.has_key?(:chat))
       params.require(:chat).permit(:image, :title)
-    end
   end
 end
