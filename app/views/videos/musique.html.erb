@@ -1,0 +1,16 @@
+<% provide(:title,"Musique") %>
+<h1>Musique 2</h1>
+<p>
+<div class="videos">
+  <% @videos.each do |video| %>
+      <%= getLinkedVideo(video) %>
+  <% end %>
+</div>
+
+<%= form_for @video, url: video_index_path do |f| %>
+<%= render 'layouts/errors', object: @video %>
+<div class="form-group">
+  <%= f.url_field :link, class: 'form-control' %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary' %>
+<% end %>
