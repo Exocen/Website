@@ -1,16 +1,21 @@
 <% provide(:title,"Musique") %>
 <h1>Musique 2</h1>
 <p>
-<div class="videos">
-  <% @videos.each do |video| %>
-      <%= getLinkedVideo(video) %>
-  <% end %>
-</div>
+  <div class="videos">
+    <% @videos.each do |video| %>
+    <%= getLinkedVideo(video) %>
+    <%= link_to 'Remove', video_path(video), class: 'btn btn-danger', id:"admin",
+    method: :delete %>
 
-<%= form_for @video, url: video_index_path do |f| %>
-<%= render 'layouts/errors', object: @video %>
-<div class="form-group">
-  <%= f.url_field :link, class: 'form-control' %>
-</div>
-<%= f.submit 'Upload', class: 'btn btn-primary' %>
-<% end %>
+    <% end %>
+  </div>
+
+  <div id="admin">
+    <%= form_for @video do |f| %>
+    <%= render 'layouts/errors', object: @video %>
+    <div class="form-group">
+      <%= f.url_field :link, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Upload', class: 'btn btn-primary' %>
+    <% end %>
+  </div>

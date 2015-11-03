@@ -3,6 +3,11 @@
 @import "slick";
 @import "slick-theme";
 
+// a virer
+#admin{
+  display: none;
+}
+
 .jumbotron h1, .jumbotron .h1{
   font-size: 40px;
 }

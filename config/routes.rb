@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :chats , only: [:create, :index, :destroy,]
 
   get 'chat' => 'chats#index'
-  resources :video , only: [:create, :musique, :destroy,]
+  resources :videos , only: [:create, :musique, :destroy,]
   get 'musique' => 'videos#musique'
 
   # The priority is based upon order of creation: first created -> highest priority.
