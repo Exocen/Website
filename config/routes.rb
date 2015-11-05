@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  resources :chats , only: [:create, :index, :destroy,]
+  get 'cv' => 'static_pages#cv'
 
+  resources :chats , only: [:create, :index, :destroy,]
   get 'chat' => 'chats#index'
+
   resources :videos , only: [:create, :musique, :destroy,]
   get 'musique' => 'videos#musique'
 
