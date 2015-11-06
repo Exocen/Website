@@ -20,6 +20,10 @@
   display: inline;
 }
 
+td {
+  vertical-align: top;
+}
+
 $bginverse      : #00d27f;
 $bgHighlight    : #333333;
 $colinverse     : #ecf0f1;

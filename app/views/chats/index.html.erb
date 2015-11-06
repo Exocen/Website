@@ -34,13 +34,21 @@ window.onload = $( document ).ready( GoCarrousel);
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <%= form_for @chat do |f| %>
-        <%= render 'layouts/errors', object: @chat %>
-        <div class="form-group">
-          <%= f.file_field :image, class: 'form-control' %>
-        </div>
-        <%= f.submit 'Upload', class: 'btn btn-primary' %>
-        <% end %>
+        <table style="width:100%">
+          <tr>
+            <%= form_for @chat do |f| %>
+            <%= render 'layouts/errors', object: @chat %>
+            <td>
+              <div class="form-group">
+                <%= f.file_field :image, class: 'form-control' %>
+              </div>
+            </td>
+            <td>
+              <%= f.submit 'Upload', class: 'btn btn-primary' %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
