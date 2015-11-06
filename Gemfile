@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+#pdf displayer =>  rails g pdfjs_rails:install
+gem 'pdfjs_rails'
 #add carrousel
 gem 'jquery-slick-rails'
 #add paper-clip (pictures)

@@ -92,6 +92,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pdfjs_rails (0.0.1)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -172,7 +173,8 @@ DEPENDENCIES
   jquery-rails
   jquery-slick-rails
   paperclip
-  rails (= 4.2.0)
+  pdfjs_rails
+  rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring (~> 1.4)
