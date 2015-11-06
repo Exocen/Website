@@ -55,9 +55,7 @@ window.onload = $( document ).ready( GoCarrousel);
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
       <div class="panel-body">
         <% @chats.each do |chat| %>
-        <%= link_to image_tag(chat.image.url(:small)),root_path %>
-        <%= link_to 'Remove', chat_path(chat), class: 'btn btn-danger',
-        method: :delete %>
+        <%= link_to image_tag(chat.image.url(:small)),chat_path(chat),method: :delete %>
         <% end %>
       </div>
     </div>
