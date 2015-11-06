@@ -23,70 +23,93 @@
 $bginverse      : #00d27f;
 $bgHighlight    : #333333;
 $colinverse     : #ecf0f1;
-$colHighlight       : #333333;
+$colHighlight   : #333333;
 .navbar-default {
   background-color: $bginverse;
   border-color: $bgHighlight;
   .navbar-brand {
     color: $colinverse;
     &:hover, &:focus {
-      color: $colHighlight; }}
-      .navbar-text {
-        color: $colinverse; }
-        .navbar-nav {
-          > li {
-            > a {
-              color: $colinverse;
-              &:hover,  &:focus {
-                color: $colHighlight; }}}
-                > .active {
-                  > a, > a:hover, > a:focus {
-                    color: $colHighlight;
-                    background-color: $bgHighlight; }}
-                    > .open {
-                      > a, > a:hover, > a:focus {
-                        color: $colHighlight;
-                        background-color: $bgHighlight; }}}
-                        .navbar-toggle {
-                          border-color: $bgHighlight;
-                          &:hover, &:focus {
-                            background-color: $bgHighlight; }
-                            .icon-bar {
-                              background-color: $colinverse; }}
-                              .navbar-collapse,
-                              .navbar-form {
-                                border-color: $colinverse; }
-                                .navbar-link {
-                                  color: $colinverse;
-                                  &:hover {
-                                    color: $colHighlight; }}}
-                                    @media (max-width: 767px) {
-                                      .navbar-default .navbar-nav .open .dropdown-menu {
-                                        > li > a {
-                                          color: $colinverse;
-                                          &:hover, &:focus {
-                                            color: $colHighlight; }}
-                                            > .active {
-                                              > a, > a:hover, > a:focus, {
-                                                color: $colHighlight;
-                                                background-color: $bgHighlight; }}}
-                                              }
+      color: $colHighlight;
+    }
+  }
+  .navbar-text {
+    color: $colinverse;
+  }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colinverse;
+        &:hover,  &:focus {
+          color: $colHighlight;
+        }
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight;
+    }
+    .icon-bar {
+      background-color: $colinverse;
+    }
+  }
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colinverse;
+  }
+  .navbar-link {
+    color: $colinverse;
+    &:hover {
+      color: $colHighlight;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colinverse;
+      &:hover, &:focus {
+        color: $colHighlight;
+      }
+    }
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $bgHighlight;
+      }
+    }
+  }
+}
 
 
 
-                                              /* header */
-                                              #logo {
-                                                float: left;
-                                                margin-right: 10px;
-                                                font-size: 1.7em;
-                                                color: #fff;
-                                                text-transform: uppercase;
-                                                letter-spacing: -1px;
-                                                padding-top: 9px;
-                                                font-weight: bold;
-                                              }
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
 
-                                              #logo:hover {
-                                                color: #333333;
-                                                text-decoration: none;
-                                              }
+#logo:hover {
+  color: #333333;
+  text-decoration: none;
+}
