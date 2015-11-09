@@ -1,15 +1,15 @@
 <% provide(:title,"Musique") %>
-<!-- $("[id=admin]").css('display', 'block') -->
+<!-- $(".admin").css('display', 'block') -->
 <h1>Musique</h1>
 <div class="videos">
   <% @videos.each do |video| %>
   <%= getLinkedVideo(video) %>
-  <%= link_to 'Remove', video_path(video), class: 'btn btn-danger', id:"admin",
+  <%= link_to 'Remove', video_path(video), class: 'btn btn-danger admin',
   method: :delete %>
   <% end %>
 </div>
 
-<div id="admin">
+<div class="admin">
   <%= form_for @video do |f| %>
   <%= render 'layouts/errors', object: @video %>
   <div class="form-group">
