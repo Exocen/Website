@@ -2,6 +2,7 @@ function CountDownTimer(dt, id)
 {
   var end = new Date(dt);
 
+
   var _second = 1000;
   var _minute = _second * 60;
   var _hour = _minute * 60;
@@ -9,7 +10,10 @@ function CountDownTimer(dt, id)
   var timer;
 
   function showRemaining() {
-    var now = new Date();
+    var _now = new Date();
+    var _paris = 1*60*60000;// gmt +1
+    var _userOffset = _now.getTimezoneOffset()*60000; // [min*60000 = ms]
+    var now = new Date(_now.getTime()+_paris+_userOffset);
     var distance = end - now;
     if (distance < 0) {
 
