@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
-  get 'cv' => 'static_pages#cv'
+  # root 'static_pages#home'
+  # get 'cv' => 'static_pages#cv'
 
-  resources :chats , only: [:create, :index, :destroy,]
-  get 'chat' => 'chats#index'
+  # resources :chats , only: [:create, :index, :destroy,]
+  # get 'chat' => 'chats#index'
 
-  resources :videos , only: [:create, :musique, :destroy,]
-  get 'musique' => 'videos#musique'
+  # resources :videos , only: [:create, :musique, :destroy,]
+  # get 'musique' => 'videos#musique'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
