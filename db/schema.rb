@@ -13,8 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151020120732) do
 
-  create_table "chats", force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
     t.string   "title"
+    t.string   "location"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -30,8 +31,9 @@ ActiveRecord::Schema.define(version: 20151020120732) do
   create_table "videos", force: :cascade do |t|
     t.string   "link"
     t.string   "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "isPlaylist", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end

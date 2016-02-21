@@ -19,7 +19,7 @@ class VideosController < ApplicationController
   def destroy
     @video = Video.find(params[:id])
     @video.destroy
-    flash[:success] = "The chat was destroyed."
+    flash[:success] = "The video was destroyed."
     redirect_to musique_path
   end
 

@@ -6,9 +6,9 @@ class StaticPagesController < ApplicationController
     @videos = Video.order(created_at: :desc)
   end
 
-  def chat
-    @chats = Chat.all
-    @nchat = Chat.count
+  def photo
+    @photos = Photo.all
+    @nphoto = Photo.count
   end
 
 end
