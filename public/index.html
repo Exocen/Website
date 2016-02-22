@@ -5,7 +5,7 @@
   <STYLE type="text/css">
   h1 {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
@@ -41,10 +41,11 @@
 
 </form>
 <script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>
 
-var width = 960,
-    height = 500,
+var width = $(window).width(),
+    height = $(window).height(),
     radius = 80,
     x = Math.sin(2 * Math.PI / 3),
     y = Math.cos(2 * Math.PI / 3);
