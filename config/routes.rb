@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :videos , only: [:create, :musique, :destroy,]
   get 'musique' => 'videos#musique'
+  get 'location' => 'video_locations#location'
+  #get 'location' => 'video_locations#location'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
