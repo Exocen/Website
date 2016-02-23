@@ -1,0 +1,17 @@
+<% provide(:title,"Location") %>
+<!-- $(".admin").css('display', 'block') -->
+<h1>Location</h1>
+
+<%= form_for @photoLocation do |f| %>
+<%= render 'layouts/errors', object: @photoLocation %>
+<div class="form-group">
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+<%= f.submit 'Upload', class: 'btn btn-primary' %>
+<% end %>
+
+<% @photoLocations.each do |photoLocation| %>
+<%= photoLocation.name%>
+<%= link_to 'Remove', photo_location_path(photoLocation), class: 'btn btn-danger admin',
+method: :delete %>
+<% end %>
