@@ -13,9 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20160221163350) do
 
+  create_table "photo_locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string   "title"
-    t.integer  "locationVideo_id"
+    t.integer  "locationPhoto_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -28,13 +34,7 @@ ActiveRecord::Schema.define(version: 20160221163350) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "photos", ["locationVideo_id"], name: "index_photos_on_locationVideo_id"
-
-  create_table "video_locations", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "photos", ["locationPhoto_id"], name: "index_photos_on_locationPhoto_id"
 
   create_table "videos", force: :cascade do |t|
     t.string   "link"
