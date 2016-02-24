@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :photo_locations , only: [:create, :location, :destroy,]
   get 'location' => 'photo_locations#location'
   #get 'location' => 'video_locations#location'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
