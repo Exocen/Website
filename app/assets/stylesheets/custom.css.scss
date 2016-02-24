@@ -3,10 +3,6 @@
 @import "slick";
 @import "slick-theme";
 
-// a virer
-.admin{
-//  display: none;
-}
 
 .jumbotron h1, .jumbotron .h1{
   font-size: 40px;
@@ -22,6 +18,11 @@
 
 td {
   vertical-align: top;
+}
+
+input[type=button] {
+    display: block;
+    vertical-align: bottom;
 }
 
 $bginverse      : #00d27f;

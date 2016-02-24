@@ -19,7 +19,9 @@
         <li><%= link_to "CV", cv_path %></li>
         <li><%= link_to "Photos",   photos_path %></li>
         <li><%= link_to "Musique",   musique_path %></li>
+        <li data-toggle="modal" data-target="#myModal"><%= link_to "Login", "#" %></li>
       </ul>
     </nav>
   </div>
 </nav>
+<%= render 'layouts/modal' %>

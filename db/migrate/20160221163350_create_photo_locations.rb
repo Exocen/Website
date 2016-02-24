@@ -5,5 +5,7 @@ class CreatePhotoLocations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_foreign_key :photo_locations, :photos
+
   end
 end

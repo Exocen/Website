@@ -3,7 +3,6 @@ class PhotosController < ApplicationController
   def index
     @photo = Photo.new
     @photos = Photo.order('created_at')
-    @photoLocations = PhotoLocation.order('created_at')
   end
 
   def create
@@ -32,6 +31,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:image, :title, :locationPhoto_id)
+    params.require(:photo).permit(:image, :title, :photo_location_id)
   end
 end

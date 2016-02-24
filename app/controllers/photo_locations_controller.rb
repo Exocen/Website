@@ -6,7 +6,6 @@ class PhotoLocationsController < ApplicationController
   end
 
   def create
-    @photoLocations = PhotoLocation.order('created_at')
     @photoLocation = PhotoLocation.new(photoLocation_params)
     if @photoLocation.save
       flash[:success] = "The photoLocation was added!"

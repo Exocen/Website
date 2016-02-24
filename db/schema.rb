@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221163350) do
+ActiveRecord::Schema.define(version: 20160224001135) do
 
   create_table "photo_locations", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160221163350) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
-    t.integer  "locationPhoto_id"
+    t.integer  "photo_location_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -34,7 +34,15 @@ ActiveRecord::Schema.define(version: 20160221163350) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "photos", ["locationPhoto_id"], name: "index_photos_on_locationPhoto_id"
+  add_index "photos", ["photo_location_id"], name: "index_photos_on_photo_location_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users", [nil], name: "index_users_on_unique_and_true"
 
   create_table "videos", force: :cascade do |t|
     t.string   "link"

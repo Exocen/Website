@@ -38,7 +38,7 @@ window.onload = $( document ).ready( GoCarrousel);
         <%= render 'layouts/errors', object: @photo %>
         <div class="form-group">
           <%= f.file_field :image, class: 'form-control' %>
-          <%= f.collection_select(:locationPhoto_id, PhotoLocation.all, :id, :name) %>
+          <%= f.collection_select(:photo_location_id, PhotoLocation.all, :id, :name) %>
 
         </div>
         <%= f.submit 'Upload', class: 'btn btn-primary' %>

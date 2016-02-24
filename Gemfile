@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt'
 #pdf displayer =>  rails g pdfjs_rails:install
 gem 'pdfjs_rails'
 #add carrousel
