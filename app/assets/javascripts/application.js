@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery.slick
+//= require jquery.remotipart
 //= require_tree .

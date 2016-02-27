@@ -11,7 +11,9 @@ class PhotosController < ApplicationController
       @photo = Photo.new(photo_params)
       if @photo.save
         flash[:success] = "The photo was added!"
-        redirect_to photos_path
+        # make it asynchrone
+        format.html {redirect_to photos_path}
+        format.js
       else
         render 'index'
       end

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'bcrypt'
+gem 'remotipart'
+gem 'pg'
+gem 'paperclip-dropbox'
 #pdf displayer =>  rails g pdfjs_rails:install
 gem 'pdfjs_rails'
 #add carrousel
@@ -38,7 +40,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

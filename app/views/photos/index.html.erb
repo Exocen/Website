@@ -34,7 +34,7 @@ window.onload = $( document ).ready( GoCarrousel);
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        <%= form_for @photo do |f| %>
+        <%= form_for @photo, remote: true do |f| %>
         <%= render 'layouts/errors', object: @photo %>
         <div class="form-group">
           <%= f.file_field :image, class: 'form-control' %>
