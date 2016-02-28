@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 
-gem "paperclip_database"
-gem 'remotipart'
+gem 'dropzonejs-rails'
+
+#postgrepsql compatibiliy
 gem 'pg'
-gem 'paperclip-dropbox'
 #pdf displayer =>  rails g pdfjs_rails:install
 gem 'pdfjs_rails'
 #add carrousel
 gem 'jquery-slick-rails'
+# paperclip database
+gem "paperclip_database"
 #add paper-clip (pictures)
 gem 'paperclip'
 #add angular

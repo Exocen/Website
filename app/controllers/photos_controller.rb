@@ -13,22 +13,19 @@ class PhotosController < ApplicationController
   def index
     @photo = Photo.new
     @photos = Photo.order('created_at')
-
+    render 'index'
   end
 
   def create
     @photos = Photo.order('created_at')
-    if(params.has_key?(:photo))
-      @photo = Photo.new(photo_params)
-      if @photo.save
-        flash[:success] = "The photo was added!"
-        redirect_to photos_path
-      else
-        render 'index'
-      end
+    @photo = Photo.new(photo_params)
+    if @photo.save
+      render json: { message: "success" , fileID: @photo.id}, :status => 200
+      # flash[:success] = "The photo was added!"
+      # redirect_to photos_path
     else
-      @photo = Photo.new()
-      render 'index'
+      render json: { error: @photo.errors.full_messages.join(',')}, :status => 400
+      # render 'index'
     end
   end
 
@@ -42,6 +39,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:image, :title, :photo_location_id)
+    params.require(:photo).permit(:image, :title)
   end
 end

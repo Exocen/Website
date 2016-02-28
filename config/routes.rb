@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
-  resources :photos , only: [:show, :create, :index, :destroy,]
+  resources :photos
   get 'photo' => 'photos#index'
 
   resources :videos , only: [:create, :musique, :destroy,]

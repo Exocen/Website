@@ -11,12 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228010840) do
-
-  create_table "image_views", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20160228005321) do
 
   create_table "images", force: :cascade do |t|
     t.integer "photo_id"
@@ -24,15 +19,8 @@ ActiveRecord::Schema.define(version: 20160228010840) do
     t.binary  "file_contents"
   end
 
-  create_table "photo_locations", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "photos", force: :cascade do |t|
     t.string   "title"
-    t.integer  "photo_location_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -44,8 +32,6 @@ ActiveRecord::Schema.define(version: 20160228010840) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
-
-  add_index "photos", ["photo_location_id"], name: "index_photos_on_photo_location_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
