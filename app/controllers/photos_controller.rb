@@ -1,8 +1,19 @@
 class PhotosController < ApplicationController
 
+  def show
+    style = params[:style] ? params[:style] : 'med'
+    record = Photo.find(params[:id])
+    raise 'Error' unless record.image.exists?(style)
+    send_data record.image.file_contents(style),
+    :filename => record.image_file_name,
+    :type => record
+    .image_content_type
+  end
+
   def index
     @photo = Photo.new
     @photos = Photo.order('created_at')
+
   end
 
   def create
@@ -11,9 +22,7 @@ class PhotosController < ApplicationController
       @photo = Photo.new(photo_params)
       if @photo.save
         flash[:success] = "The photo was added!"
-        # make it asynchrone
-        format.html {redirect_to photos_path}
-        format.js
+        redirect_to photos_path
       else
         render 'index'
       end

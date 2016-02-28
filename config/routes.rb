@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-  get 'users/new'
+
 
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
-
-  resources :photos , only: [:create, :index, :destroy,]
+  resources :photos , only: [:show, :create, :index, :destroy,]
   get 'photo' => 'photos#index'
 
   resources :videos , only: [:create, :musique, :destroy,]
   get 'musique' => 'videos#musique'
   resources :photo_locations , only: [:create, :location, :destroy,]
   get 'location' => 'photo_locations#location'
+
   #get 'location' => 'video_locations#location'
-  resources :users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

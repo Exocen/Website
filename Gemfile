@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "paperclip_database"
 gem 'remotipart'
 gem 'pg'
 gem 'paperclip-dropbox'
