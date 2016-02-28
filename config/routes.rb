@@ -3,13 +3,19 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
+
   resources :photos
   get 'photo' => 'photos#index'
+  get 'new_photo' => 'photos#new'
+  get 'delete_photo' => 'photos#delete'
 
   resources :videos , only: [:create, :musique, :destroy,]
   get 'musique' => 'videos#musique'
-  resources :photo_locations , only: [:create, :location, :destroy,]
-  get 'location' => 'photo_locations#location'
+
+  resources :users
+  get 'signup' => 'users#new'
+
+
 
   #get 'location' => 'video_locations#location'
 

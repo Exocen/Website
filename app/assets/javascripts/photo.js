@@ -31,3 +31,6 @@ function GoDropzone(){
 		}
 	});
 }
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})

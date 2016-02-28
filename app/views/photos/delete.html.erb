@@ -1,0 +1,7 @@
+<% provide(:title,"Photo") %>
+<h1>Delete Photos</h1>
+<div class="panel-body">
+<% @photos.each do |photo| %>
+<%= link_to image_tag(photo.image.url(:small)),photo_path(photo),method: :delete %>
+<% end %>
+</div>

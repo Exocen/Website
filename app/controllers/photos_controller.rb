@@ -11,9 +11,11 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photo = Photo.new
     @photos = Photo.order('created_at')
-    render 'index'
+  end
+
+  def new
+    @photo = Photo.new
   end
 
   def create
@@ -27,6 +29,10 @@ class PhotosController < ApplicationController
       render json: { error: @photo.errors.full_messages.join(',')}, :status => 400
       # render 'index'
     end
+  end
+
+  def delete
+    @photos = Photo.order('created_at')
   end
 
   def destroy

@@ -1,0 +1,20 @@
+<% provide(:title,"Photos") %>
+<script type="text/javascript">
+$(document).ready(GoDropzone);
+</script>
+<h1>Upload Photos</h1>
+<br />
+<div class="panel-body">
+  <%= form_for(@photo, html: { multipart: true, class: "dropzone"}) do |f|  %>
+  <%= render 'layouts/errors', object: @photo %>
+  <div class="fallback">
+    <%= f.file_field :image %>
+    <% end %>
+  </div>
+</div>
+<button type="button" class="btn btn-success btn-circle btn-lg"
+data-toggle="tooltip" data-placement="top" title="Validate !">
+<%= link_to 'photo', class: 'button alt' do %>
+<i class="glyphicon glyphicon-ok"></i>
+<% end %>
+</button>
