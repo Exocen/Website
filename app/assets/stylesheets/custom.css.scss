@@ -20,20 +20,6 @@ td {
   vertical-align: top;
 }
 
-#error_explanation {
-color: red;
-ul {
-color: red;
-margin: 0 0 30px 0;
-}
-}
-.field_with_errors {
-@extend .has-error;
-.form-control {
-color: $state-danger-text;
-}
-}
-
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -46,20 +32,20 @@ color: $state-danger-text;
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
-  padding: 7px 7px;
-  font-size: 35px;
+  padding: 6px 6px;
+  font-size: 36.5px;
   line-height: 1.33;
   border-radius: 25px;
 }
 a.button:link
 {
-   color: #FFFFFF;
-   text-decoration: none;
+  color: #FFFFFF;
+  text-decoration: none;
 }
 a.button:visited
 {
-   color: #FFFFFF;
-   text-decoration: none;
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 $bginverse      : #00d27f;
@@ -96,7 +82,7 @@ $colHighlight   : #333333;
     > .open {
       > a, > a:hover, > a:focus {
         color: $colHighlight;
-        background-color: $bgHighlight;
+        background-color: #64d6a9;;
       }
     }
   }
@@ -174,4 +160,19 @@ and (-webkit-device-pixel-ratio: 2) {
 #logo:hover {
   color: #333333;
   text-decoration: none;
+}
+
+// Error field
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }
