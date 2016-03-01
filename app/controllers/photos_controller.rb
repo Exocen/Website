@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+before_action :logged_in_user
 
   def show
     style = params[:style] ? params[:style] : 'med'
@@ -11,7 +12,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.order('created_at')
+    @photos = Photo.where("user_id = ?", current_user)
   end
 
   def new
@@ -20,7 +21,8 @@ class PhotosController < ApplicationController
 
   def create
     @photos = Photo.order('created_at')
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.build(photo_params) if logged_in?
+    #Photo.new(photo_params)
     if @photo.save
       render json: { message: "success" , fileID: @photo.id}, :status => 200
       # flash[:success] = "The photo was added!"

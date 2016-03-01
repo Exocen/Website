@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'new_photo' => 'photos#new'
   get 'delete_photo' => 'photos#delete'
 
-  resources :videos , only: [:create, :musique, :destroy,]
+  resources :videos
   get 'musique' => 'videos#musique'
 
   resources :users

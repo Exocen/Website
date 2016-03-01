@@ -47,6 +47,20 @@ a.button:visited
   color: #FFFFFF;
   text-decoration: none;
 }
+/* forms */
+
+.checkbox {
+  
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
 
 $bginverse      : #00d27f;
 $bgHighlight    : #333333;
