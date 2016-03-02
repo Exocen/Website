@@ -6,7 +6,7 @@ window.onload = $( document ).ready( GoCarrousel);
 <br />
 
 <div class="carrousel">
-	
+
 	<% @photos.each do |photo| %>
 	<div>
 		<%= link_to image_tag(photo.image.url(:large)), photo.image.url%>
@@ -15,14 +15,14 @@ window.onload = $( document ).ready( GoCarrousel);
 </div>
 <br />
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-xs-6">
 		<button type="button" class="btn btn-success btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Upload Photos">
 			<%= link_to 'new_photo', class: 'button alt' do %>
 			<i class="glyphicon glyphicon-upload"></i>
 			<% end %>
 		</button>
 	</div>
-		<div class="col-sm-6">
+		<div class="col-xs-6">
 			<button type="button" class="btn btn-danger btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Remove Photos">
 				<%= link_to 'delete_photo', class: 'button alt' do %>
 				<i class="glyphicon glyphicon-remove"></i>
