@@ -13,7 +13,7 @@ Todo
 
 Gems
 
-``` 
+```ruby
 #dropzone for image upload
 gem 'dropzonejs-rails'
 #postgrepsql compatibiliy
