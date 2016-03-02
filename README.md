@@ -1,5 +1,5 @@
-============
 WebSite sample on Ror
+------------
 
 A Website sample build with Ruby on Rails
 
@@ -8,6 +8,7 @@ Todo
 * Admin
 * Js depedencies
 * Fun games
+* Better ReadMe (with samples)
 
 ---
 
