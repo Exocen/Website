@@ -1,11 +1,29 @@
-== TODO
+WebSite sample on Ror
+============
 
-*Refaire le todo
+A Websibe sample build with Ruby on Rails
 
-*tests auto
+Todo
 
-*video
+  * User management
+  * Admin
+  * Js depedencies
+  * Fun games
 
-*web note
+---
 
-*gag
+Gems
+```ruby
+#dropzone for image upload
+gem 'dropzonejs-rails'
+#postgrepsql compatibiliy
+gem 'pg'
+#pdf displayer =>  rails g pdfjs_rails:install
+gem 'pdfjs_rails'
+#add carrousel
+gem 'jquery-slick-rails'
+# paperclip database
+gem "paperclip_database"
+#add paper-clip (pictures)
+gem 'paperclip'
+```
