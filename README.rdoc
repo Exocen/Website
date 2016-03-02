@@ -1,19 +1,20 @@
-WebSite sample on Ror
 ============
+WebSite sample on Ror
 
-A Websibe sample build with Ruby on Rails
+A Website sample build with Ruby on Rails
 
 Todo
-
-  * User management
-  * Admin
-  * Js depedencies
-  * Fun games
+* User management
+* Admin
+* Js depedencies
+* Fun games
 
 ---
 
 Gems
-```ruby
+
+``` 
+
 #dropzone for image upload
 gem 'dropzonejs-rails'
 #postgrepsql compatibiliy
@@ -26,4 +27,5 @@ gem 'jquery-slick-rails'
 gem "paperclip_database"
 #add paper-clip (pictures)
 gem 'paperclip'
-```
+
+``` 
