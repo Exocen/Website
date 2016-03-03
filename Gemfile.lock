@@ -103,7 +103,6 @@ GEM
       mimemagic (= 0.3.0)
     paperclip_database (2.3.1)
       paperclip (>= 2.3.0)
-    pdfjs_rails (0.0.1)
     pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -186,7 +185,6 @@ DEPENDENCIES
   jquery-slick-rails
   paperclip
   paperclip_database
-  pdfjs_rails
   pg
   rails
   sass-rails
