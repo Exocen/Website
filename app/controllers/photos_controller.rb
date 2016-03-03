@@ -2,8 +2,10 @@ class PhotosController < ApplicationController
 before_action :logged_in_user
 
   def show
+    #style = params[:style] ? params[:style] : 'med'
+    style = "med"
     record = Photo.find(params[:id])
-    raise 'Error' unless record.image.exists?([params[:style] ? params[:style] : 'med'])
+    raise 'Error' unless record.image.exists?(style)
     send_data record.image.file_contents(style),
     :filename => record.image_file_name,
     :type => record
