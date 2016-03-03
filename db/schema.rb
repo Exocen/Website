@@ -49,8 +49,11 @@ ActiveRecord::Schema.define(version: 20160301203744) do
     t.string   "link"
     t.string   "desc"
     t.boolean  "isPlaylist", default: false
+    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
 end

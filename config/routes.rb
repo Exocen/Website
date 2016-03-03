@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'delete_photo' => 'photos#delete'
 
   resources :videos
-  get 'musique' => 'videos#musique'
+  get 'videos' => 'videos#index'
 
   resources :users
   get 'signup' => 'users#new'

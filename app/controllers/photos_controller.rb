@@ -20,7 +20,6 @@ before_action :logged_in_user
   end
 
   def create
-    @photos = Photo.order('created_at')
     @photo = current_user.photos.build(photo_params) if logged_in?
     #Photo.new(photo_params)
     if @photo.save
