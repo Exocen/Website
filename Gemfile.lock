@@ -64,6 +64,8 @@ GEM
       rails (> 3.1)
     erubis (2.7.0)
     execjs (2.4.0)
+    flipclockjs-rails (0.7.7)
+      jquery-rails (>= 1.0.17)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -177,6 +179,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   dropzonejs-rails
+  flipclockjs-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails

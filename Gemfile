@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'flipclockjs-rails'
+
 gem 'dropzonejs-rails'
 
 #postgrepsql compatibiliy

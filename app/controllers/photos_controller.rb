@@ -41,7 +41,7 @@ before_action :logged_in_user
     @photo = Photo.find(params[:id])
     @photo.destroy
     flash[:success] = "The photo was destroyed."
-    redirect_to photos_path
+    redirect_to delete_photo_path
   end
 
   private

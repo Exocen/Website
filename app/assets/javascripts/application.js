@@ -18,4 +18,5 @@
 //= require bootstrap-sprockets
 //= require jquery.slick
 //= require dropzone
+//= require flipclock.min
 //= require_tree .

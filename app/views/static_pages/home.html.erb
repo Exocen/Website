@@ -1,6 +1,22 @@
 <% provide(:title, "Accueil") %>
 <script type="text/javascript">
-window.onload =  CountDownTimer('12/13/2015 10:00 AM', 'countdown');
+// window.onload =  CountDownTimer('12/13/2015 10:00 AM', 'countdown');
+var currentDate = new Date();
+				// Set some date in the future. In this case, it's always Jan 1
+				var futureDate  = new Date('06/13/2016 10:00 AM');
+				// Calculate the difference in seconds between the future and current date
+				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
+
+$(document).ready(function() {var clock = $('.clock').FlipClock(diff,{
+clockFace: 'DailyCounter',
+  autoStart: true,
+  defaultLanguage: 'french'
+});
+});
 </script>
 <h1>Countdown to paradise</h1>
-<p id="countdown">
+<!-- <p id="countdown"> -->
+
+<div class="clock">
+</div>
+</div>
