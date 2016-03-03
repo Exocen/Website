@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/Exocen/Website/badges/gpa.svg)](https://codeclimate.com/github/Exocen/Website) [![Build Status](https://travis-ci.org/Exocen/Website.svg?branch=master)](https://travis-ci.org/Exocen/Website)
+[![Dependency Status](https://gemnasium.com/Exocen/Website.svg)](https://gemnasium.com/Exocen/Website)
+
 WebSite sample on Ror
 ------------
 
