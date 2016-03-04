@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-
-
+  resources :photos
+  resources :videos
+  resources :users
   get 'sessions/new'
 
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
 
-  resources :photos
+
   get 'photo' => 'photos#index'
   get 'new_photo' => 'photos#new'
   get 'delete_photo' => 'photos#delete'
 
-  resources :videos
+
   get 'videos' => 'videos#index'
 
-  resources :users
   get 'signup' => 'users#new'
   get 'users' => 'users#index'
 

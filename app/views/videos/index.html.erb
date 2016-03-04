@@ -7,3 +7,19 @@
   method: :delete %>
   <% end %>
 </div>
+<div class="row">
+  <div class="col-xs-6">
+    <button type="button" class="btn btn-success btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Upload Photos">
+      <%= link_to new_video_path, class: 'button alt' do %>
+      <i class="glyphicon glyphicon-upload"></i>
+      <% end %>
+    </button>
+  </div>
+  <div class="col-xs-6">
+    <button type="button" class="btn btn-danger btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Remove Photos">
+      <%= link_to 'delete_video', class: 'button alt' do %>
+      <i class="glyphicon glyphicon-remove"></i>
+      <% end %>
+    </button>
+  </div>
+</div>
