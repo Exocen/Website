@@ -34,7 +34,7 @@ before_action :logged_in_user
   end
 
   def delete
-    @photos = Photo.order('created_at')
+    @photos = Photo.where("user_id = ?", current_user)
   end
 
   def destroy

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
+  get 'kitty' => 'static_pages#kitty'
 
 
   get 'photo' => 'photos#index'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   get 'users' => 'users#index'
+  get 'edit' => 'users#edit'
 
   get 'login' => 'sessions#new'
   post 'login'=> 'sessions#create'

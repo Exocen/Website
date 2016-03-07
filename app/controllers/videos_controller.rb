@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
-before_action :logged_in_user
+
+  before_action :admin_user, only: [:destroy]
+  before_action :logged_in_user
 
   def index
     @videos = Video.order(created_at: :desc)
@@ -11,14 +13,13 @@ before_action :logged_in_user
       flash[:success] = "The video was added!"
       redirect_to videos_path
     else
-      render 'video'
+      render 'new'
     end
   end
 
   def new
     @video = Video.new
   end
-
 
   def destroy
     @video = Video.find(params[:id])

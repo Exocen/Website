@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_user, only: [:index, :update, :destroy, :show, :new]
-
+  before_action :logged_in_user, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @photos = Photo.where("user_id = ?", params[:id])
@@ -29,6 +29,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -41,11 +51,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password,
     :password_confirmation)
-  end
-
-  # Confirms an admin user.
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
   end
 
 end
