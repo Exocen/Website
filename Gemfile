@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem "d3-rails"
+
+gem 'gon'
+
+gem 'jquery-cookie-rails'
+
 gem 'flipclockjs-rails'
 
 gem 'dropzonejs-rails'

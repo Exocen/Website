@@ -12,11 +12,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery2
+//= require netrics
+//= require sir
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.cookie
 //= require bootstrap-sprockets
 //= require jquery.slick
 //= require dropzone
 //= require flipclock.min
-//= require_tree .

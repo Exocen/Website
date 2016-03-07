@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
   get 'kitty' => 'static_pages#kitty'
-
+  get 'game' => 'static_pages#game'
 
   get 'photo' => 'photos#index'
   get 'new_photo' => 'photos#new'
