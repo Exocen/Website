@@ -188,14 +188,14 @@ function initBasicMenu() {
             speed = false;
 
             if (vaxEasyHiScore !== -Infinity) {
-            else d3.select(".easyHi").text("(Best: " + vaxEasyHiScore + "%)")}
+            d3.select(".easyHi").text("(Best: " + vaxEasyHiScore + "%)")}
 
 
             if (vaxMediumHiScore !== -Infinity) {
-            else d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore + "%)")}
+            d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore + "%)")}
 
             if (vaxHardHiScore !== -Infinity) {
-            else d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")}
+            d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")}
 
 
 
