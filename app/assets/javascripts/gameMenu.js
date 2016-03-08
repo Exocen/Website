@@ -187,16 +187,16 @@ function initBasicMenu() {
 
     speed = false;
 
-    if (vaxEasyHiScore == -Infinity) {}
-    else d3.select(".easyHi").text("(Best: " + vaxEasyHiScore + "%)")
+    if (vaxEasyHiScore !== -Infinity){
+      d3.select(".easyHi").text("(Best: " + vaxEasyHiScore + "%)")
+    }
 
-
-    if (vaxMediumHiScore == -Infinity) {}
-    else d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore + "%)")
-
-    if (vaxHardHiScore == -Infinity) {}
-    else d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")
-
+    if (vaxMediumHiScore !== -Infinity) {
+      d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore + "%)")
+    }
+    if (vaxHardHiScore !== -Infinity) {
+      d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")
+    }
 
 
 
@@ -385,7 +385,7 @@ function readCookiesJSON() {
   $.cookie .json = true;
   var cookies = $.cookie ('vaxCookie')
 
-  if (cookies == undefined) initCookiesJSON();
+  if (cookies === undefined) initCookiesJSON();
 
   cookie = $.cookie ('vaxCookie')
 
@@ -397,7 +397,7 @@ function readCookiesJSON() {
   vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
   vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
 
-  if (cookie.scoresRT == undefined) {
+  if (cookie.scoresRT === undefined) {
     var easyScoresRT = [];
     var mediumScoresRT = [];
     var hardScoresRT = [];
@@ -412,11 +412,11 @@ function readCookiesJSON() {
   vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
 
   $.cookie .json = false;
-  customNodeChoice = parseInt($.cookie ().customNodes);
-  customNeighborChoice = parseInt($.cookie ().customNeighbors);
-  customVaccineChoice = parseInt($.cookie ().customVaccines);
-  customOutbreakChoice = parseInt($.cookie ().customOutbreaks);
-  customRefuserChoice = parseInt($.cookie ().customRefusers);
+  customNodeChoice = parseInt($.cookie ().customNodes,10);
+  customNeighborChoice = parseInt($.cookie ().customNeighbors,10);
+  customVaccineChoice = parseInt($.cookie ().customVaccines,10);
+  customOutbreakChoice = parseInt($.cookie ().customOutbreaks,10);
+  customRefuserChoice = parseInt($.cookie ().customRefusers,10);
 
 
   if (isNaN(customNodeChoice)) {
