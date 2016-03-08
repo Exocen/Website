@@ -7,10 +7,10 @@ WebSite sample on Ror
 A Website sample build with Ruby on Rails
 
 Todo
-* User management
-* Admin
 * Js depedencies
-* Fun games
+* Css + d3 Game
+* Video playlist
+* Docker integration
 * Better ReadMe (with samples)
 
 ---
