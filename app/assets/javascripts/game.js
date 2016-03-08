@@ -534,7 +534,7 @@ function initCustomGame() {
         graph.nodes[i].refuser = false;
     }
 
-    for (var i = 0; i < numberOfRefusers; i++) {
+    for (var j = 0; j < numberOfRefusers; j++) {
         do {
             var node = graph.nodes[Math.floor(Math.random() * graph.nodes.length)]
         }
@@ -544,8 +544,8 @@ function initCustomGame() {
 
     // prevent all nodes from being refusers and halting the game
     var refuserCount = 0;
-    for (var i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].refuser) refuserCount++;
+    for (var k = 0; k < graph.nodes.length; k++) {
+        if (graph.nodes[k].refuser) refuserCount++;
     }
 
     if (refuserCount === numberOfIndividuals) {
@@ -931,11 +931,23 @@ function speedModeGameClick(node) {
 
 // tick function, which does the physics for each individual node & link.
 function tick() {
-    clickArea.attr("cx", function(d) { return d.x = Math.max(8, Math.min(width - 8, d.x)); })
-        .attr("cy", function(d) { return d.y = Math.max(8, Math.min((height *.85), d.y)); });
+    clickArea.attr("cx", function(d) {
+       d.x = Math.max(8, Math.min(width - 8, d.x));
+       return d.x;
+     })
+        .attr("cy", function(d) {
+           d.y = Math.max(8, Math.min((height *.85), d.y));
+           return d.y;
+         });
 
-    node.attr("cx", function(d) { return d.x = Math.max(8, Math.min(width - 8, d.x)); })
-        .attr("cy", function(d) { return d.y = Math.max(8, Math.min((height *.85), d.y)); });
+    node.attr("cx", function(d) {
+       d.x = Math.max(8, Math.min(width - 8, d.x));
+       return d.x;
+     })
+        .attr("cy", function(d) {
+           return d.y = Math.max(8, Math.min((height *.85), d.y));
+           return d.y;
+         });
 
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })

@@ -182,8 +182,7 @@ function detectEndGame() {
 
         for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
             var node = graph.nodes[nodeIndex];
-            if (parseFloat(node.group) !== groupIndex); //do nothing
-            else {
+            if (parseFloat(node.group) === groupIndex){
                 if (node.status === "S") numberOfSusceptiblesPerGroup++;
                 if (node.status === "I") numberOfInfectedPerGroup++;
                 if (node.status === "E") numberOfInfectedPerGroup++;
