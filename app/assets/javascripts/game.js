@@ -491,8 +491,8 @@ function initBasicGame(difficulty) {
     }
 
     if (difficulty === "hard") {
-        for (var i = 0; i < graph.nodes.length; i++) {
-            if (Math.random() < 0.05) graph.nodes[i].refuser = true;
+        for (var j = 0; j < graph.nodes.length; j++) {
+            if (Math.random() < 0.05) graph.nodes[j].refuser = true;
         }
     }
 
@@ -945,7 +945,7 @@ function tick() {
        return d.x;
      })
         .attr("cy", function(d) {
-           return d.y = Math.max(8, Math.min((height *.85), d.y));
+           d.y = Math.max(8, Math.min((height *.85), d.y));
            return d.y;
          });
 
@@ -1095,8 +1095,7 @@ function detectGameCompletion() {
 
         for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
             var node = graph.nodes[nodeIndex];
-            if (parseFloat(node.group) !== groupIndex); //do nothing
-            else {
+            if (parseFloat(node.group) === groupIndex) {
                 if (node.status === "S") numberOfSusceptiblesPerGroup++;
                 if (node.status === "I") numberOfInfectedPerGroup++;
                 if (node.status === "E") numberOfInfectedPerGroup++;

@@ -828,8 +828,14 @@ function generateFrontGraph() {
 
 function frontTick() {
 
-    frontNode.attr("cx", function(d) { return d.x = Math.max(8, Math.min(width - 50, d.x)); })
-        .attr("cy", function(d) { return d.y = Math.max(8, Math.min(500 - 50, d.y)); });
+    frontNode.attr("cx", function(d) {
+       d.x = Math.max(8, Math.min(width - 50, d.x));
+       return d.x;
+     })
+        .attr("cy", function(d) {
+           d.y = Math.max(8, Math.min(500 - 50, d.y));
+           return d.y;
+         });
 
 
     frontLink.attr("x1", function(d) { return d.source.x; })
