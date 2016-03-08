@@ -10,7 +10,7 @@ function generateSmallWorld(n, p, k) {
     for (var nodeID = 0; nodeID < n; nodeID++) {
         for (var edgeID = 0; edgeID < k; edgeID++) {
             var diff = Math.floor((edgeID / 2) + 1);
-            if (edgeID%2 == 1) diff *= -1;
+            if (edgeID%2 === 1) diff *= -1;
             var newIndex = nodeID + diff;
             if (newIndex < 0) newIndex+=n;
             if (newIndex >= n) newIndex -= n;
@@ -27,7 +27,7 @@ function generateSmallWorld(n, p, k) {
                 var randomIndex = Math.floor(Math.random() * n);
                 var newDestination = vertices[randomIndex];
             }
-            while(source == newDestination);  // at this stage, duplicate edges still possible, removed later
+            while(source === newDestination);  // at this stage, duplicate edges still possible, removed later
             edges[edgeIndex][1] = newDestination;
         }
     }
@@ -60,8 +60,8 @@ function testDuplicate(links, linkString) {
         var link = links[i];
         var source = link.source;
         var target = link.target;
-        if (source == testSource && target == testTarget) duplicate = true;
-        if (source == testTarget && target == testSource) duplicate = true;
+        if (source === testSource && target === testTarget) duplicate = true;
+        if (source === testTarget && target === testSource) duplicate = true;
     }
     return duplicate;
 }
@@ -71,7 +71,7 @@ function testDuplicate(links, linkString) {
 function degree(node) {
     var degree = 0;
     for (var i = 0; i < graph.links.length; i++) {
-        if (graph.links[i].source == node || graph.links[i].target == node) degree++;
+        if (graph.links[i].source === node || graph.links[i].target === node) degree++;
     }
     return degree;
 }
@@ -80,8 +80,8 @@ function findNeighbors(node) {
     var neighbors = [];
     for (var i = 0; i < graph.links.length; i++) {
         var testLink = graph.links[i];
-        if (testLink.source == node) neighbors.push(testLink.target);
-        if (testLink.target == node) neighbors.push(testLink.source);
+        if (testLink.source === node) neighbors.push(testLink.target);
+        if (testLink.target === node) neighbors.push(testLink.source);
     }
     return neighbors;
 }
@@ -89,8 +89,8 @@ function findNeighbors(node) {
 function findLink(source, target) {
     var link = null;
     for (var i = 0; i < graph.links.length; i++) {
-        if (graph.links[i].source == source && graph.links[i].target == target) link = graph.links[i];
-        if (graph.links[i].target == source && graph.links[i].source == target) link = graph.links[i];
+        if (graph.links[i].source === source && graph.links[i].target === target) link = graph.links[i];
+        if (graph.links[i].target === source && graph.links[i].source === target) link = graph.links[i];
     }
     return link;
 }
@@ -100,14 +100,14 @@ function edgeExists(source, target, graph) {
     var edgeExists = false;
     for (var i = 0; i < graph.links.length; i++) {
         var link = graph.links[i];
-        if (link.source.id == source.id) {
-            if (link.target.id == target.id) {
+        if (link.source.id === source.id) {
+            if (link.target.id === target.id) {
                 edgeExists = true;
             }
         }
         else {
-            if (link.target.id == source.id) {
-                if (link.source.id == target.id) {
+            if (link.target.id === source.id) {
+                if (link.source.id === target.id) {
                     edgeExists = true;
                 }
             }
@@ -122,8 +122,8 @@ function spliceDuplicateEdges(source, target, graph) {
         var link = graph.links[i];
 
         // test one direction
-        if (link.source.id == source.id) {
-            if (link.target.id == target.id) {
+        if (link.source.id === source.id) {
+            if (link.target.id === target.id) {
                 //this is one direction
                 edgeExists++;
 
@@ -131,8 +131,8 @@ function spliceDuplicateEdges(source, target, graph) {
         }
 
         // test the other direction
-        if (link.target.id == source.id) {
-            if (link.source.id == target.id) {
+        if (link.target.id === source.id) {
+            if (link.source.id === target.id) {
                 //this is another direction
                 edgeExists++;
             }
@@ -160,13 +160,13 @@ function removeVaccinatedNodes(graph) {
 function removeOldLinks(graph) {
     var links = [];
     for (var i = 0; i < graph.links.length; i++) {
-        if (graph.links[i].source.status == "V") continue;
-        if (graph.links[i].target.status == "V") continue;
-        if (graph.links[i].source.status == "R") continue;
-        if (graph.links[i].target.status == "R") continue;
-        if (graph.links[i].source.status == "Q") continue;
-        if (graph.links[i].target.status == "Q") continue;
-        if (graph.links[i].remove == true) continue;
+        if (graph.links[i].source.status === "V") continue;
+        if (graph.links[i].target.status === "V") continue;
+        if (graph.links[i].source.status === "R") continue;
+        if (graph.links[i].target.status === "R") continue;
+        if (graph.links[i].source.status === "Q") continue;
+        if (graph.links[i].target.status === "Q") continue;
+        if (graph.links[i].remove === true) continue;
 
         links.push(graph.links[i]);
     }
@@ -179,7 +179,7 @@ function assignEdgeListsToNodes(graph) {
         var node = graph.nodes[ii];
         for (var i = 0; i < graph.links.length; i++) {
             var link = graph.links[i];
-            if (link.source == node || link.target == node) node.edges.push(link);
+            if (link.source === node || link.target === node) node.edges.push(link);
         }
     }
     return graph;
@@ -203,7 +203,7 @@ function updateCommunities() {
 function assignGroups() {
     while(true) {
         var unassigned = getUnmarkedUngroupedNodes();
-        if (unassigned.length == 0) {
+        if (unassigned.length === 0) {
             numberOfCommunities = groupCounter - 1;
             break;
         }
@@ -217,7 +217,7 @@ function getUnmarkedUngroupedNodes() {
     var unmarkedNodes = [];
     for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
         var node = graph.nodes[nodeIndex];
-        if (node.marked == false) unmarkedNodes.push(node);
+        if (node.marked === false) unmarkedNodes.push(node);
     }
     return unmarkedNodes;
 }
@@ -239,7 +239,7 @@ function pacMan(node) {
             }
         }
     }
-    if (node == null && twineIndex != 0) {
+    if (node === null && twineIndex != 0) {
         twineIndex =- 1;
         nextNode = twine[twineIndex];
         pacMan(nextNode);
@@ -256,7 +256,7 @@ function findLargestCommunity() {
     }
     for (var ii = 0; ii < groupCounter; ii++) {
         for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
-            if (graph.nodes[nodeIndex].group == ii) communities[ii]++;
+            if (graph.nodes[nodeIndex].group === ii) communities[ii]++;
         }
     }
     largestCommunity = Array.max(communities);
@@ -294,7 +294,7 @@ function computeBetweennessCentrality() {
     G = convertGraphForNetX(graph);
     var bc = jsnx.betweenness_centrality(G);
     for (var i = 0; i < graph.nodes.length; i++) {
-        if (bc[i] == 0) bc[i] = 0.0001;
+        if (bc[i] === 0) bc[i] = 0.0001;
         graph.nodes[i].bcScore = bc[i];
     }
     return bc;
@@ -818,7 +818,7 @@ function generateFrontGraph() {
         .style("stroke", "#b7b7b7")
         .style("stroke-width", "10px")
         .attr("fill", function(d) {
-            if (d.id == 3) return "#f1d2d2"
+            if (d.id === 3) return "#f1d2d2"
             else return "#d5d5d5"
         })
         .call(frontForce.drag)
@@ -839,4 +839,3 @@ function frontTick() {
 
 
 }
-

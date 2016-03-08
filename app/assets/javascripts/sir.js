@@ -8,9 +8,9 @@ function selectIndexCase() {
         var indexCase = graph.nodes[randomIndex];
         breakCounter++;
     }
-    while (indexCase.status == "V" && breakCounter < 500);
+    while (indexCase.status === "V" && breakCounter < 500);
 
-    if (breakCounter == 500) indexCase.status = "S";
+    if (breakCounter === 500) indexCase.status = "S";
 
     this.indexCase = null;
     this.indexCase = indexCase;
@@ -18,7 +18,7 @@ function selectIndexCase() {
 }
 
 function infectIndividual(individual) {
-    if (individual.status == "S" || individual.status == "REF") {
+    if (individual.status === "S" || individual.status === "REF") {
         individual.status = "I";
         individual.exposureTimestep = this.timestep;
     }
@@ -26,15 +26,15 @@ function infectIndividual(individual) {
 
 function exposeIndividual(individual, exposer) {
     exposureEdges = [];
-    if (individual.status == "S" || individual.status == "REF") {
+    if (individual.status === "S" || individual.status === "REF") {
         individual.status = "E";
         individual.infectedBy = exposer;
     }
 
     for (var i = 0; i < graph.links.length; i++) {
-        if (graph.links[i].source.id == exposer.id && graph.links[i].target.id == individual.id) exposureEdges.push(graph.links[i]);
+        if (graph.links[i].source.id === exposer.id && graph.links[i].target.id === individual.id) exposureEdges.push(graph.links[i]);
         else {
-            if (graph.links[i].source.id == individual.id && graph.links[i].target.id == exposer.id) exposureEdges.push(graph.links[i]);
+            if (graph.links[i].source.id === individual.id && graph.links[i].target.id === exposer.id) exposureEdges.push(graph.links[i]);
         }
     }
 }
@@ -42,7 +42,7 @@ function exposeIndividual(individual, exposer) {
 function updateExposures() {
     var newInfections = [];
     for (var i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].status == "E") {
+        if (graph.nodes[i].status === "E") {
             graph.nodes[i].status = "I";
             newInfections.push(graph.nodes[i]);
             graph.nodes[i].exposureTimestep = this.timestep;
@@ -52,7 +52,7 @@ function updateExposures() {
 }
 
 function infectedToRecovered(individual) {
-    if (individual.status != "I") return;
+    if (individual.status !=== "I") return;
     var timeSinceInfection = this.timestep - individual.exposureTimestep;
 
     // 1 - (1 - recoveryPerIndividualPerTimestep)^timeInfected
@@ -64,7 +64,7 @@ function infectedToRecovered(individual) {
 }
 
 function forceRecovery(individual) {
-    if (individual.status != "I") return;
+    if (individual.status !== "I") return;
     individual.status = "R";
 }
 
@@ -83,14 +83,14 @@ function infection() {
 
     var numberOfInfectionsPerRound = 0;
     for (var index = 0; index < graph.nodes.length; index++) {
-        if (graph.nodes[index].status != "S") continue;
+        if (graph.nodes[index].status !== "S") continue;
         var susceptible = graph.nodes[index];
         var neighbors = findNeighbors(susceptible);
         var infectedNeighborArray = [];
         var numberOfInfectedNeighbors = 0;
         for (var neighborIndex = 0; neighborIndex < neighbors.length; neighborIndex++) {
             var neighbor = neighbors[neighborIndex];
-            if (neighbor.status == "I") {
+            if (neighbor.status === "I") {
                 infectedNeighborArray.push(neighbors[neighborIndex]);
                 numberOfInfectedNeighbors++;
             }
@@ -127,14 +127,14 @@ function infection() {
 function infection_noGuaranteedTransmission() {
     var numberOfInfectionsPerRound = 0;
     for (var index = 0; index < graph.nodes.length; index++) {
-        if (graph.nodes[index].status != "S") continue;
+        if (graph.nodes[index].status !== "S") continue;
         var susceptible = graph.nodes[index];
         var neighbors = findNeighbors(susceptible);
         var infectedNeighborArray = [];
         var numberOfInfectedNeighbors = 0;
         for (var neighborIndex = 0; neighborIndex < neighbors.length; neighborIndex++) {
             var neighbor = neighbors[neighborIndex];
-            if (neighbor.status == "I") {
+            if (neighbor.status === "I") {
                 infectedNeighborArray.push(neighbors[neighborIndex]);
                 numberOfInfectedNeighbors++;
             }
@@ -158,16 +158,16 @@ function getStatuses(infectedClass) {
     for (var index = 0; index < graph.nodes.length; index++) {
         var individual = graph.nodes[index];
 
-        if (individual.status == "S") S++;
-        if (individual.status == "I") I++;
-        if (individual.status == "R") R++;
-        if (individual.status == "V") V++;
+        if (individual.status === "S") S++;
+        if (individual.status === "I") I++;
+        if (individual.status === "R") R++;
+        if (individual.status === "V") V++;
     }
 
-    if (infectedClass == "S") return S;
-    if (infectedClass == "I") return I;
-    if (infectedClass == "R") return R;
-    if (infectedClass == "V") return V;
+    if (infectedClass === "S") return S;
+    if (infectedClass === "I") return I;
+    if (infectedClass === "R") return R;
+    if (infectedClass === "V") return V;
 
 }
 
@@ -182,11 +182,11 @@ function detectEndGame() {
 
         for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
             var node = graph.nodes[nodeIndex];
-            if (parseFloat(node.group) != groupIndex); //do nothing
+            if (parseFloat(node.group) !== groupIndex); //do nothing
             else {
-                if (node.status == "S") numberOfSusceptiblesPerGroup++;
-                if (node.status == "I") numberOfInfectedPerGroup++;
-                if (node.status == "E") numberOfInfectedPerGroup++;
+                if (node.status === "S") numberOfSusceptiblesPerGroup++;
+                if (node.status === "I") numberOfInfectedPerGroup++;
+                if (node.status === "E") numberOfInfectedPerGroup++;
             }
         }
         if (numberOfInfectedPerGroup > 0) {
@@ -195,7 +195,7 @@ function detectEndGame() {
             }
         }
     }
-    if (numberOf_AtRisk_communities == 0 && diseaseIsSpreading) {
+    if (numberOf_AtRisk_communities === 0 && diseaseIsSpreading) {
         endGame = true;
         diseaseIsSpreading = false;
         timeToStop = true;
@@ -206,5 +206,3 @@ function detectEndGame() {
 
     }
 }
-
-

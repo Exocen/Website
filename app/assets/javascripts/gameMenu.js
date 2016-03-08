@@ -187,14 +187,14 @@ function initBasicMenu() {
 
             speed = false;
 
-            if (vaxEasyHiScore == -Infinity) {}
+            if (vaxEasyHiScore === -Infinity) {}
             else d3.select(".easyHi").text("(Best: " + vaxEasyHiScore + "%)")
 
 
-            if (vaxMediumHiScore == -Infinity) {}
+            if (vaxMediumHiScore === -Infinity) {}
             else d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore + "%)")
 
-            if (vaxHardHiScore == -Infinity) {}
+            if (vaxHardHiScore === -Infinity) {}
             else d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")
 
 
@@ -385,7 +385,7 @@ function readCookiesJSON() {
     $.cookie .json = true;
     var cookies = $.cookie ('vaxCookie')
 
-    if (cookies == undefined) initCookiesJSON();
+    if (cookies === undefined) initCookiesJSON();
 
     cookie = $.cookie ('vaxCookie')
 
@@ -397,7 +397,7 @@ function readCookiesJSON() {
     vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
     vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
 
-    if (cookie.scoresRT == undefined) {
+    if (cookie.scoresRT === undefined) {
         var easyScoresRT = [];
         var mediumScoresRT = [];
         var hardScoresRT = [];

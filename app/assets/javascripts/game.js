@@ -183,7 +183,7 @@ function readCookiesJSON() {
     $.cookie .json = true;
     var cookies = $.cookie ('vaxCookie')
 
-    if (cookies == undefined) initCookiesJSON();
+    if (cookies === undefined) initCookiesJSON();
 
     cookie = $.cookie ('vaxCookie')
 
@@ -195,7 +195,7 @@ function readCookiesJSON() {
     vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
     vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
 
-    if (cookie.scoresRT == undefined) {
+    if (cookie.scoresRT === undefined) {
         var easyScoresRT = [];
         var mediumScoresRT = [];
         var hardScoresRT = [];
@@ -321,7 +321,7 @@ function allAccess() {
 
 function cookieBasedModeSelection() {
 
-    if (vaxEasyHiScore == -Infinity) {}
+    if (vaxEasyHiScore === -Infinity) {}
     else {
 
         if (speed) {
@@ -337,7 +337,7 @@ function cookieBasedModeSelection() {
 
     }
 
-    if (vaxMediumHiScore == -Infinity) {}
+    if (vaxMediumHiScore === -Infinity) {}
     else {
         if (speed) {
             d3.select(".mediumHi")
@@ -352,7 +352,7 @@ function cookieBasedModeSelection() {
 
     }
 
-    if (vaxHardHiScore == -Infinity) {}
+    if (vaxHardHiScore === -Infinity) {}
     else {
         if (speed) {
             d3.select(".hardHi")
@@ -378,7 +378,7 @@ function cookieBasedModeSelection() {
         })
 
     // set medium based on easy
-    if (vaxEasyCompletion == true) {
+    if (vaxEasyCompletion === true) {
         d3.select("#difficultyMedium")
             .attr("class", "difficultyItem")
             .on("mouseover", function() {
@@ -401,7 +401,7 @@ function cookieBasedModeSelection() {
     }
 
     // set hard based on medium
-    if (vaxMediumCompletion == true) {
+    if (vaxMediumCompletion === true) {
         d3.select("#difficultyHard")
             .attr("class", "difficultyItem")
             .on("mouseover", function() {
@@ -424,7 +424,7 @@ function cookieBasedModeSelection() {
     }
 
     // set custom based on hard
-    if (vaxHardCompletion == true) {
+    if (vaxHardCompletion === true) {
         d3.select("#difficultyCustom")
             .attr("class", "difficultyItem")
             .on("mouseover", function() {
@@ -459,7 +459,7 @@ function initBasicGame(difficulty) {
     graph.nodes       = []    ;
     graph.links       = []    ;
 
-    if (difficulty == "easy") {
+    if (difficulty === "easy") {
         numberOfIndividuals = 50;
         meanDegree = 3;
         numberOfVaccines = 5;
@@ -468,7 +468,7 @@ function initBasicGame(difficulty) {
         recoveryRate = recoveryRates[0];
     }
 
-    if (difficulty == "medium") {
+    if (difficulty === "medium") {
         numberOfIndividuals = 75;
         meanDegree = 4;
         numberOfVaccines = 7;
@@ -477,7 +477,7 @@ function initBasicGame(difficulty) {
         recoveryRate = recoveryRates[0];
     }
 
-    if (difficulty == "hard") {
+    if (difficulty === "hard") {
         charge = -300;
         numberOfIndividuals = 100;
         meanDegree = 4;
@@ -493,7 +493,7 @@ function initBasicGame(difficulty) {
         graph.nodes[i].fixed = false;
     }
 
-    if (difficulty == "hard") {
+    if (difficulty === "hard") {
         for (var i = 0; i < graph.nodes.length; i++) {
             if (Math.random() < 0.05) graph.nodes[i].refuser = true;
         }
@@ -524,7 +524,7 @@ function initCustomGame() {
     independentOutbreaks = customOutbreakChoice;
     numberOfRefusers = customRefuserChoice;
 
-    if (numberOfVaccines == 0) numberOfVaccines = 1;
+    if (numberOfVaccines === 0) numberOfVaccines = 1;
     if (independentOutbreaks < (numberOfIndividuals - numberOfVaccines)) independentOutbreaks = 1;
 
     if (customNodeChoice > 100) charge = -150;
@@ -551,7 +551,7 @@ function initCustomGame() {
         if (graph.nodes[i].refuser) refuserCount++;
     }
 
-    if (refuserCount == numberOfIndividuals) {
+    if (refuserCount === numberOfIndividuals) {
         numberOfVaccines = 1;
         graph.nodes[0].refuser = false;
     }
@@ -583,7 +583,7 @@ function initGameSpace() {
     numberVaccinated  = 0     ;
     numberQuarantined = 0     ;
 
-    var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !=== 'undefined';   // Firefox 1.0+
     var isIE = /*@cc_on!@*/false || document.documentMode;   // At least IE6
 
 
@@ -639,11 +639,11 @@ function initGameSpace() {
         .attr("r", function(node) {
             var clickAreaSize;
 
-            if (difficultyString == "easy") clickAreaSize = (invisibleParameter) * nodeSize(node);
+            if (difficultyString === "easy") clickAreaSize = (invisibleParameter) * nodeSize(node);
 
-            if (difficultyString == "medium") clickAreaSize = (invisibleParameter-0.2) * nodeSize(node);
+            if (difficultyString === "medium") clickAreaSize = (invisibleParameter-0.2) * nodeSize(node);
 
-            if (difficultyString == "hard") clickAreaSize = (invisibleParameter-0.3) * nodeSize(node);
+            if (difficultyString === "hard") clickAreaSize = (invisibleParameter-0.3) * nodeSize(node);
 
             return clickAreaSize;
         })
@@ -738,7 +738,7 @@ function initGameSpace() {
         })
         .on("mouseout", function(d) {
             d3.select(this).style("stroke-width","2px")
-            if (currentNode.fixed == true) d3.select(this).style("stroke-width","3px");
+            if (currentNode.fixed === true) d3.select(this).style("stroke-width","3px");
             currentNode = null;
             currentElement = null;
         })
@@ -810,21 +810,21 @@ function initGameSpace() {
         )
 
     loadHotKeyText();
-    if (difficultyString == "hard") refusersPresent();
-    if (difficultyString == null || numberOfRefusers>0) refusersPresent();
+    if (difficultyString === "hard") refusersPresent();
+    if (difficultyString === null || numberOfRefusers>0) refusersPresent();
 
     d3.enter().append("rect")
         .attr("class", "background")
         .style("visibility", "hidden")
         .style("cursor", "crosshair");
 
-    if (toggleDegree && difficultyString == "easy") {
+    if (toggleDegree && difficultyString === "easy") {
         charge = -850;
     }
-    if (toggleDegree && difficultyString == "medium") {
+    if (toggleDegree && difficultyString === "medium") {
         charge = -450;
     }
-    if (toggleDegree && difficultyString == "hard") {
+    if (toggleDegree && difficultyString === "hard") {
         charge = -300;
     }
 
@@ -844,14 +844,14 @@ function nodeSize(node) {
 
 function nodeColor(node) {
     var color = null;
-    if (node.status == "S") color = "#b7b7b7";
-    if (node.status == "E") color = "#ef5555";
-    if (node.status == "I") color = "#ef5555";
-    if (node.status == "R") color = "#9400D3";
-    if (node.status == "V") color = "#76A788";
-    if (node.status == "Q") color = "#d9d678";
+    if (node.status === "S") color = "#b7b7b7";
+    if (node.status === "E") color = "#ef5555";
+    if (node.status === "I") color = "#ef5555";
+    if (node.status === "R") color = "#9400D3";
+    if (node.status === "V") color = "#76A788";
+    if (node.status === "Q") color = "#d9d678";
 
-    if (node.status == "S" && node.refuser) {
+    if (node.status === "S" && node.refuser) {
         color = "#fab45a"
     }
 
@@ -862,7 +862,7 @@ function gameClick(node) {
 
 
     if (vaccinateMode) {
-        if (node.refuser == true) return;
+        if (node.refuser === true) return;
 
         try {
             pop.play()
@@ -875,7 +875,7 @@ function gameClick(node) {
         numberVaccinated++;
     }
     else {
-        if (quarantineMode && node.status == "S") {
+        if (quarantineMode && node.status === "S") {
             try {
                 pop.play()
             }
@@ -889,7 +889,7 @@ function gameClick(node) {
         }
     }
 
-    if (numberOfVaccines == 0 && !diseaseIsSpreading) loadGameQuarantine();
+    if (numberOfVaccines === 0 && !diseaseIsSpreading) loadGameQuarantine();
 
     gameUpdate();
 
@@ -897,7 +897,7 @@ function gameClick(node) {
 
 function speedModeGameClick(node) {
     if (vaccinateMode) {
-        if (node.refuser == true) return;
+        if (node.refuser === true) return;
 
         try {
             pop.play()
@@ -910,7 +910,7 @@ function speedModeGameClick(node) {
         numberVaccinated++;
     }
     else {
-        if (quarantineMode && node.status == "S") {
+        if (quarantineMode && node.status === "S") {
             if (!diseaseIsSpreading) speedModeTimesteps();
 
             try {
@@ -925,7 +925,7 @@ function speedModeGameClick(node) {
         }
     }
 
-    if (numberOfVaccines == 0 && !diseaseIsSpreading) loadGameQuarantine();
+    if (numberOfVaccines === 0 && !diseaseIsSpreading) loadGameQuarantine();
 
     gameUpdate();
 
@@ -950,7 +950,7 @@ function tick() {
 function countSavedGAME() {
     var counter = 0;
     for (var i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].status == "S") counter++;
+        if (graph.nodes[i].status === "S") counter++;
     }
     return counter;
 }
@@ -999,7 +999,7 @@ function gameUpdate() {
         .attr("fill", "black")
         .attr("opacity", 0)
         .on("click", function(node) {
-            if (node.status == "V" || node.status == "Q") return;
+            if (node.status === "V" || node.status === "Q") return;
             else {
                 if (speed) speedModeGameClick(node);
                 else gameClick(node);
@@ -1009,13 +1009,13 @@ function gameUpdate() {
             var clickAreaSize;
             if (findNeighbors(node).length <= 1) clickAreaSize = 0;
             else {
-                if (difficultyString == "easy") {
+                if (difficultyString === "easy") {
                     clickAreaSize = 1.9 * nodeSize(node);
                 }
-                if (difficultyString == "medium") {
+                if (difficultyString === "medium") {
                     clickAreaSize = (invisibleParameter-0.2) * nodeSize(node);
                 }
-                if (difficultyString == "hard") {
+                if (difficultyString === "hard") {
                     clickAreaSize = (invisibleParameter-0.3) * nodeSize(node);
                 }
             }
@@ -1088,9 +1088,9 @@ function detectGameCompletion() {
             var node = graph.nodes[nodeIndex];
             if (parseFloat(node.group) != groupIndex); //do nothing
             else {
-                if (node.status == "S") numberOfSusceptiblesPerGroup++;
-                if (node.status == "I") numberOfInfectedPerGroup++;
-                if (node.status == "E") numberOfInfectedPerGroup++;
+                if (node.status === "S") numberOfSusceptiblesPerGroup++;
+                if (node.status === "I") numberOfInfectedPerGroup++;
+                if (node.status === "E") numberOfInfectedPerGroup++;
 
 
             }
@@ -1103,7 +1103,7 @@ function detectGameCompletion() {
 
     }
 
-    if (numberOf_AtRisk_communities == 0 && diseaseIsSpreading) {
+    if (numberOf_AtRisk_communities === 0 && diseaseIsSpreading) {
         diseaseIsSpreading = false;
         timeToStop = true;
         animateGamePathogens_thenUpdate();
@@ -1131,8 +1131,8 @@ function popNewGameInfection() {
 
 
 
-            if (d.status == "I") {
-                if (timestep - d.exposureTimestep == 1) return currentSize * 1.5;
+            if (d.status === "I") {
+                if (timestep - d.exposureTimestep === 1) return currentSize * 1.5;
                 else return currentSize;
             }
             else return currentSize;
@@ -1223,8 +1223,8 @@ function loadGameSyringe() {
         .style("color", "white")
         .text("")
         .style("right", function() {
-            if (numberOfVaccines.toString().length == 1) return "49px"
-            if (numberOfVaccines.toString().length == 2) return "46px"
+            if (numberOfVaccines.toString().length === 1) return "49px"
+            if (numberOfVaccines.toString().length === 2) return "46px"
 
         })
 
@@ -1494,7 +1494,7 @@ function addPeriod2() {
 function setCookies() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
-    if (difficultyString == "easy") {
+    if (difficultyString === "easy") {
         if (speed) {
             if ($.cookie ('vaxEasyHiScoreRT') < proportionSaved) $.cookie ('vaxEasyHiScoreRT', proportionSaved)
             if (proportionSaved >= easyBar) $.cookie ('vaxEasyCompletion', 'true')
@@ -1507,7 +1507,7 @@ function setCookies() {
 
     }
 
-    if (difficultyString == "medium") {
+    if (difficultyString === "medium") {
         if (speed) {
             if ($.cookie ('vaxMediumHiScoreRT') < proportionSaved) $.cookie ('vaxMediumHiScoreRT', proportionSaved)
             if (proportionSaved >= mediumBar) $.cookie ('vaxMediumCompletion', 'true')
@@ -1520,7 +1520,7 @@ function setCookies() {
 
     }
 
-    if (difficultyString == "hard") {
+    if (difficultyString === "hard") {
         if (speed) {
             if ($.cookie ('vaxHardHiScoreRT') < proportionSaved)$.cookie ('vaxHardHiScoreRT', proportionSaved)
             if (proportionSaved >= hardBar) $.cookie ('vaxHardCompletion', 'true')
@@ -1536,7 +1536,7 @@ function setCookies() {
 function writeCookiesJSON() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
-    if (difficultyString == "easy") {
+    if (difficultyString === "easy") {
 
         if (speed) {
             cookie.scoresRT[0].push(proportionSaved);
@@ -1554,7 +1554,7 @@ function writeCookiesJSON() {
         }
 
     }
-    if (difficultyString == "medium") {
+    if (difficultyString === "medium") {
         if (speed) {
             cookie.scoresRT[1].push(proportionSaved);
             if (proportionSaved > mediumBar) vaxMediumCompletion = true;
@@ -1571,7 +1571,7 @@ function writeCookiesJSON() {
 
 
     }
-    if (difficultyString == "hard") {
+    if (difficultyString === "hard") {
         if (speed) {
             cookie.scoresRT[2].push(proportionSaved);
             if (proportionSaved > hardBar) vaxHardCompletion = true;
@@ -1589,7 +1589,7 @@ function writeCookiesJSON() {
     }
     $.cookie .json = false;
 
-    if (difficultyString == undefined) {
+    if (difficultyString === undefined) {
         $.cookie ('customNodes', customNodeChoice);
         $.cookie ('customNeighbors', customNeighborChoice);
         $.cookie ('customVaccines', customVaccineChoice);
@@ -1653,7 +1653,7 @@ function generateStackedBarChart() {
         .enter().append("svg:g")
         .attr("class", "valgroup")
         .style("fill", function(d, i) { return z(i); })
-        .attr("id", function(d,i) { if (i == 0) return "uninfected"; if (i == 1) return "infected"; if (i == 2) return "quarantined"; if (i == 3) return "vaccinated"})
+        .attr("id", function(d,i) { if (i === 0) return "uninfected"; if (i === 1) return "infected"; if (i === 2) return "quarantined"; if (i === 3) return "vaccinated"})
 
 
 
@@ -1811,9 +1811,9 @@ function generateUninfectedBar(total, bestScore) {
         attr("x", function(datum, index) { return x(index); }).
         attr("y", function(datum) { return height - y(datum.score); }).
         attr("height", function(datum) { return y(datum.score); }).
-        attr("class", function(datum, index) { if (index == 0) return "current"; else return "best"}).
+        attr("class", function(datum, index) { if (index === 0) return "current"; else return "best"}).
         attr("width", barWidth).
-        attr("fill", function(datum, index) { if (index == 0) return "#b7b7b7"; else return "#00adea"})
+        attr("fill", function(datum, index) { if (index === 0) return "#b7b7b7"; else return "#00adea"})
 
 
     var best = d3.select(".best")
@@ -1925,7 +1925,7 @@ function initScoreRecap() {
     var bar;
     var bestScore;
     var diffset;
-    if (difficultyString == "easy") {
+    if (difficultyString === "easy") {
         if (speed) {
             diffset = "Easy";
             bestScore = vaxEasyHiScoreRT;
@@ -1938,7 +1938,7 @@ function initScoreRecap() {
         }
 
     }
-    if (difficultyString == "medium") {
+    if (difficultyString === "medium") {
         if (speed) {
             diffset = "Medium";
             bestScore = vaxMediumHiScoreRT;
@@ -1953,7 +1953,7 @@ function initScoreRecap() {
         }
 
     }
-    if (difficultyString == "hard") {
+    if (difficultyString === "hard") {
         if (speed) {
             diffset = "Hard";
             bestScore = vaxHardHiScoreRT;
@@ -1968,7 +1968,7 @@ function initScoreRecap() {
         }
 
     }
-    if (difficultyString == null) {
+    if (difficultyString === null) {
         bestScore = currentScore;
         bar = 0;
     }
@@ -2000,7 +2000,7 @@ function initScoreRecap() {
 }
 
 function addShareButtons(bestScore,diffset) {
-    if (difficultyString == undefined) diffset = "Custom"
+    if (difficultyString === undefined) diffset = "Custom"
 
 
     var twitterText = "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2F.vax.herokuapp.com&text=I just stopped an epidemic in its tracks! Can you can beat " + bestScore + "%25 on " + diffset + "? Fight the outbreak at&url=http%3A%2F%2Fvax.herokuapp.com";
@@ -2077,7 +2077,7 @@ function addShareButtons(bestScore,diffset) {
 function addTextRecap(bar, passed) {
     if (passed) {
 
-        if (difficultyString == null) {
+        if (difficultyString === null) {
             d3.select(".gameSVG").append("text")
                 .style("font-family", "Nunito")
                 .style("font-size", "55px")
@@ -2243,19 +2243,19 @@ function loadConclusionText() {
 
     var bar;
     var bestScore;
-    if (difficultyString == "easy") {
+    if (difficultyString === "easy") {
         bestScore = vaxEasyHiScore;
         bar = easyBar;
     }
-    if (difficultyString == "medium") {
+    if (difficultyString === "medium") {
         bestScore = vaxMediumHiScore;
         bar = mediumBar;
     }
-    if (difficultyString == "hard") {
+    if (difficultyString === "hard") {
         bestScore = vaxHardHiScore;
         bar = hardBar;
     }
-    if (difficultyString == null) bestScore = total;
+    if (difficultyString === null) bestScore = total;
 
     d3.select(".gameSVG").append("text")
         .attr("class", "bestScore")
@@ -2269,10 +2269,10 @@ function loadConclusionText() {
 
     var diffset;
 
-    if (difficultyString == "easy") diffset = "Easy";
-    if (difficultyString == "medium") diffset = "Medium";
-    if (difficultyString == "hard") diffset = "Hard";
-    if (difficultyString == null) {
+    if (difficultyString === "easy") diffset = "Easy";
+    if (difficultyString === "medium") diffset = "Medium";
+    if (difficultyString === "hard") diffset = "Hard";
+    if (difficultyString === null) {
         diffset = "Custom";
         bestScore = total;
     }
@@ -2323,7 +2323,7 @@ function loadConclusionText() {
         })
 
 
-    if (difficultyString == null) {
+    if (difficultyString === null) {
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText")
             .attr("x", 260)
@@ -2410,7 +2410,7 @@ function retry() {
     diseaseIsSpreading = false;
     timeToStop = false;
 
-    if (difficultyString == null) initCustomGame();
+    if (difficultyString === null) initCustomGame();
     else initBasicGame(difficultyString);
 
 }
@@ -2423,17 +2423,17 @@ function next() {
     timeToStop = false;
     hideGameQuarantine();
 
-    if (difficultyString == "hard" || difficultyString == null) {
+    if (difficultyString === "hard" || difficultyString === null) {
         window.location.href = "/game"
 
     }
     else {
-        if (difficultyString == "easy") {
+        if (difficultyString === "easy") {
             difficultyString = "medium";
             initBasicGame("medium")
             return;
         }
-        if (difficultyString == "medium") {
+        if (difficultyString === "medium") {
             difficultyString = "hard";
             initBasicGame("hard");
             return;
@@ -2443,14 +2443,14 @@ function next() {
 }
 
 jQuery(document).bind('keydown', function (evt){
-    if (currentNode == undefined) return;
+    if (currentNode === undefined) return;
 
-    if (evt.shiftKey && evt.which == 32) {
+    if (evt.shiftKey && evt.which === 32) {
         currentNode.fixed = false;
         currentElement.style("stroke-width", "2px")
     }
     else {
-        if (evt.which == 32) {
+        if (evt.which === 32) {
             currentNode.fixed = true;
             currentElement.style("stroke-width", "3px")
         }
@@ -2460,9 +2460,9 @@ jQuery(document).bind('keydown', function (evt){
 function toggleDegreeFxn() {
     toggleDegree = !toggleDegree;
 
-    if (toggleDegree && difficultyString == "easy") charge = -900;
-    if (toggleDegree && difficultyString == "medium") charge = -700;
-    if (toggleDegree && difficultyString == "hard") charge = -600;
+    if (toggleDegree && difficultyString === "easy") charge = -900;
+    if (toggleDegree && difficultyString === "medium") charge = -700;
+    if (toggleDegree && difficultyString === "hard") charge = -600;
 
     if (!toggleDegree) charge = -300;
 
