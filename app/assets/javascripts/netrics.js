@@ -201,8 +201,8 @@ function updateCommunities() {
 
 
 function assignGroups() {
-    while(true) {
-        var unassigned = getUnmarkedUngroupedNodes();
+    for(;;) {
+      var unassigned = getUnmarkedUngroupedNodes();
         if (unassigned.length === 0) {
             numberOfCommunities = groupCounter - 1;
             break;
@@ -321,12 +321,12 @@ function cleanup(arr, prop) {
     var new_arr = [];
     var lookup  = {};
 
-    for (var i in arr) {
+    for(var i = 0; i<arr.length; i++) {
         lookup[arr[i][prop]] = arr[i];
     }
 
-    for (i in lookup) {
-        new_arr.push(lookup[i]);
+    for(var ii = 0; ii<lookup.length; ii++) {
+        new_arr.push(lookup[ii]);
     }
 
     return new_arr;

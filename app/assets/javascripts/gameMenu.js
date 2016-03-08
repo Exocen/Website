@@ -154,9 +154,7 @@ function initBasicMenu() {
 
     toggleDegree = false;
   })
-
-
-
+  
   d3.select(".difficultySelection").append("div")
   .attr("class", "quarantineModeOptions")
   .text("Quarantine Phase")
@@ -197,9 +195,6 @@ function initBasicMenu() {
     if (vaxHardHiScore !== -Infinity) {
       d3.select(".hardHi").text("(Best: " + vaxHardHiScore + "%)")
     }
-
-
-
   })
 
   d3.select(".difficultySelection").append("div")
@@ -228,12 +223,7 @@ function initBasicMenu() {
 
     if (vaxHardHiScoreRT < 0) d3.select(".hardHi").text("")
     else d3.select(".hardHi").text("(Best: " + vaxHardHiScoreRT + "%)")
-
-
   })
-
-
-
 
 }
 
@@ -249,17 +239,14 @@ function initCustomMenu() {
   d3.selectAll(".difficultyHeader").remove()
 
   d3.select("#customMenuDiv").style("visibility", "visible")
-
   d3.select("#customNodes").text("Nodes: " + parseInt($.cookie ('customNodes'),10))
   d3.select("#customDegree").text("Neighbors: " + parseInt($.cookie ('customNeighbors'),10) + "ea.")
   d3.select("#customVaccines").text("Vaccines: " + parseInt($.cookie ('customVaccines'),10))
   d3.select("#customRefusers").text("Refusers: " + parseInt($.cookie ('customRefusers'),10))
   d3.select("#customOutbreaks").text("Outbreaks: " + parseInt($.cookie ('customOutbreaks'),10))
 
-
   d3.selectAll(".ui-state-default").style("background", "white")
   d3.selectAll(".ui-corner-all").style("border-radius", "50px")
-
 
   d3.select("#customMenuDiv").append("text")
   .attr("class", "okayButton")
@@ -267,216 +254,8 @@ function initCustomMenu() {
   .on("click", function() {
     d3.select(this).remove();
     d3.select(".vaxLogoDiv").remove();
-
     initCustomGame();
-
-
-
-
   })
-
-
 }
 
 var maxVax = parseInt($.cookie ('customNodes'),10)
-// $(function() {
-//     $( "#nodeSlider").slider({
-//         range: "min",
-//         min: 10,
-//         max: 500,
-//         value: customNodeChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customNodes', ui.value)
-//             $.cookie .json = true;
-//             $("#customNodes").text("Nodes: " + ui.value);
-//             customNodeChoice = ui.value;
-//
-//             customVaccineChoice = Math.round(0.10 * customNodeChoice)
-//             d3.select("#customVaccines").text("Vaccines: " + Math.round(0.10 * customNodeChoice))
-//             $( "#vaccineSlider").slider({
-//                 max: customNodeChoice,
-//                 value: Math.round(0.10 * customNodeChoice)});
-//
-//             customRefuserChoice = Math.round(0.05 * customNodeChoice)
-//             d3.select("#customRefusers").text("Refusers: " + Math.round(0.05 * customNodeChoice))
-//             $( "#refuserSlider").slider({
-//                 max: customNodeChoice,
-//                 value: Math.round(0.05 * customNodeChoice)});
-//
-//
-//         }
-//     });
-//     $( "#nodeSlider" ).slider( "value", parseInt($.cookie ('customNodes')));
-// });
-//
-// $(function() {
-//     $( "#degreeSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: 8,
-//         value: customNeighborChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customNeighbors', ui.value)
-//             $.cookie .json = true;
-//             $("#customDegree").text("Neighbors: " + ui.value + "ea.");
-//             customNeighborChoice = ui.value;
-//         }
-//     });
-//     $( "#degreeSlider").slider( "value", parseInt($.cookie ('customNeighbors')));
-// });
-//
-// $(function() {
-//     $( "#vaccineSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: maxVax,
-//         value: customVaccineChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customVaccines', ui.value)
-//             $.cookie .json = true;
-//             $("#customVaccines").text("Vaccines: " + ui.value);
-//             customVaccineChoice = ui.value;
-//         }
-//     });
-//
-//     $( "#vaccineSlider").slider( "value", parseInt($.cookie ('customVaccines')))
-//
-// });
-//
-// $(function() {
-//     $( "#outbreakSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: 5,
-//         value:customOutbreakChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customOutbreaks', ui.value)
-//             $.cookie .json = true;
-//             $("#customOutbreaks").text("Outbreaks: " + ui.value);
-//             customOutbreakChoice = ui.value;
-//         }
-//     });
-//     $( "#outbreakSlider").slider( "value", parseInt($.cookie ('customOutbreaks')))
-// });
-//
-// $(function() {
-//     $( "#refuserSlider").slider({
-//         range: "min",
-//         min: 0,
-//         max: maxVax,
-//         value:customRefuserChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customRefusers', ui.value)
-//             $.cookie .json = true;
-//             $("#customRefusers").text("Refusers: " + ui.value);
-//             customRefuserChoice = ui.value;
-//         }
-//     });
-//     $( "#refuserSlider").slider( "value", parseInt($.cookie ('customRefusers')))
-// });
-//
-//
-// function readCookiesJSON() {
-//   $.cookie .json = true;
-//   var cookies = $.cookie ('vaxCookie')
-//
-//   if (cookies === undefined) initCookiesJSON();
-//
-//   cookie = $.cookie ('vaxCookie')
-//
-//   vaxEasyCompletion = cookie.easy;
-//   vaxMediumCompletion = cookie.medium;
-//   vaxHardCompletion = cookie.hard;
-//
-//   vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
-//   vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
-//   vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
-//
-//   if (cookie.scoresRT === undefined) {
-//     var easyScoresRT = [];
-//     var mediumScoresRT = [];
-//     var hardScoresRT = [];
-//     var scoreRT = [easyScoresRT, mediumScoresRT, hardScoresRT]
-//
-//     cookie.scoresRT = scoreRT;
-//
-//   }
-//
-//   vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
-//   vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
-//   vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
-//
-//   $.cookie .json = false;
-//   customNodeChoice = parseInt($.cookie ().customNodes,10);
-//   customNeighborChoice = parseInt($.cookie ().customNeighbors,10);
-//   customVaccineChoice = parseInt($.cookie ().customVaccines,10);
-//   customOutbreakChoice = parseInt($.cookie ().customOutbreaks,10);
-//   customRefuserChoice = parseInt($.cookie ().customRefusers,10);
-//
-//
-//   if (isNaN(customNodeChoice)) {
-//     customNodeChoice = 75;
-//     $.cookie ('customNodes', 75)
-//   }
-//   if (isNaN(customNeighborChoice)) {
-//     customNeighborChoice = 3;
-//     $.cookie ('customNeighbors', 3)
-//
-//   }
-//   if (isNaN(customVaccineChoice)) {
-//     customVaccineChoice = 10;
-//     $.cookie ('customVaccines', 10)
-//
-//   }
-//   if (isNaN(customOutbreakChoice)) {
-//     customOutbreakChoice = 2;
-//     $.cookie ('customOutbreaks', 2)
-//   }
-//   if (isNaN(customRefuserChoice)) {
-//     customRefuserChoice = 0.05;
-//     $.cookie ('customRefusers', 0.05)
-//
-//   }
-//
-//   $.cookie .json = true;
-//
-//   initSocialShare();
-//   cookieBasedModeSelection();
-// }
-//
-// function initCookiesJSON() {
-//   var oldCookieTest = $.cookie ('vaxEasyCompletion');
-//
-//
-//   if (oldCookieTest || isNaN(customNodeChoice)) clearCookies();
-//   else { if (!oldCookieTest || isNaN(customNodeChoice)) clearCookies();}
-//
-//   $.cookie ('customNodes', 75)
-//   $.cookie ('customNeighbors', 3)
-//   $.cookie ('customVaccines', 10)
-//   $.cookie ('customOutbreaks', 2)
-//   $.cookie ('customRefusers', 0.05)
-//
-//
-//   $.cookie .json = true;
-//
-//   easyScores = [];
-//   mediumScores = [];
-//   hardScores = [];
-//   var score = [easyScores, mediumScores, hardScores];
-//
-//   easyScoresRT = [];
-//   mediumScoresRT = [];
-//   hardScoresRT = [];
-//   var scoreRT = [easyScoresRT, mediumScoresRT, hardScoresRT];
-//
-//   var cookie = {easy: false, medium: false, hard: false, scores: score, scoresRT: scoreRT}
-//
-//   $.cookie ('vaxCookie', JSON.stringify(cookie), { expires: 365, path: '/' })
-//
-// }
