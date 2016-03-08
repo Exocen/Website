@@ -150,7 +150,7 @@ function spliceDuplicateEdges(source, target, graph) {
 function removeVaccinatedNodes(graph) {
     var nodes = [];
     for (var i = 0; i < graph.nodes.length; i++) {
-        if (graph.nodes[i].status != "V" && graph.nodes[i].status != "Q" && graph.nodes[i].status != "VOL") {
+        if (graph.nodes[i].status !== "V" && graph.nodes[i].status !== "Q" && graph.nodes[i].status !== "VOL") {
             nodes.push(graph.nodes[i]);
         }
     }
@@ -225,7 +225,7 @@ function getUnmarkedUngroupedNodes() {
 function pacMan(node) {
     node.group = groupCounter;
     var nextNode = null;
-    if (node != null && !node.marked) {
+    if (node !== null && !node.marked) {
         node.marked = true;
         node.group = groupCounter;
         twine.push(node);
@@ -239,7 +239,7 @@ function pacMan(node) {
             }
         }
     }
-    if (node === null && twineIndex != 0) {
+    if (node === null && twineIndex !== 0) {
         twineIndex =- 1;
         nextNode = twine[twineIndex];
         pacMan(nextNode);

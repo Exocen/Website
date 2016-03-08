@@ -321,8 +321,7 @@ function allAccess() {
 
 function cookieBasedModeSelection() {
 
-    if (vaxEasyHiScore === -Infinity) {}
-    else {
+    if (vaxEasyHiScore !== -Infinity)  {
 
         if (speed) {
             d3.select(".easyHi")
@@ -337,8 +336,7 @@ function cookieBasedModeSelection() {
 
     }
 
-    if (vaxMediumHiScore === -Infinity) {}
-    else {
+    if (vaxMediumHiScore !== -Infinity) {
         if (speed) {
             d3.select(".mediumHi")
                 .text("(Best: " + vaxMediumHiScoreRT + "%)")
@@ -352,8 +350,7 @@ function cookieBasedModeSelection() {
 
     }
 
-    if (vaxHardHiScore === -Infinity) {}
-    else {
+    if (vaxHardHiScore !== -Infinity) {
         if (speed) {
             d3.select(".hardHi")
                 .text("(Best: " + vaxHardHiScoreRT + "%)")
@@ -868,7 +865,7 @@ function gameClick(node) {
             pop.play()
         }
         catch(err){
-
+            console.log(err)
         }
         node.status = "V";
         numberOfVaccines--;
@@ -880,7 +877,7 @@ function gameClick(node) {
                 pop.play()
             }
             catch(err){
-
+                console.log(err)
             }
             diseaseIsSpreading = true;
             node.status = "Q";
@@ -903,7 +900,7 @@ function speedModeGameClick(node) {
             pop.play()
         }
         catch(err){
-
+            console.log(err)
         }
         node.status = "V";
         numberOfVaccines--;
@@ -917,7 +914,7 @@ function speedModeGameClick(node) {
                 pop.play()
             }
             catch(err){
-
+              console.log(err)
             }
             diseaseIsSpreading = true;
             node.status = "Q";
@@ -1086,7 +1083,7 @@ function detectGameCompletion() {
 
         for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
             var node = graph.nodes[nodeIndex];
-            if (parseFloat(node.group) != groupIndex); //do nothing
+            if (parseFloat(node.group) !== groupIndex); //do nothing
             else {
                 if (node.status === "S") numberOfSusceptiblesPerGroup++;
                 if (node.status === "I") numberOfInfectedPerGroup++;
@@ -1197,7 +1194,7 @@ function gameIndexPatients() {
         do {
             indexPatientID = Math.floor(Math.random() * graph.nodes.length);
         }
-        while (graph.nodes[indexPatientID].status != "S");
+        while (graph.nodes[indexPatientID].status !== "S");
 
         graph.nodes[indexPatientID].status = "I";
         graph.nodes[indexPatientID].infectedBy = "indexPatient";
@@ -1784,7 +1781,7 @@ function generateStackedBarChart() {
 function generateUninfectedBar(total, bestScore) {
 
     var data = [{score: total},
-        {score: bestScore},
+        {score: bestScore}
     ];
 
     var barWidth = 75;
