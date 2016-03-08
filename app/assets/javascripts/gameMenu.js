@@ -279,112 +279,10 @@ function initCustomMenu() {
 }
 
 var maxVax = parseInt($.cookie ('customNodes'),10)
-// $(function() {
-//     $( "#nodeSlider").slider({
-//         range: "min",
-//         min: 10,
-//         max: 500,
-//         value: customNodeChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customNodes', ui.value)
-//             $.cookie .json = true;
-//             $("#customNodes").text("Nodes: " + ui.value);
-//             customNodeChoice = ui.value;
-//
-//             customVaccineChoice = Math.round(0.10 * customNodeChoice)
-//             d3.select("#customVaccines").text("Vaccines: " + Math.round(0.10 * customNodeChoice))
-//             $( "#vaccineSlider").slider({
-//                 max: customNodeChoice,
-//                 value: Math.round(0.10 * customNodeChoice)});
-//
-//             customRefuserChoice = Math.round(0.05 * customNodeChoice)
-//             d3.select("#customRefusers").text("Refusers: " + Math.round(0.05 * customNodeChoice))
-//             $( "#refuserSlider").slider({
-//                 max: customNodeChoice,
-//                 value: Math.round(0.05 * customNodeChoice)});
-//
-//
-//         }
-//     });
-//     $( "#nodeSlider" ).slider( "value", parseInt($.cookie ('customNodes')));
-// });
-//
-// $(function() {
-//     $( "#degreeSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: 8,
-//         value: customNeighborChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customNeighbors', ui.value)
-//             $.cookie .json = true;
-//             $("#customDegree").text("Neighbors: " + ui.value + "ea.");
-//             customNeighborChoice = ui.value;
-//         }
-//     });
-//     $( "#degreeSlider").slider( "value", parseInt($.cookie ('customNeighbors')));
-// });
-//
-// $(function() {
-//     $( "#vaccineSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: maxVax,
-//         value: customVaccineChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customVaccines', ui.value)
-//             $.cookie .json = true;
-//             $("#customVaccines").text("Vaccines: " + ui.value);
-//             customVaccineChoice = ui.value;
-//         }
-//     });
-//
-//     $( "#vaccineSlider").slider( "value", parseInt($.cookie ('customVaccines')))
-//
-// });
-//
-// $(function() {
-//     $( "#outbreakSlider").slider({
-//         range: "min",
-//         min: 1,
-//         max: 5,
-//         value:customOutbreakChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customOutbreaks', ui.value)
-//             $.cookie .json = true;
-//             $("#customOutbreaks").text("Outbreaks: " + ui.value);
-//             customOutbreakChoice = ui.value;
-//         }
-//     });
-//     $( "#outbreakSlider").slider( "value", parseInt($.cookie ('customOutbreaks')))
-// });
-//
-// $(function() {
-//     $( "#refuserSlider").slider({
-//         range: "min",
-//         min: 0,
-//         max: maxVax,
-//         value:customRefuserChoice,
-//         slide: function (event, ui) {
-//             $.cookie .json = false;
-//             $.cookie ('customRefusers', ui.value)
-//             $.cookie .json = true;
-//             $("#customRefusers").text("Refusers: " + ui.value);
-//             customRefuserChoice = ui.value;
-//         }
-//     });
-//     $( "#refuserSlider").slider( "value", parseInt($.cookie ('customRefusers')))
-// });
-//
 
 function readCookiesJSON() {
   $.cookie .json = true;
-  var cookies = $.cookie ('vaxCookie')
-
+  var cookies = $.cookie ('vaxCookie')  
   if (cookies === undefined) initCookiesJSON();
 
   cookie = $.cookie ('vaxCookie')
@@ -451,8 +349,6 @@ function readCookiesJSON() {
 
 function initCookiesJSON() {
   var oldCookieTest = $.cookie ('vaxEasyCompletion');
-
-
   if (oldCookieTest || isNaN(customNodeChoice)) clearCookies();
   else { if (!oldCookieTest || isNaN(customNodeChoice)) clearCookies();}
 

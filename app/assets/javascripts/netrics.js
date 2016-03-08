@@ -202,7 +202,7 @@ function updateCommunities() {
 
 function assignGroups() {
     for(;;) {
-        var unassigned = getUnmarkedUngroupedNodes();
+      var unassigned = getUnmarkedUngroupedNodes();
         if (unassigned.length === 0) {
             numberOfCommunities = groupCounter - 1;
             break;
