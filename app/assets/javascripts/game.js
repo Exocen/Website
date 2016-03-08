@@ -210,11 +210,11 @@ function readCookiesJSON() {
     vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
 
     $.cookie .json = false;
-    customNodeChoice = parseInt($.cookie ().customNodes);
-    customNeighborChoice = parseInt($.cookie ().customNeighbors);
-    customVaccineChoice = parseInt($.cookie ().customVaccines);
-    customOutbreakChoice = parseInt($.cookie ().customOutbreaks);
-    customRefuserChoice = parseInt($.cookie ().customRefusers);
+    customNodeChoice = parseInt($.cookie ().customNodes,10);
+    customNeighborChoice = parseInt($.cookie ().customNeighbors,10);
+    customVaccineChoice = parseInt($.cookie ().customVaccines,10);
+    customOutbreakChoice = parseInt($.cookie ().customOutbreaks,10);
+    customRefuserChoice = parseInt($.cookie ().customRefusers,10);
 
 
     if (isNaN(customNodeChoice)) {
