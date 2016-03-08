@@ -183,7 +183,7 @@ function readCookiesJSON() {
     $.cookie .json = true;
     var cookies = $.cookie ('vaxCookie')
 
-    if (cookies === undefined) initCookiesJSON();
+    if (cookies === null) initCookiesJSON();
 
     cookie = $.cookie ('vaxCookie')
 
