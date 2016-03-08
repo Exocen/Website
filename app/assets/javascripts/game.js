@@ -583,7 +583,7 @@ function initGameSpace() {
     numberVaccinated  = 0     ;
     numberQuarantined = 0     ;
 
-    var isFirefox = typeof InstallTrigger !=== 'undefined';   // Firefox 1.0+
+    var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
     var isIE = /*@cc_on!@*/false || document.documentMode;   // At least IE6
 
 

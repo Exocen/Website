@@ -207,7 +207,7 @@ function assignGroups() {
             numberOfCommunities = groupCounter - 1;
             break;
         }
-        if (pacMan(unassigned[0]) && unassigned.length != 0) {
+        if (pacMan(unassigned[0]) && unassigned.length !== 0) {
             groupCounter++;
         }
     }
@@ -303,7 +303,7 @@ function computeBetweennessCentrality() {
 function shuffle(o){ //v1.0
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
-};
+}
 
 function getTailoredNodes() {
     // make nodes

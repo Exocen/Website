@@ -52,7 +52,7 @@ function updateExposures() {
 }
 
 function infectedToRecovered(individual) {
-    if (individual.status !=== "I") return;
+    if (individual.status !== "I") return;
     var timeSinceInfection = this.timestep - individual.exposureTimestep;
 
     // 1 - (1 - recoveryPerIndividualPerTimestep)^timeInfected
