@@ -151,20 +151,14 @@ function removeVaccinatedNodes(graph) {
 function removeOldLinks(graph) {
   var links = [];
   for (var i = 0; i < graph.links.length; i++) {
-    if (graph.links[i].source.status !== "V"){
-      if (graph.links[i].target.status !== "V"){
-        if (graph.links[i].source.status !== "R"){
-          if (graph.links[i].target.status !== "R"){
-            if (graph.links[i].source.status !== "Q"){
-              if (graph.links[i].target.status !== "Q"){
-                if (graph.links[i].remove !== true){
-                  links.push(graph.links[i]);
-                }
-              }
-            }
-          }
-        }
-      }
+    if (graph.links[i].source.status !== "V" &&
+    graph.links[i].target.status !== "V" &&
+    graph.links[i].source.status !== "R" &&
+    graph.links[i].target.status !== "R" &&
+    graph.links[i].source.status !== "Q" &&
+    graph.links[i].target.status !== "Q" &&
+    graph.links[i].remove !== true){
+      links.push(graph.links[i]);
     }
   }
   return links;
