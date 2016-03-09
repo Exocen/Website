@@ -12,10 +12,9 @@ function generateSmallWorld(n, p, k) {
       var diff = Math.floor((edgeID / 2) + 1);
       if (edgeID%2 === 1) diff *= -1;
       var newIndex = nodeID + diff;
-      if (newIndex < 0) newIndex+=n;
+      if (newIndex < 0) newIndex += n;
       if (newIndex >= n) newIndex -= n;
-      var edge = [nodeID, newIndex];
-      edges.push(edge);
+      edges.push([nodeID, newIndex]);
     }
   }
 
