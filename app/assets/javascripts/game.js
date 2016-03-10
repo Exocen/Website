@@ -521,7 +521,7 @@ function initGameSpace() {
     else {
         gameSVG = d3.select(".jumbotron").append("svg")
             .attr({
-                "width": "50%",
+                "width": "80%",
                 "height": "60%"  //footer takes ~12.5% of the page
             })
             .attr("viewBox", "0 0 " + width + " " + height )
@@ -1907,7 +1907,6 @@ function initScoreRecap() {
 
     d3.select(".gameSVG").append("text")
         .attr("class", "networkSizeText")
-        .attr("x", -85)
         .attr("y", 90)
         .style("font-size", "40px")
         .text("Network Size: " + numberOfIndividuals);
@@ -1930,7 +1929,7 @@ function addTextRecap(bar, passed) {
                 .style("font-weight", "500")
                 .style("fill", "#707070")
                 .attr("class", "recapBinaryText")
-                .attr("x", 732)
+                .attr("x", 700)
                 .attr("y", 180)
                 .text("Play Again!")
 
@@ -1956,13 +1955,13 @@ function addTextRecap(bar, passed) {
             .style("font-weight", "500")
             .style("fill", "#707070")
             .attr("class", "recapBinaryText")
-            .attr("x", 749)
+            .attr("x", 700)
             .attr("y", 180)
             .text("Passed!")
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText1")
-            .attr("x", 755)
+            .attr("x", 690)
             .attr("y", 230)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
@@ -1972,7 +1971,7 @@ function addTextRecap(bar, passed) {
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText2")
-            .attr("x", 755)
+            .attr("x", 690)
             .attr("y", 255)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
@@ -1982,7 +1981,7 @@ function addTextRecap(bar, passed) {
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText3")
-            .attr("x", 755)
+            .attr("x", 690)
             .attr("y", 280)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
@@ -2026,13 +2025,13 @@ function addTextRecap(bar, passed) {
             .style("font-weight", "500")
             .style("fill", "#707070")
             .attr("class", "recapBinaryText")
-            .attr("x", 735)
+            .attr("x", 700)
             .attr("y", 180)
             .text("Try Again!")
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText1")
-            .attr("x", 755)
+            .attr("x", 690)
             .attr("y", 225)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
@@ -2042,7 +2041,7 @@ function addTextRecap(bar, passed) {
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText2")
-            .attr("x", 730)
+            .attr("x", 690)
             .attr("y", 250)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
@@ -2052,7 +2051,7 @@ function addTextRecap(bar, passed) {
 
         d3.select(".gameSVG").append("text")
             .attr("class", "recapText3")
-            .attr("x", 742)
+            .attr("x", 690)
             .attr("y", 273)
             .style("font-family", "Nunito")
             .style("font-size", "20px")
