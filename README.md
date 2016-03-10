@@ -18,12 +18,17 @@ Todo
 Gems
 
 ```ruby
-#dropzone for image upload
+gem 'gon'
+#Js graphic librairy 
+gem 'd3-rails'
+#Cookies for game
+gem 'jquery-cookie-rails'
+#Js countdown sample
+gem 'flipclockjs-rails'
+#dropzone for photos
 gem 'dropzonejs-rails'
 #postgrepsql compatibiliy
 gem 'pg'
-#pdf displayer =>  rails g pdfjs_rails:install
-gem 'pdfjs_rails'
 #add carrousel
 gem 'jquery-slick-rails'
 # paperclip database
