@@ -6,6 +6,13 @@ function showDeleteButton(){
 }
 </script>
 <div class="videos">
+  <% @playlist.each do |playlist| %>
+  <%= getLinkedVideo(playlist) %>
+  <br />
+  <%= link_to 'Remove', video_path(playlist), class: 'btn btn-danger removeVideo',
+  method: :delete %>
+  <% end %>
+  <hr>
   <% @videos.each do |video| %>
   <%= getLinkedVideo(video) %>
   <br />

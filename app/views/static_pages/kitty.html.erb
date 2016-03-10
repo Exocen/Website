@@ -1,3 +1,9 @@
 <% provide(:title, "CV") %>
+<script type="text/javascript">
+function kittygen(){
+  $("#kitty").attr("src", "http://www.randomkittengenerator.com/cats/rotator.php?&a="+new Date().getTime());
+}
+</script>
 <h1 class="h1">Kitten Generator</h1>
-<a class='thumbnail'><img src="http://www.randomkittengenerator.com/cats/rotator.php"></a>
+<a onclick="kittygen()" class='thumbnail'>
+  <img id='kitty' src="http://www.randomkittengenerator.com/cats/rotator.php"></a>

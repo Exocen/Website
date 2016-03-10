@@ -4,7 +4,8 @@ class VideosController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @videos = Video.order(created_at: :desc)
+    @playlist = Video.where(isPlaylist: true).order(created_at: :desc)
+    @videos = Video.where(!:isPlaylist).order(created_at: :desc)
   end
 
   def create
@@ -31,7 +32,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:link)
+    params.require(:video).permit(:link, :isPlaylist)
   end
 
 end

@@ -1,9 +1,13 @@
 <% provide(:title,"Musique") %>
 <h1>Musique</h1>
 <%= form_for @video do |f| %>
-<%= render 'layouts/errors', object: @video %>
-<div class="form-group">
-  <%= f.url_field :link, class: 'form-control' %>
-</div>
-<%= f.submit 'Upload', class: 'btn btn-primary' %>
-<% end %>
+  <%= render 'layouts/errors', object: @video %>
+  <div class="form-group">
+    <%= f.url_field :link, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+  <%= f.label :isPlaylist, class: "checkbox" do %>
+    <%= f.check_box :isPlaylist %>
+    This Video is a playlist
+    <% end %>
+    <% end %>
