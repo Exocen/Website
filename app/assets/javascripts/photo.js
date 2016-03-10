@@ -12,7 +12,7 @@ function GoCarrousel()
   $('.slick-list').css( 'height', 'auto');
 }
 function GoDropzone(){
-  // Dropzone.autoDiscover = false;
+  Dropzone.autoDiscover = false;
   $("#new_photo").dropzone({
     maxFilesize: 1,
     paramName: "photo[image]",
@@ -22,6 +22,4 @@ function GoDropzone(){
     }
   });
 }
-function () {
-  $('[data-toggle="tooltip"]').tooltip()
-}
+$('[data-toggle="tooltip"]').tooltip()
