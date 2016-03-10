@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-gem "d3-rails"
 
 gem 'gon'
-
+#Js graphic librairy 
+gem 'd3-rails'
+#Cookies for game
 gem 'jquery-cookie-rails'
-
+#Js countdown sample
 gem 'flipclockjs-rails'
-
+#dropzone for photos
 gem 'dropzonejs-rails'
-
 #postgrepsql compatibiliy
 gem 'pg'
 #add carrousel
