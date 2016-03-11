@@ -32,8 +32,8 @@ function exposeIndividual(individual, exposer) {
   }
 
   for (var i = 0; i < graph.links.length; i++) {
-    if ((graph.links[i].source.id === exposer.id && graph.links[i].target.id === individual.id)||
-    (graph.links[i].source.id === individual.id && graph.links[i].target.id === exposer.id))
+    if !((graph.links[i].source.id === exposer.id || graph.links[i].target.id === individual.id)&&
+    (graph.links[i].source.id === individual.id || graph.links[i].target.id === exposer.id))
     exposureEdges.push(graph.links[i]);
   }
 }
