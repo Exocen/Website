@@ -133,60 +133,61 @@ function infection() {
 function infection_noGuaranteedTransmission() {
   var numberOfInfectionsPerRound = 0;
   numberOfInfectionsPerRound = numberOfInfectionsPerRoundManage(numberOfInfectionsPerRound);
+}
 
-  function getStatuses(infectedClass) {
-    var S = 0;
-    var I = 0;
-    var R = 0;
-    var V = 0;
+function getStatuses(infectedClass) {
+  var S = 0;
+  var I = 0;
+  var R = 0;
+  var V = 0;
 
-    for (var index = 0; index < graph.nodes.length; index++) {
-      var individual = graph.nodes[index];
+  for (var index = 0; index < graph.nodes.length; index++) {
+    var individual = graph.nodes[index];
 
-      if (individual.status === "S") S++;
-      if (individual.status === "I") I++;
-      if (individual.status === "R") R++;
-      if (individual.status === "V") V++;
-    }
-
-    if (infectedClass === "S") return S;
-    if (infectedClass === "I") return I;
-    if (infectedClass === "R") return R;
-    if (infectedClass === "V") return V;
-
+    if (individual.status === "S") S++;
+    if (individual.status === "I") I++;
+    if (individual.status === "R") R++;
+    if (individual.status === "V") V++;
   }
 
+  if (infectedClass === "S") return S;
+  if (infectedClass === "I") return I;
+  if (infectedClass === "R") return R;
+  if (infectedClass === "V") return V;
+
+}
 
 
-  function detectEndGame() {
-    updateCommunities();
-    var numberOf_AtRisk_communities = 0;
-    for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
-      var numberOfSusceptiblesPerGroup = 0;
-      var numberOfInfectedPerGroup = 0;
 
-      for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
-        var node = graph.nodes[nodeIndex];
-        if (parseFloat(node.group) === groupIndex){
-          if (node.status === "S") numberOfSusceptiblesPerGroup++;
-          if (node.status === "I") numberOfInfectedPerGroup++;
-          if (node.status === "E") numberOfInfectedPerGroup++;
-        }
-      }
-      if (numberOfInfectedPerGroup > 0) {
-        if (numberOfSusceptiblesPerGroup > 0) {
-          numberOf_AtRisk_communities++;
-        }
+function detectEndGame() {
+  updateCommunities();
+  var numberOf_AtRisk_communities = 0;
+  for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
+    var numberOfSusceptiblesPerGroup = 0;
+    var numberOfInfectedPerGroup = 0;
+
+    for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
+      var node = graph.nodes[nodeIndex];
+      if (parseFloat(node.group) === groupIndex){
+        if (node.status === "S") numberOfSusceptiblesPerGroup++;
+        if (node.status === "I") numberOfInfectedPerGroup++;
+        if (node.status === "E") numberOfInfectedPerGroup++;
       }
     }
-    if (numberOf_AtRisk_communities === 0 && diseaseIsSpreading) {
-      endGame = true;
-      diseaseIsSpreading = false;
-      timeToStop = true;
-      if (vaccinateMode && !quarantineMode && !game) {
-        animatePathogens_thenUpdate();
-        tutorialUpdate();
+    if (numberOfInfectedPerGroup > 0) {
+      if (numberOfSusceptiblesPerGroup > 0) {
+        numberOf_AtRisk_communities++;
       }
-
     }
   }
+  if (numberOf_AtRisk_communities === 0 && diseaseIsSpreading) {
+    endGame = true;
+    diseaseIsSpreading = false;
+    timeToStop = true;
+    if (vaccinateMode && !quarantineMode && !game) {
+      animatePathogens_thenUpdate();
+      tutorialUpdate();
+    }
+
+  }
+}
