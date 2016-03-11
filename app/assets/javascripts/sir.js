@@ -75,7 +75,8 @@ function stateChanges() {
   }
 }
 
-function numberOfInfectionsPerRoundManage(numberOfInfectionsPerRound){
+function numberOfInfectionsPerRoundManage(){
+  var numberOfInfectionsPerRound = 0;
   for (var index = 0; index < graph.nodes.length; index++) {
     if (graph.nodes[index].status !== "S") continue;
     var susceptible = graph.nodes[index];
@@ -106,9 +107,7 @@ function infection() {
     transmissionRate = 1;
   }
 
-  var numberOfInfectionsPerRound = 0;
-
-  numberOfInfectionsPerRound = numberOfInfectionsPerRoundManage(numberOfInfectionsPerRound);
+  var numberOfInfectionsPerRound = numberOfInfectionsPerRoundManage(numberOfInfectionsPerRound);
 
   if (numberOfInfectionsPerRound > 0) {
     rerun = false;
@@ -131,8 +130,7 @@ function infection() {
 }
 
 function infection_noGuaranteedTransmission() {
-  var numberOfInfectionsPerRound = 0;
-  numberOfInfectionsPerRound = numberOfInfectionsPerRoundManage(numberOfInfectionsPerRound);
+  numberOfInfectionsPerRoundManage();
 }
 
 function getStatuses(infectedClass) {
@@ -145,22 +143,20 @@ function getStatuses(infectedClass) {
     var individual = graph.nodes[index];
 
     if (individual.status === "S") S++;
-    if (individual.status === "I") I++;
-    if (individual.status === "R") R++;
-    if (individual.status === "V") V++;
+    else if (individual.status === "I") I++;
+    else if (individual.status === "R") R++;
+    else if (individual.status === "V") V++;
   }
 
   if (infectedClass === "S") return S;
-  if (infectedClass === "I") return I;
-  if (infectedClass === "R") return R;
-  if (infectedClass === "V") return V;
+  else if (infectedClass === "I") return I;
+  else if (infectedClass === "R") return R;
+  else if (infectedClass === "V") return V;
 
 }
 
 
-
-function detectEndGame() {
-  updateCommunities();
+function numberOf_AtRisk_communitiesManage(){
   var numberOf_AtRisk_communities = 0;
   for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
     var numberOfSusceptiblesPerGroup = 0;
@@ -180,6 +176,12 @@ function detectEndGame() {
       }
     }
   }
+  return numberOf_AtRisk_communities;
+
+}
+function detectEndGame() {
+  updateCommunities();
+  var numberOf_AtRisk_communities = numberOf_AtRisk_communitiesManage();
   if (numberOf_AtRisk_communities === 0 && diseaseIsSpreading) {
     endGame = true;
     diseaseIsSpreading = false;
@@ -187,7 +189,6 @@ function detectEndGame() {
     if (vaccinateMode && !quarantineMode && !game) {
       animatePathogens_thenUpdate();
       tutorialUpdate();
-    }
-
+    }  
   }
 }
