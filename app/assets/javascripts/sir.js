@@ -138,20 +138,20 @@ function getStatuses(infectedClass) {
   var I = 0;
   var R = 0;
   var V = 0;
-
+  var sirv = {"S":0, "I":0, "R":0, "V":0}
   for (var index = 0; index < graph.nodes.length; index++) {
     var individual = graph.nodes[index];
+    for(var key in sirv)
+    {
+      if (individual.status === key) sirv[key]++;
+    }
 
-    if (individual.status === "S") S++;
-    else if (individual.status === "I") I++;
-    else if (individual.status === "R") R++;
-    else if (individual.status === "V") V++;
   }
-
-  if (infectedClass === "S") return S;
-  else if (infectedClass === "I") return I;
-  else if (infectedClass === "R") return R;
-  else if (infectedClass === "V") return V;
+  
+  for(var key in sirv)
+  {
+    if (infectedClass === key) return sirv[key];
+  }
 
 }
 
@@ -163,11 +163,9 @@ function numberOf_AtRisk_communitiesManage(){
 
     for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
       var node = graph.nodes[nodeIndex];
-      if (parseFloat(node.group) === groupIndex){
-        if (node.status === "S") numberOfSusceptiblesPerGroup++;
-        if (node.status === "I") numberOfInfectedPerGroup++;
-        if (node.status === "E") numberOfInfectedPerGroup++;
-      }
+      if (parseFloat(node.group) === groupIndex && node.status === "S") numberOfSusceptiblesPerGroup++;
+      else if (parseFloat(node.group) === groupIndex && node.status === "I") numberOfInfectedPerGroup++;
+      else if (parseFloat(node.group) === groupIndex && node.status === "E") numberOfInfectedPerGroup++;
     }
     if (numberOfInfectedPerGroup > 0 && numberOfSusceptiblesPerGroup > 0) {
       numberOf_AtRisk_communities++;
