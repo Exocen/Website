@@ -147,8 +147,8 @@ function getStatuses(infectedClass) {
     }
 
   }
-  
-  for(var key in sirv)
+
+  for(var key2 in sirv)
   {
     if (infectedClass === key) return sirv[key];
   }
@@ -164,8 +164,7 @@ function numberOf_AtRisk_communitiesManage(){
     for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
       var node = graph.nodes[nodeIndex];
       if (parseFloat(node.group) === groupIndex && node.status === "S") numberOfSusceptiblesPerGroup++;
-      else if (parseFloat(node.group) === groupIndex && node.status === "I") numberOfInfectedPerGroup++;
-      else if (parseFloat(node.group) === groupIndex && node.status === "E") numberOfInfectedPerGroup++;
+      else if (parseFloat(node.group) === groupIndex && (node.status === "I" || node.status === "E")) numberOfInfectedPerGroup++;
     }
     if (numberOfInfectedPerGroup > 0 && numberOfSusceptiblesPerGroup > 0) {
       numberOf_AtRisk_communities++;
