@@ -1,0 +1,43 @@
+<% provide(:title,"Musique") %>
+<h1>Musique</h1>
+<script>
+function showDeleteButton(){
+  $(".removeVideo").css('display', 'block');
+}
+</script>
+<div class="videos">
+  <% @playlist.each do |playlist| %>
+  <%= getLinkedVideo(playlist) %>
+  <br />
+  <%= link_to 'Remove', video_path(playlist), class: 'btn btn-danger removeVideo',
+  method: :delete %>
+  <% end %>
+  <hr>
+  <% @videos.each do |video| %>
+  <%= getLinkedVideo(video) %>
+  <br />
+  <%= link_to 'Remove', video_path(video), class: 'btn btn-danger removeVideo',
+  method: :delete %>
+  <% end %>
+</div>
+<div class="row">
+  <% if current_user.admin? %>
+  <div class="col-xs-6">
+    <% else %>
+    <div class="col-xs-12">
+      <% end %>
+      <button type="button" class="btn btn-success btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Upload Photos">
+        <%= link_to new_video_path, class: 'button alt' do %>
+        <i class="glyphicon glyphicon-upload"></i>
+        <% end %>
+      </button>
+    </div>
+
+    <% if current_user.admin? %>
+    <div class="col-xs-6">
+      <button type="button" onclick='showDeleteButton()' class="btn btn-danger btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Remove Photos">
+        <i class="glyphicon glyphicon-remove"></i>
+      </button>
+    </div>
+    <% end %>
+  </div>

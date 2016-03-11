@@ -1,12 +1,33 @@
 Rails.application.routes.draw do
+  resources :photos
+  resources :videos
+  resources :users
+  get 'sessions/new'
+
   root 'static_pages#home'
   get 'cv' => 'static_pages#cv'
+  get 'kitty' => 'static_pages#kitty'
+  get 'game' => 'static_pages#game'
 
-  resources :chats , only: [:create, :index, :destroy,]
-  get 'chat' => 'chats#index'
+  get 'photo' => 'photos#index'
+  get 'new_photo' => 'photos#new'
+  get 'delete_photo' => 'photos#delete'
 
-  resources :videos , only: [:create, :musique, :destroy,]
-  get 'musique' => 'videos#musique'
+
+  get 'videos' => 'videos#index'
+
+  get 'signup' => 'users#new'
+  get 'users' => 'users#index'
+  get 'edit' => 'users#edit'
+
+  get 'login' => 'sessions#new'
+  post 'login'=> 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+
+
+  #get 'location' => 'video_locations#location'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

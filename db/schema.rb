@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020120732) do
+ActiveRecord::Schema.define(version: 20160301203744) do
 
-  create_table "chats", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
+    t.integer "photo_id"
+    t.string  "style"
+    t.binary  "file_contents"
+  end
+
+  create_table "photos", force: :cascade do |t|
     t.string   "title"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "avatar_file_name"
@@ -27,11 +34,26 @@ ActiveRecord::Schema.define(version: 20151020120732) do
     t.datetime "avatar_updated_at"
   end
 
+  add_index "photos", ["user_id"], name: "index_photos_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "remember_digest"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string   "link"
     t.string   "desc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "isPlaylist", default: false
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
+
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
 end

@@ -1,139 +1,40 @@
-@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "slick";
-@import "slick-theme";
+@import url(http://fonts.googleapis.com/css?family=Nunito:300,400,700);
 
-// a virer
-.admin{
-  display: none;
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #f1f1f1;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.jumbotron h1, .jumbotron .h1{
-  font-size: 40px;
+/* universal */
+
+.link {
+  stroke-width:3px;
 }
 
-.jumbotron{
-  text-align: center;
-}
+svg {
+  background-color: $grayMediumLight;
 
-.slick-slide img{
-  display: inline;
-}
-
-td {
-  vertical-align: top;
-}
-
-$bginverse      : #00d27f;
-$bgHighlight    : #333333;
-$colinverse     : #ecf0f1;
-$colHighlight   : #333333;
-.navbar-default {
-  background-color: $bginverse;
-  border-color: $bgHighlight;
-  .navbar-brand {
-    color: $colinverse;
-    &:hover, &:focus {
-      color: $colHighlight;
-    }
-  }
-  .navbar-text {
-    color: $colinverse;
-  }
-  .navbar-nav {
-    > li {
-      > a {
-        color: $colinverse;
-        &:hover,  &:focus {
-          color: $colHighlight;
-        }
-      }
-    }
-    > .active {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight;
-      }
-    }
-    > .open {
-      > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight;
-      }
-    }
-  }
-  .navbar-toggle {
-    border-color: $bgHighlight;
-    &:hover, &:focus {
-      background-color: $bgHighlight;
-    }
-    .icon-bar {
-      background-color: $colinverse;
-    }
-  }
-  .navbar-collapse,
-  .navbar-form {
-    border-color: $colinverse;
-  }
-  .navbar-link {
-    color: $colinverse;
-    &:hover {
-      color: $colHighlight;
-    }
-  }
-}
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: $colinverse;
-      &:hover, &:focus {
-        color: $colHighlight;
-      }
-    }
-    > .active {
-      > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight;
-      }
-    }
-  }
-}
-
-@media screen
-and (min-device-width: 320px)
-and (max-device-width: 640px)
-and (-webkit-device-pixel-ratio: 2) {
-  .navbar-default .navbar-nav .open .dropdown-menu {
-    > li > a {
-      color: $colinverse;
-      &:hover, &:focus {
-        color: $colHighlight;
-      }
-    }
-    > .active {
-      > a, > a:hover, > a:focus, {
-        color: $colHighlight;
-        background-color: $bgHighlight;
-      }
-    }
-  }
 
 }
 
+html {
+  background-color: $grayMediumLight;
+  height: 768px;
 
-/* header */
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
 }
 
-#logo:hover {
-  color: #333333;
-  text-decoration: none;
+body {
+  min-width: 780px;
+  min-height: 700px;
+  background-color: $grayMediumLight;
 }
+
+
+
