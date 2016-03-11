@@ -155,7 +155,6 @@ function getStatuses(infectedClass) {
 
 }
 
-
 function numberOf_AtRisk_communitiesManage(){
   var numberOf_AtRisk_communities = 0;
   for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
@@ -170,10 +169,8 @@ function numberOf_AtRisk_communitiesManage(){
         if (node.status === "E") numberOfInfectedPerGroup++;
       }
     }
-    if (numberOfInfectedPerGroup > 0) {
-      if (numberOfSusceptiblesPerGroup > 0) {
-        numberOf_AtRisk_communities++;
-      }
+    if (numberOfInfectedPerGroup > 0 && numberOfSusceptiblesPerGroup > 0) {
+      numberOf_AtRisk_communities++;
     }
   }
   return numberOf_AtRisk_communities;
@@ -189,6 +186,6 @@ function detectEndGame() {
     if (vaccinateMode && !quarantineMode && !game) {
       animatePathogens_thenUpdate();
       tutorialUpdate();
-    }  
+    }
   }
 }
