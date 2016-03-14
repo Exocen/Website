@@ -17,8 +17,31 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Accueil",   root_path %></li>
         <li><%= link_to "CV", cv_path %></li>
-        <li><%= link_to "Photos",   chats_path %></li>
-        <li><%= link_to "Musique",   musique_path %></li>
+        <li><%= link_to "Photos",   photos_path %></li>
+        <li><%= link_to "Musique",   videos_path %></li>
+        <li><%= link_to "Kitty",  kitty_path %></li>
+        <li><%= link_to "Game",  game_path %></li>       
+        <% if logged_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Account <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% if current_user.admin? %>
+            <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Sign up", signup_path %></li>
+            <li><%= link_to "Profile", current_user %></li>
+            <% end %>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "Log out", logout_path, method: "delete" %>
+            </li>
+          </ul>
+        </li>
+        <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>

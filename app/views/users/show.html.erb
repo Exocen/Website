@@ -1,0 +1,13 @@
+<% provide(:title,"User") %>
+<script type="text/javascript">
+window.onload = $( document ).ready( GoCarrousel);
+</script>
+<%= @user.name %>
+<div class="carrousel">
+
+  <% @photos.each do |photo| %>
+  <div>
+    <%= link_to image_tag(photo.image.url(:large)), photo.image.url%>
+  </div>
+  <% end %>
+</div>
