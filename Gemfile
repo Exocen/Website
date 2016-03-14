@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'gon'
-#Js graphic librairy 
+#Js graphic librairy
 gem 'd3-rails'
 #Cookies for game
 gem 'jquery-cookie-rails'
@@ -34,7 +34,6 @@ gem 'uglifier'
 gem 'yui-compressor'
 
 gem 'bootstrap-sass'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
