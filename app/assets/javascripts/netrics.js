@@ -117,15 +117,16 @@ function spliceDuplicateEdges(source, target, graph) {
   var edgeExists = 0;
   for (var i = 0; i < graph.links.length; i++) {
     var link = graph.links[i];
-
+    var lTargetId = link.target.id;
+    var lSourceId = link.source.id
     // test one direction
-    if (link.source.id === source.id && link.target.id === target.id) {
+    if (lTargetId === target.id && lSourceId === source.id) {
       //this is one direction
       edgeExists++;
     }
 
     // test the other direction
-    if (link.source.id === target.id && link.target.id === source.id) {
+    if (lSourceId === target.id && lTargetId === source.id) {
       //this is another direction
       edgeExists++;
     }
