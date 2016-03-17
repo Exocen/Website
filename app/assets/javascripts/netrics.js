@@ -1,12 +1,4 @@
-function generateSmallWorld(n, p, k) {
-  var vertices = [];
-  var edges = [];
-  var nodes = [];
-  for (var nodeCreateID = 0; nodeCreateID < n; nodeCreateID++) {
-    vertices.push(nodeCreateID);
-    var nodeString = {id:vertices[nodeCreateID], status:"S", group:null, edges:[], marked:false, degree:null, bcScore:null, exposureTimestep:null, infectedBy:null};
-    nodes.push(nodeString);
-  }
+function generateSmallWorldEdgePush(edges, n , p, k) {
   for (var nodeID = 0; nodeID < n; nodeID++) {
     for (var edgeID = 0; edgeID < k; edgeID++) {
       var diff = Math.floor((edgeID / 2) + 1);
@@ -17,8 +9,9 @@ function generateSmallWorld(n, p, k) {
       edges.push([nodeID, newIndex]);
     }
   }
+}
 
-  var doubleEdge = false;
+function generateSmallWorldEdgeVerticePush(edges, vertices, n , p, k) {
   for (var edgeIndex = 0; edgeIndex < edges.length; edgeIndex++) {
     if (Math.random() < p) {
       var source = edges[edgeIndex][0];
@@ -30,6 +23,20 @@ function generateSmallWorld(n, p, k) {
       edges[edgeIndex][1] = newDestination;
     }
   }
+}
+
+function generateSmallWorld(n, p, k) {
+  var vertices = [];
+  var edges = [];
+  var nodes = [];
+  for (var nodeCreateID = 0; nodeCreateID < n; nodeCreateID++) {
+    vertices.push(nodeCreateID);
+    var nodeString = {id:vertices[nodeCreateID], status:"S", group:null, edges:[], marked:false, degree:null, bcScore:null, exposureTimestep:null, infectedBy:null};
+    nodes.push(nodeString);
+  }
+  generateSmallWorldEdgePush(edges, n, p, k);
+  generateSmallWorldEdgeVerticePush(edges, vertices, n , p, k)
+
   var graph = {};
   var links = [];
   for (var i = 0; i < edges.length; i++) {
