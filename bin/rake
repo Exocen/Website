@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 begin
   load File.expand_path("../spring", __FILE__)
-rescue LoadErrorException
+rescue LoadError
   put ""
 end
 require_relative '../config/boot'
