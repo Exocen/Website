@@ -18,7 +18,6 @@ development:
   # database: postgres
   # pool: 5
   # username: postgres
-  # password: zazaza
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,8 +29,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  host: 172.17.0.2
+  host: <%= ENV['POSTGRES_IP'] %>
   database: postgres
   pool: 5
-  username: postgres
-  password: zazaza
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
