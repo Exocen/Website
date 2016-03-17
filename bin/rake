@@ -2,7 +2,6 @@
 begin
   load File.expand_path("../spring", __FILE__)
 rescue LoadError
-   puts "I refuse to fail or be stopped!"
 end
 require_relative '../config/boot'
 require 'rake'
