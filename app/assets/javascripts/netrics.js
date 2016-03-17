@@ -88,8 +88,10 @@ function findNeighbors(node) {
 function findLink(source, target) {
   var link = null;
   for (var i = 0; i < graph.links.length; i++) {
-    if (graph.links[i].source === source && graph.links[i].target === target) link = graph.links[i];
-    if (graph.links[i].target === source && graph.links[i].source === target) link = graph.links[i];
+    var gsource = graph.links[i].source;
+    var gtarget = graph.links[i].target;
+    if (gsource === source && gtarget === target) link = graph.links[i];
+    if (gtarget === source && gsource === target ) link = graph.links[i];
   }
   return link;
 }
@@ -123,7 +125,7 @@ function spliceDuplicateEdges(source, target, graph) {
     }
 
     // test the other direction
-    if (link.target.id === source.id && link.source.id === target.id) {
+    if (link.source.id === target.id && link.target.id === source.id) {
       //this is another direction
       edgeExists++;
     }
