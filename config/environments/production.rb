@@ -25,8 +25,8 @@ Rails.application.configure do
 
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :sass
-  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :uglifier
+  config.assets.css_compressor = :sass
 
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
