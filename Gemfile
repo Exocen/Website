@@ -31,7 +31,7 @@ gem 'uglifier'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'yui-compressor'
+gem 'sass-rails'
 
 gem 'bootstrap-sass'
 # Use jquery as the JavaScript library
