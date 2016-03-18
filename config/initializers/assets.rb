@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w( game.js )
 Rails.application.config.assets.precompile += %w( jquery.cookie.js )
 Rails.application.config.assets.precompile += %w( photo.js )
 Rails.application.config.assets.precompile += %w( custom.css )
+Rails.application.config.assets.precompile += %w( application.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
