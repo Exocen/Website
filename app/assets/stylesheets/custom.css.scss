@@ -21,9 +21,6 @@
 }
 
 .flip-clock-wrapper {
-  /* text-align: center; */
-  /* position: relative; */
-  /* width: 100%; */
   margin: 0 auto;
   max-width: 620px;
   margin-top: 2em;
@@ -120,7 +117,7 @@ $colHighlight   : #333333;
     }
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 750px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
       color: $colinverse;
@@ -164,8 +161,6 @@ and (-webkit-device-pixel-ratio: 2) {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-/* universal @import url(http://fonts.googleapis.com/css?family=Nunito:300,400,700); */
 
 html {
   overflow-y: scroll;
