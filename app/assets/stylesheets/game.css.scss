@@ -1,6 +1,6 @@
 /*
- *= require jquery-ui/datepicker
- */
+*= require jquery-ui/datepicker
+*/
 
 .popup_game_share {
   position: absolute;
@@ -170,6 +170,29 @@
   font-family: "Nunito";
   font-weight: 700;
   color: #707070;
+}
+
+.quarantineModeOptions{
+  font-size: 22px;
+  font-family: "Nunito";
+  font-weight: 300;
+  color: #707070;
+}
+
+.turnBasedTrue{
+  font-size: 18px;
+  font-family: "Nunito";
+  font-weight: 500;
+  color: #2692F2;
+  cursor: pointer;
+}
+
+.realTimeTrue{
+  font-size: 18px;
+  font-family: "Nunito";
+  font-weight: 300;
+  color: #BABABA;
+  cursor: pointer;
 }
 
 .difficultySelection{
