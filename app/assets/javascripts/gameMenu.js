@@ -29,7 +29,7 @@ function initBasicMenu() {
   .attr("class", "newGameHeader")
   .text("NEW GAME")
 
-  d3.select("body").append("div")
+  d3.select("jumbotron").append("div")
   .attr("class", "row")
   // difficulty selection div
   d3.select(".row").append("div")
