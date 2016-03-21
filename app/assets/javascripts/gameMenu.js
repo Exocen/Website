@@ -6,6 +6,16 @@ customOutbreakChoice = 1;
 var speed = false;
 var toggleDegree = true;
 
+function difficultySelection(class){
+  d3.select(".difficultySelection").append("div")
+  .attr("class", class)
+  .style("color", "#BABABA")
+  .style("font-family", "Nunito")
+  .style("font-weight", "500")
+  .style("font-size", "20px")
+  .text("")
+}
+
 function initBasicMenu() {
 
   d3.select(".vaxLogoDiv")
@@ -19,9 +29,14 @@ function initBasicMenu() {
   .attr("class", "newGameHeader")
   .text("NEW GAME")
 
-  // difficulty selection div
   d3.select("body").append("div")
-  .attr("class", "difficultySelection")
+  .attr("class", "row")
+  // difficulty selection div
+  d3.select("row").append("div")
+  .attr("class", "difficultySelection col-xs-6")
+
+  d3.select("row").append("div")
+  .attr("class", "gameOptions col-xs-6")
 
   // header for difficulty selection
   d3.select(".difficultySelection").append("div")
@@ -44,58 +59,25 @@ function initBasicMenu() {
     initBasicGame(difficultyString);
   })
 
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "easyHi")
-  .style("position", "absolute")
-  .style("top", "85px")
-  .style("left", "100px")
-  .style("color", "#BABABA")
-  .style("font-family", "Nunito")
-  .style("font-weight", "500")
-  .style("font-size", "20px")
-  .text("")
+  difficultySelection("easyHi")
 
   d3.select(".difficultySelection").append("div")
   .attr("class", "difficultyItemGrey")
   .attr("id", "difficultyMedium")
   .text("Medium")
 
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "mediumHi")
-  .style("position", "absolute")
-  .style("top", "133px")
-  .style("left", "152px")
-  .style("color", "#BABABA")
-  .style("font-family", "Nunito")
-  .style("font-weight", "500")
-  .style("font-size", "20px")
-  .text("")
+  difficultySelection("mediumHi")
 
   d3.select(".difficultySelection").append("div")
   .attr("class", "difficultyItemGrey")
   .attr("id", "difficultyHard")
   .text("Hard")
 
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "hardHi")
-  .style("position", "absolute")
-  .style("top", "182px")
-  .style("left", "100px")
-  .style("color", "#BABABA")
-  .style("font-family", "Nunito")
-  .style("font-weight", "500")
-  .style("font-size", "20px")
-  .text("")
+  difficultySelection("hardHi")
 
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "difficultyItemGrey")
-  .attr("id", "difficultyCustom")
-  .text("Custom")
-
-  d3.select(".difficultySelection").append("div")
+  d3.select(".gameOptions").append("div")
   .attr("class", "gameOptionsHeader")
   .text("GAME OPTIONS")
-  .style("position", "absolute")
   .style("top", "35px")
   .style("width", "200px")
   .style("left", "600px")
@@ -104,61 +86,9 @@ function initBasicMenu() {
   .style("font-weight", "700")
   .style("font-size", "24px")
 
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "networkDisplay")
-  .text("Network Display")
-  .style("position", "absolute")
-  .style("top", "100px")
-  .style("width", "200px")
-  .style("left", "600px")
-  .style("color", "#707070")
-  .style("font-family", "Nunito")
-  .style("font-weight", "300")
-  .style("font-size", "22px")
-
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "degreeToggleMenuTrue")
-  .text("Show Degree")
-  .style("position", "absolute")
-  .style("top", "125px")
-  .style("width", "200px")
-  .style("left", "600px")
-  .style("color", "#2692F2")
-  .style("font-family", "Nunito")
-  .style("font-weight", "500")
-  .style("font-size", "18px")
-  .style("cursor", "pointer")
-  .on("click", function() {
-    d3.select(".degreeToggleMenuTrue").style("color", "#2692F2").style("font-weight", "500")
-    d3.select(".degreeToggleMenuFalse").style("color", "#BABABA").style("font-weight", "300")
-
-    toggleDegree = true;
-
-  })
-
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "degreeToggleMenuFalse")
-  .text("Hide Degree")
-  .style("position", "absolute")
-  .style("top", "125px")
-  .style("width", "200px")
-  .style("left", "725px")
-  .style("color", "#BABABA")
-  .style("font-family", "Nunito")
-  .style("font-weight", "300")
-  .style("font-size", "18px")
-  .style("cursor", "pointer")
-  .on("click", function() {
-    d3.select(".degreeToggleMenuTrue").style("color", "#BABABA").style("font-weight", "300")
-    d3.select(".degreeToggleMenuFalse").style("color", "#2692F2").style("font-weight", "500")
-
-    toggleDegree = false;
-  })
-  
-  d3.select(".difficultySelection").append("div")
+  d3.select(".gameOptions").append("div")
   .attr("class", "quarantineModeOptions")
   .text("Quarantine Phase")
-  .style("position", "absolute")
   .style("top", "165px")
   .style("width", "200px")
   .style("left", "600px")
@@ -167,10 +97,9 @@ function initBasicMenu() {
   .style("font-weight", "300")
   .style("font-size", "22px")
 
-  d3.select(".difficultySelection").append("div")
+  d3.select(".gameOptions").append("div")
   .attr("class", "turnBasedTrue")
   .text("Turn-based")
-  .style("position", "absolute")
   .style("top", "190px")
   .style("width", "200px")
   .style("left", "600px")
@@ -197,10 +126,9 @@ function initBasicMenu() {
     }
   })
 
-  d3.select(".difficultySelection").append("div")
+  d3.select(".gameOptions").append("div")
   .attr("class", "realTimeTrue")
   .text("Real-time")
-  .style("position", "absolute")
   .style("top", "190px")
   .style("width", "200px")
   .style("left", "705px")
@@ -235,7 +163,6 @@ function initCustomMenu() {
   d3.selectAll(".difficultyItem").remove()
   d3.selectAll(".difficultyItemHighlight").remove()
   d3.selectAll(".difficultyItemGrey").remove()
-  d3.selectAll(".difficultyCustom").remove()
   d3.selectAll(".difficultyHeader").remove()
 
   d3.select("#customMenuDiv").style("visibility", "visible")
