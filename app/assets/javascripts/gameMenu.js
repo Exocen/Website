@@ -6,9 +6,9 @@ customOutbreakChoice = 1;
 var speed = false;
 var toggleDegree = true;
 
-function difficultySelection(class){
+function difficultySelection(classe){
   d3.select(".difficultySelection").append("div")
-  .attr("class", class)
+  .attr("class", classe)
 }
 
 function initBasicMenu() {
@@ -77,9 +77,6 @@ function initBasicMenu() {
   d3.select(".gameOptions").append("div")
   .attr("class", "quarantineModeOptions")
   .text("Quarantine Phase")
-  .style("top", "165px")
-  .style("width", "200px")
-  .style("left", "600px")
   .style("color", "#707070")
   .style("font-family", "Nunito")
   .style("font-weight", "300")
@@ -88,9 +85,6 @@ function initBasicMenu() {
   d3.select(".gameOptions").append("div")
   .attr("class", "turnBasedTrue")
   .text("Turn-based")
-  .style("top", "190px")
-  .style("width", "200px")
-  .style("left", "600px")
   .style("color", "#2692F2")
   .style("font-family", "Nunito")
   .style("font-weight", "500")
@@ -117,9 +111,6 @@ function initBasicMenu() {
   d3.select(".gameOptions").append("div")
   .attr("class", "realTimeTrue")
   .text("Real-time")
-  .style("top", "190px")
-  .style("width", "200px")
-  .style("left", "705px")
   .style("color", "#BABABA")
   .style("font-family", "Nunito")
   .style("font-weight", "300")
