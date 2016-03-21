@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'jquery-ui-rails'
-gem 'gon'
+#gem 'gon'
 #Js graphic librairy
 gem 'd3-rails'
 #Cookies for game
