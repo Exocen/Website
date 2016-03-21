@@ -6,9 +6,16 @@ customOutbreakChoice = 1;
 var speed = false;
 var toggleDegree = true;
 
-function difficultySelection(classe){
+function difficultySelection(clas){
   d3.select(".difficultySelection").append("div")
-  .attr("class", classe)
+  .attr("class", clas)
+}
+
+function difficultySelection(clas, id, text){
+  d3.select(".difficultySelection").append("div")
+  .attr("class", clas)
+  .attr("id", id)
+  .text(text)
 }
 
 function initBasicMenu() {
@@ -55,19 +62,9 @@ function initBasicMenu() {
   })
 
   difficultySelection("easyHi")
-
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "difficultyItemGrey")
-  .attr("id", "difficultyMedium")
-  .text("Medium")
-
+  difficultySelection("difficultyItemGrey", "difficultyMedium", "Medium")
   difficultySelection("mediumHi")
-
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "difficultyItemGrey")
-  .attr("id", "difficultyHard")
-  .text("Hard")
-
+  difficultySelection("difficultyItemGrey", "difficultyHard", "Hard")
   difficultySelection("hardHi")
 
   d3.select(".gameOptions").append("div")
@@ -107,17 +104,15 @@ function initBasicMenu() {
     d3.select(".realTimeTrue").style("color", "#2692F2").style("font-weight", "500")
 
     speed = true;
-
-    if (vaxEasyHiScoreRT < 0) d3.select(".easyHi").text("")
-    else d3.select(".easyHi").text("(Best: " + vaxEasyHiScoreRT + "%)")
-
-    if (vaxMediumHiScoreRT < 0) d3.select(".mediumHi").text("")
-    else d3.select(".mediumHi").text("(Best: " + vaxMediumHiScoreRT + "%)")
-
-    if (vaxHardHiScoreRT < 0) d3.select(".hardHi").text("")
-    else d3.select(".hardHi").text("(Best: " + vaxHardHiScoreRT + "%)")
+    displayScore(vaxEasyHiScoreRT, ".easyHi");
+    displayScore(vaxMediumHiScoreRT, ".mediumHi");
+    displayScore(vaxHardHiScoreRT, ".hardHi");
   })
 
+}
+function displayScore(score, clas){
+  if (score < 0) d3.select(clas).text("")
+  else d3.select(clas).text("(Best: " + score + "%)")
 }
 
 
