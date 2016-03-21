@@ -32,10 +32,10 @@ function initBasicMenu() {
   d3.select("body").append("div")
   .attr("class", "row")
   // difficulty selection div
-  d3.select("row").append("div")
+  d3.select(".row").append("div")
   .attr("class", "difficultySelection col-xs-6")
 
-  d3.select("row").append("div")
+  d3.select(".row").append("div")
   .attr("class", "gameOptions col-xs-6")
 
   // header for difficulty selection
