@@ -11,11 +11,26 @@ function difficultySelection(clas){
   .attr("class", clas)
 }
 
-function difficultySelection(clas, id, text){
+function difficultySelection2(clas, id, text){
   d3.select(".difficultySelection").append("div")
   .attr("class", clas)
   .attr("id", id)
   .text(text)
+}
+function difficultySelectionOver(clas, id, text, ds){
+  d3.select(".difficultySelection").append("div")
+  .attr("class", clas)
+  .attr("id", id)
+  .text(text)
+  .on("mouseover", function() {
+    d3.select(this).style("color", "#2692F2")
+  })
+  .on("mouseout", function() {
+    d3.select(this).style("color", "#707070")
+  })
+  .on("click", function() {
+    initBasicGame(ds);
+  })
 }
 
 function initBasicMenu() {
@@ -46,25 +61,12 @@ function initBasicMenu() {
   .text("DIFFICULTY")
 
   // difficulty menu items
-  d3.select(".difficultySelection").append("div")
-  .attr("class", "difficultyItem")
-  .attr("id", "difficultyEasy")
-  .text("Easy")
-  .on("mouseover", function() {
-    d3.select(this).style("color", "#2692F2")
-  })
-  .on("mouseout", function() {
-    d3.select(this).style("color", "#707070")
-  })
-  .on("click", function() {
-    difficultyString = "easy"
-    initBasicGame(difficultyString);
-  })
-
+  
+  difficultySelectionOver("difficultyItem", "difficultyEasy", "Easy", "easy")
   difficultySelection("easyHi")
-  difficultySelection("difficultyItemGrey", "difficultyMedium", "Medium")
+  difficultySelection2("difficultyItemGrey", "difficultyMedium", "Medium")
   difficultySelection("mediumHi")
-  difficultySelection("difficultyItemGrey", "difficultyHard", "Hard")
+  difficultySelection2("difficultyItemGrey", "difficultyHard", "Hard")
   difficultySelection("hardHi")
 
   d3.select(".gameOptions").append("div")
