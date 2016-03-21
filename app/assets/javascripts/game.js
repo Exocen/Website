@@ -327,14 +327,6 @@ function cookieBasedModeSelection() {
             .on("mouseout", function() {})
             .on("click", function() {})
     }
-
-    else {
-        d3.select("#difficultyHard")
-            .attr("class", "difficultyItemGrey")
-            .on("mouseover", function() {})
-            .on("mouseout", function() {})
-            .on("click", function() {})
-    }
 }
 
 
