@@ -7,21 +7,17 @@ var speed = false;
 var toggleDegree = true;
 
 function difficultySelection(clas){
-  d3.select(".difficultySelection").append("div")
+  return d3.select(".difficultySelection").append("div")
   .attr("class", clas)
 }
 
 function difficultySelection2(clas, id, text){
-  d3.select(".difficultySelection").append("div")
-  .attr("class", clas)
+  return difficultySelection(clas)
   .attr("id", id)
   .text(text)
 }
 function difficultySelectionOver(clas, id, text, ds){
-  d3.select(".difficultySelection").append("div")
-  .attr("class", clas)
-  .attr("id", id)
-  .text(text)
+  return difficultySelection2(clas, id, text, ds)
   .on("mouseover", function() {
     d3.select(this).style("color", "#2692F2")
   })
@@ -61,7 +57,7 @@ function initBasicMenu() {
   .text("DIFFICULTY")
 
   // difficulty menu items
-  
+
   difficultySelectionOver("difficultyItem", "difficultyEasy", "Easy", "easy")
   difficultySelection("easyHi")
   difficultySelection2("difficultyItemGrey", "difficultyMedium", "Medium")
