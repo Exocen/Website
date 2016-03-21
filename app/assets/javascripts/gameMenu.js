@@ -113,34 +113,4 @@ function displayScore(score, clas){
   else d3.select(clas).text("(Best: " + score + "%)")
 }
 
-
-function initCustomMenu() {
-
-  d3.select(".difficultySelection").style("top", "40px")
-
-  d3.selectAll(".difficultyItem").remove()
-  d3.selectAll(".difficultyItemHighlight").remove()
-  d3.selectAll(".difficultyItemGrey").remove()
-  d3.selectAll(".difficultyHeader").remove()
-
-  d3.select("#customMenuDiv").style("visibility", "visible")
-  d3.select("#customNodes").text("Nodes: " + parseInt($.cookie ('customNodes'),10))
-  d3.select("#customDegree").text("Neighbors: " + parseInt($.cookie ('customNeighbors'),10) + "ea.")
-  d3.select("#customVaccines").text("Vaccines: " + parseInt($.cookie ('customVaccines'),10))
-  d3.select("#customRefusers").text("Refusers: " + parseInt($.cookie ('customRefusers'),10))
-  d3.select("#customOutbreaks").text("Outbreaks: " + parseInt($.cookie ('customOutbreaks'),10))
-
-  d3.selectAll(".ui-state-default").style("background", "white")
-  d3.selectAll(".ui-corner-all").style("border-radius", "50px")
-
-  d3.select("#customMenuDiv").append("text")
-  .attr("class", "okayButton")
-  .text("OKAY")
-  .on("click", function() {
-    d3.select(this).remove();
-    d3.select(".vaxLogoDiv").remove();
-    initCustomGame();
-  })
-}
-
 var maxVax = parseInt($.cookie ('customNodes'),10)
