@@ -38,8 +38,8 @@ function initBasicMenu() {
   .style("left", "-12px")
 
   // new game header at top-left
-  d3.select("body").append("div")
-  .attr("class", "newGameHeader")
+  d3.select(".jumbotron").append("div")
+  .attr("class", "newGameHeader ")
   .text("NEW GAME")
 
   d3.select(".jumbotron").append("div")
