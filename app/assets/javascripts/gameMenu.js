@@ -9,11 +9,6 @@ var toggleDegree = true;
 function difficultySelection(class){
   d3.select(".difficultySelection").append("div")
   .attr("class", class)
-  .style("color", "#BABABA")
-  .style("font-family", "Nunito")
-  .style("font-weight", "500")
-  .style("font-size", "20px")
-  .text("")
 }
 
 function initBasicMenu() {
@@ -78,13 +73,6 @@ function initBasicMenu() {
   d3.select(".gameOptions").append("div")
   .attr("class", "gameOptionsHeader")
   .text("GAME OPTIONS")
-  .style("top", "35px")
-  .style("width", "200px")
-  .style("left", "600px")
-  .style("color", "#707070")
-  .style("font-family", "Nunito")
-  .style("font-weight", "700")
-  .style("font-size", "24px")
 
   d3.select(".gameOptions").append("div")
   .attr("class", "quarantineModeOptions")
