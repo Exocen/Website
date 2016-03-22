@@ -1,4 +1,3 @@
-//= require d3
 var numberOfIndividuals, meanDegree, rewire = 0.1;
 var graph = {};
 var force,node, link;

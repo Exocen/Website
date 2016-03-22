@@ -25,6 +25,7 @@ function difficultySelectionOver(clas, id, text, ds){
     d3.select(this).style("color", "#707070")
   })
   .on("click", function() {
+    difficultyString = ds;
     initBasicGame(ds);
   })
 }
