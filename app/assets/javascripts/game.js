@@ -330,7 +330,7 @@ function cookieBasedModeSelection() {
 
   // set custom based on hard
   if (vaxHardCompletion === true) {
-    d3.select("#difficultyCustom")
+    d3.select("#difficultyHard")
     .attr("class", "difficultyItem")
     .on("mouseover", function() {
       d3.select(this).style("color", "#2692F2")
@@ -339,13 +339,13 @@ function cookieBasedModeSelection() {
       d3.select(this).style("color", "#707070")
     })
     .on("click", function() {
-      d3.select(".difficultySelection").remove()
-      initCustomMenu();
+      difficultyString = "hard";
+      initBasicGame(difficultyString)
     });
 
   }
   else {
-    d3.select("#difficultyCustom")
+    d3.select("#difficultyHard")
     .attr("class", "difficultyItemGrey")
     .on("mouseover", function() {})
     .on("mouseout", function() {})
