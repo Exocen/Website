@@ -241,38 +241,51 @@ function allAccess() {
 
 
 function cookieBasedModeSelection() {
+
     if (vaxEasyHiScore !== -Infinity)  {
+
         if (speed) {
             d3.select(".easyHi")
                 .text("(Best: " + vaxEasyHiScoreRT + "%)")
+
         }
         else {
             d3.select(".easyHi")
                 .text("(Best: " + vaxEasyHiScore + "%)")
+
         }
+
     }
 
     if (vaxMediumHiScore !== -Infinity) {
         if (speed) {
             d3.select(".mediumHi")
                 .text("(Best: " + vaxMediumHiScoreRT + "%)")
+
         }
         else {
             d3.select(".mediumHi")
                 .text("(Best: " + vaxMediumHiScore + "%)")
+
         }
+
     }
 
     if (vaxHardHiScore !== -Infinity) {
         if (speed) {
             d3.select(".hardHi")
                 .text("(Best: " + vaxHardHiScoreRT + "%)")
+
         }
         else {
             d3.select(".hardHi")
                 .text("(Best: " + vaxHardHiScore + "%)")
+
         }
+
     }
+
+
 
     d3.select("#difficultyEasy")
         .on("mouseover", function() {
@@ -327,11 +340,36 @@ function cookieBasedModeSelection() {
             .on("mouseout", function() {})
             .on("click", function() {})
     }
+
+    // set custom based on hard
+    if (vaxHardCompletion === true) {
+        d3.select("#difficultyCustom")
+            .attr("class", "difficultyItem")
+            .on("mouseover", function() {
+                d3.select(this).style("color", "#2692F2")
+            })
+            .on("mouseout", function() {
+                d3.select(this).style("color", "#707070")
+            })
+            .on("click", function() {
+                d3.select(".difficultySelection").remove()
+                initCustomMenu();
+            });
+
+    }
+    else {
+        d3.select("#difficultyCustom")
+            .attr("class", "difficultyItemGrey")
+            .on("mouseover", function() {})
+            .on("mouseout", function() {})
+            .on("click", function() {})
+    }
 }
 
 
 function initBasicGame(difficulty) {
-    d3.select(".row").remove();
+    d3.select(".difficultySelection").remove();
+    d3.select(".difficultySelection").remove();
     d3.select(".newGameHeader").remove();
     d3.select("#customMenuDiv").remove();
 
