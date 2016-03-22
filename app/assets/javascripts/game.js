@@ -1,3 +1,4 @@
+//= require d3
 var numberOfIndividuals, meanDegree, rewire = 0.1;
 var graph = {};
 var force,node, link;
@@ -239,7 +240,6 @@ function allAccess() {
 
 }
 
-
 function cookieBasedModeSelection() {
   if (vaxEasyHiScore !== -Infinity)  {
     if (speed) {
@@ -353,7 +353,6 @@ function cookieBasedModeSelection() {
   }
 }
 
-
 function initBasicGame(difficulty) {
   d3.select(".row").remove();
   d3.select(".newGameHeader").remove();
@@ -405,68 +404,6 @@ function initBasicGame(difficulty) {
 
   removeDuplicateEdges(graph);
   initGameSpace();
-
-}
-
-function initCustomGame() {
-  d3.select(".vaxLogoDiv").remove();
-
-  scenarioTitle = "custom";
-  difficultyString = null;
-
-  d3.select(".newGameHeader").remove();
-  graph             = {}    ;
-  graph.nodes       = []    ;
-  graph.links       = []    ;
-
-  transmissionRate = 0.50;
-
-  numberOfIndividuals = customNodeChoice;
-  meanDegree = customNeighborChoice;
-  numberOfVaccines = customVaccineChoice;
-  vaccineSupply = numberOfVaccines;
-  independentOutbreaks = customOutbreakChoice;
-  numberOfRefusers = customRefuserChoice;
-
-  if (numberOfVaccines === 0) numberOfVaccines = 1;
-  if (independentOutbreaks < (numberOfIndividuals - numberOfVaccines)) independentOutbreaks = 1;
-
-  if (customNodeChoice > 100) charge = -150;
-  if (customNodeChoice > 125) charge = -130;
-
-  graph = generateSmallWorld(numberOfIndividuals, rewire, meanDegree);
-  removeDuplicateEdges(graph);
-
-  for (var i = 0; i < graph.nodes.length; i++) {
-    graph.nodes[i].refuser = false;
-  }
-
-  for (var j = 0; j < numberOfRefusers; j++) {
-    do {
-      var node = graph.nodes[Math.floor(Math.random() * graph.nodes.length)]
-    }
-    while (node.refuser)
-    node.refuser = true;
-  }
-
-  // prevent all nodes from being refusers and halting the game
-  var refuserCount = 0;
-  for (var k = 0; k < graph.nodes.length; k++) {
-    if (graph.nodes[k].refuser) refuserCount++;
-  }
-
-  if (refuserCount === numberOfIndividuals) {
-    numberOfVaccines = 1;
-    graph.nodes[0].refuser = false;
-  }
-
-
-  d3.select("#customMenuDiv").style("right", "-1000px").style("visibility", "hidden")
-
-  window.setTimeout(function() {
-    d3.select("#customMenuDiv").remove()
-    initGameSpace();
-  }, 500);
 
 }
 
@@ -957,8 +894,6 @@ function gameUpdate() {
 
 }
 
-
-
 function gameTimesteps() {
   infection();
   stateChanges();
@@ -1077,7 +1012,6 @@ function createGamePathogens() {
   .style("fill", "black")
 }
 
-
 function getPathogen_xyCoords(newInfections) {
   var xyCoords = [];
   var recentTransmitters = [];
@@ -1088,7 +1022,6 @@ function getPathogen_xyCoords(newInfections) {
   }
   return xyCoords;
 }
-
 
 function removeGamePathogens() {
   d3.selectAll(".node")
@@ -1103,7 +1036,6 @@ function removeGamePathogens() {
 
   d3.selectAll(".pathogen").remove();
 }
-
 
 function gameIndexPatients() {
   quarantineMode = true;
@@ -1122,7 +1054,6 @@ function gameIndexPatients() {
   }
   gameUpdate();
 }
-
 
 function loadGameSyringe() {
   d3.select(".actionVax").style("visibility", "visible");
@@ -2241,8 +2172,7 @@ function retry() {
   diseaseIsSpreading = false;
   timeToStop = false;
 
-  if (difficultyString === null) initCustomGame();
-  else initBasicGame(difficultyString);
+  if (difficultyString !== null) initBasicGame(difficultyString);
 
 }
 
