@@ -635,7 +635,7 @@ function nodeColor(node) {
   return null;
 }
 
-function ifVaccineMode(){
+function ifVaccineMode(node){
   try {
     pop.play()
   }
@@ -647,7 +647,7 @@ function ifVaccineMode(){
   numberVaccinated++;
 }
 
-function ifQuarantineMode(){
+function ifQuarantineMode(node){
   try {
     pop.play()
   }
@@ -662,12 +662,12 @@ function ifQuarantineMode(){
 function gameClick(node) {
   if (vaccinateMode) {
     if (node.refuser === true) return;
-    ifVaccineMode();
+    ifVaccineMode(node);
 
   }
   else {
     if (quarantineMode && node.status === "S") {
-      ifQuarantineMode()
+      ifQuarantineMode(node)
       window.setTimeout(gameTimesteps, 500);
     }
   }
@@ -681,12 +681,12 @@ function gameClick(node) {
 function speedModeGameClick(node) {
   if (vaccinateMode) {
     if (node.refuser === true) return;
-    ifVaccineMode()
+    ifVaccineMode(node)
   }
   else {
     if (quarantineMode && node.status === "S") {
       if (!diseaseIsSpreading) speedModeTimesteps();
-      ifQuarantineMode()
+      ifQuarantineMode(node)
     }
   }
   if (numberOfVaccines === 0 && !diseaseIsSpreading) loadGameQuarantine();
