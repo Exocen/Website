@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'jquery-ui-rails'
-#Game score
-#gem 'gon'
 #Js graphic librairy
 gem 'd3-rails'
 #Cookies for game
