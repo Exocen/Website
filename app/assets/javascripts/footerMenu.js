@@ -1,3 +1,5 @@
+//= require netrics
+//= require sir
 //= require d3
 function initFooter() {
 

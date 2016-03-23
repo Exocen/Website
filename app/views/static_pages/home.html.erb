@@ -1,16 +1,7 @@
 <% provide(:title, "Accueil") %>
+<%= javascript_include_tag "static_pages" %>
 <script type="text/javascript">
-var currentDate = new Date();
-				var futureDate  = new Date('06/13/2016 10:00 AM');
-				var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
-
-$(document).ready(function() {var clock = $('.clock').FlipClock(diff,{
-clockFace: 'DailyCounter',
-		showSeconds: false,
-  autoStart: true,
-  defaultLanguage: 'french'
-});
-});
+CountDownTimer('06/13/2016 10:00 AM');
 </script>
 <h1>Countdown to paradise</h1>
 

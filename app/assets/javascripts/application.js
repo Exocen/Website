@@ -14,11 +14,8 @@
 //
 
 //= require jquery2
-//= require netrics
-//= require sir
 //= require jquery_ujs
 //= require jquery.cookie
 //= require bootstrap-sprockets
 //= require jquery.slick
 //= require dropzone
-//= require flipclock.min
