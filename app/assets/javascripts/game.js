@@ -279,9 +279,9 @@ function cookieBasedModeSelection_manage2(completion, dS, difficultyClass){
 
 function cookieBasedModeSelection() {
 
-  function cookieBasedModeSelection_manage(vaxEasyHiScore, vaxEasyHiScoreRT)
-  function cookieBasedModeSelection_manage(vaxMediumHiScore, vaxMediumHiScoreRT)
-  function cookieBasedModeSelection_manage(vaxHardHiScore, vaxHardHiScoreRT)
+  cookieBasedModeSelection_manage(vaxEasyHiScore, vaxEasyHiScoreRT)
+  cookieBasedModeSelection_manage(vaxMediumHiScore, vaxMediumHiScoreRT)
+  cookieBasedModeSelection_manage(vaxHardHiScore, vaxHardHiScoreRT)
 
   d3.select("#difficultyEasy")
   .on("mouseover", function() {
@@ -293,7 +293,7 @@ function cookieBasedModeSelection() {
 
   // set medium based on easy
   cookieBasedModeSelection_manage2(vaxEasyCompletion, "medium", "#difficultyMedium")
-  
+
   // set hard based on medium
   cookieBasedModeSelection_manage2(vaxMediumCompletion, "hard", "#difficultyHard")
 
