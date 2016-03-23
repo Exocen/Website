@@ -239,39 +239,49 @@ function allAccess() {
 
 }
 
+function cookieBasedModeSelection_manage(score, scoreRT){
+  if (score !== -Infinity)  {
+    if (speed) {
+      d3.select(".easyHi")
+      .text("(Best: " + scoreRT + "%)")
+    }
+    else {
+      d3.select(".easyHi")
+      .text("(Best: " + score + "%)")
+    }
+  }
+}
+
+function cookieBasedModeSelection_manage2(completion, dS, difficultyClass){
+  if (completion === true) {
+    d3.select(difficultyClass)
+    .attr("class", "difficultyItem")
+    .on("mouseover", function() {
+      d3.select(this).style("color", "#2692F2")
+    })
+    .on("mouseout", function() {
+      d3.select(this).style("color", "#707070")
+    })
+    .on("click", function() {
+      difficultyString = dS;
+      initBasicGame(difficultyString)
+    });
+  }
+  else {
+    d3.select(difficultyClass)
+    .attr("class", "difficultyItemGrey")
+    .on("mouseover", function() {})
+    .on("mouseout", function() {})
+    .on("click", function() {})
+  }
+
+}
+
 function cookieBasedModeSelection() {
-  if (vaxEasyHiScore !== -Infinity)  {
-    if (speed) {
-      d3.select(".easyHi")
-      .text("(Best: " + vaxEasyHiScoreRT + "%)")
-    }
-    else {
-      d3.select(".easyHi")
-      .text("(Best: " + vaxEasyHiScore + "%)")
-    }
-  }
 
-  if (vaxMediumHiScore !== -Infinity) {
-    if (speed) {
-      d3.select(".mediumHi")
-      .text("(Best: " + vaxMediumHiScoreRT + "%)")
-    }
-    else {
-      d3.select(".mediumHi")
-      .text("(Best: " + vaxMediumHiScore + "%)")
-    }
-  }
-
-  if (vaxHardHiScore !== -Infinity) {
-    if (speed) {
-      d3.select(".hardHi")
-      .text("(Best: " + vaxHardHiScoreRT + "%)")
-    }
-    else {
-      d3.select(".hardHi")
-      .text("(Best: " + vaxHardHiScore + "%)")
-    }
-  }
+  function cookieBasedModeSelection_manage(vaxEasyHiScore, vaxEasyHiScoreRT)
+  function cookieBasedModeSelection_manage(vaxMediumHiScore, vaxMediumHiScoreRT)
+  function cookieBasedModeSelection_manage(vaxHardHiScore, vaxHardHiScoreRT)
 
   d3.select("#difficultyEasy")
   .on("mouseover", function() {
@@ -282,74 +292,14 @@ function cookieBasedModeSelection() {
   })
 
   // set medium based on easy
-  if (vaxEasyCompletion === true) {
-    d3.select("#difficultyMedium")
-    .attr("class", "difficultyItem")
-    .on("mouseover", function() {
-      d3.select(this).style("color", "#2692F2")
-    })
-    .on("mouseout", function() {
-      d3.select(this).style("color", "#707070")
-    })
-    .on("click", function() {
-      difficultyString = "medium";
-      initBasicGame(difficultyString)
-    });
-  }
-  else {
-    d3.select("#difficultyMedium")
-    .attr("class", "difficultyItemGrey")
-    .on("mouseover", function() {})
-    .on("mouseout", function() {})
-    .on("click", function() {})
-  }
-
+  cookieBasedModeSelection_manage2(vaxEasyCompletion, "medium", "#difficultyMedium")
+  
   // set hard based on medium
-  if (vaxMediumCompletion === true) {
-    d3.select("#difficultyHard")
-    .attr("class", "difficultyItem")
-    .on("mouseover", function() {
-      d3.select(this).style("color", "#2692F2")
-    })
-    .on("mouseout", function() {
-      d3.select(this).style("color", "#707070")
-    })
-    .on("click", function() {
-      difficultyString = "hard";
-      initBasicGame(difficultyString)
-    });
-  }
-  else {
-    d3.select("#difficultyHard")
-    .attr("class", "difficultyItemGrey")
-    .on("mouseover", function() {})
-    .on("mouseout", function() {})
-    .on("click", function() {})
-  }
+  cookieBasedModeSelection_manage2(vaxMediumCompletion, "hard", "#difficultyHard")
 
   // set custom based on hard
-  if (vaxHardCompletion === true) {
-    d3.select("#difficultyHard")
-    .attr("class", "difficultyItem")
-    .on("mouseover", function() {
-      d3.select(this).style("color", "#2692F2")
-    })
-    .on("mouseout", function() {
-      d3.select(this).style("color", "#707070")
-    })
-    .on("click", function() {
-      difficultyString = "hard";
-      initBasicGame(difficultyString)
-    });
+  cookieBasedModeSelection_manage2(vaxHardCompletion, "hard", "#difficultyHard")
 
-  }
-  else {
-    d3.select("#difficultyHard")
-    .attr("class", "difficultyItemGrey")
-    .on("mouseover", function() {})
-    .on("mouseout", function() {})
-    .on("click", function() {})
-  }
 }
 
 function initBasicGame(difficulty) {
