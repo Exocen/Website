@@ -155,20 +155,25 @@ function getStatuses(infectedClass) {
 
 }
 
+function numberOf_AtRisk_communities_Calculator(groupIndex, numberOf_AtRisk_communities){
+  var numberOfSusceptiblesPerGroup = 0;
+  var numberOfInfectedPerGroup = 0;
+
+  for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
+    var node = graph.nodes[nodeIndex];
+    if (parseFloat(node.group) === groupIndex && node.status === "S") numberOfSusceptiblesPerGroup++;
+    else if (parseFloat(node.group) === groupIndex && (node.status === "I" || node.status === "E")) numberOfInfectedPerGroup++;
+  }
+  if (numberOfInfectedPerGroup > 0 && numberOfSusceptiblesPerGroup > 0) {
+    numberOf_AtRisk_communities++;
+  }
+  return numberOf_AtRisk_communities;
+}
+
 function numberOf_AtRisk_communitiesManage(){
   var numberOf_AtRisk_communities = 0;
   for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
-    var numberOfSusceptiblesPerGroup = 0;
-    var numberOfInfectedPerGroup = 0;
-
-    for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
-      var node = graph.nodes[nodeIndex];
-      if (parseFloat(node.group) === groupIndex && node.status === "S") numberOfSusceptiblesPerGroup++;
-      else if (parseFloat(node.group) === groupIndex && (node.status === "I" || node.status === "E")) numberOfInfectedPerGroup++;
-    }
-    if (numberOfInfectedPerGroup > 0 && numberOfSusceptiblesPerGroup > 0) {
-      numberOf_AtRisk_communities++;
-    }
+    numberOf_AtRisk_communities_Calculator(groupIndex, numberOf_AtRisk_communities)
   }
   return numberOf_AtRisk_communities;
 
