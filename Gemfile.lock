@@ -178,7 +178,6 @@ GEM
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
-    yui-compressor (0.12.0)
 
 PLATFORMS
   ruby
@@ -208,7 +207,6 @@ DEPENDENCIES
   turbolinks
   uglifier
   web-console
-  yui-compressor
 
 BUNDLED WITH
    1.11.2
