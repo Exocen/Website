@@ -302,6 +302,15 @@ function cookieBasedModeSelection() {
 
 }
 
+function initBasicGame_manage(numberOfIndividuals2, meanDegree2, numberOfVaccines2, independentOutbreaks2, transmissionRate2, recoveryRate2){
+  numberOfIndividuals = numberOfIndividuals2;
+  meanDegree = meanDegree2;
+  numberOfVaccines = numberOfVaccines2;
+  independentOutbreaks = independentOutbreaks2;
+  transmissionRate = transmissionRate2;
+  recoveryRate = recoveryRate2;
+}
+
 function initBasicGame(difficulty) {
   d3.select(".row").remove();
   d3.select(".newGameHeader").remove();
@@ -312,31 +321,16 @@ function initBasicGame(difficulty) {
   graph.links       = []    ;
 
   if (difficulty === "easy") {
-    numberOfIndividuals = 50;
-    meanDegree = 3;
-    numberOfVaccines = 5;
-    independentOutbreaks = 1;
-    transmissionRate = transmissionRates[7];
-    recoveryRate = recoveryRates[0];
+    initBasicGame_manage(50, 3, 5, 1,  transmissionRates[7], recoveryRates[0]);
   }
 
   if (difficulty === "medium") {
-    numberOfIndividuals = 75;
-    meanDegree = 4;
-    numberOfVaccines = 7;
-    independentOutbreaks = 2;
-    transmissionRate = transmissionRates[7];
-    recoveryRate = recoveryRates[0];
+    initBasicGame_manage(75, 4, 7, 2,  transmissionRates[7], recoveryRates[0]);
   }
 
   if (difficulty === "hard") {
     charge = -300;
-    numberOfIndividuals = 100;
-    meanDegree = 4;
-    numberOfVaccines = 15;
-    transmissionRate = transmissionRates[4];
-    recoveryRate = recoveryRates[0];
-    independentOutbreaks = 3;
+    initBasicGame_manage(100, 4, 15, 3,  transmissionRates[4], recoveryRates[0]);
   }
 
   graph = generateSmallWorld(numberOfIndividuals, rewire, meanDegree);
@@ -353,7 +347,6 @@ function initBasicGame(difficulty) {
 
   removeDuplicateEdges(graph);
   initGameSpace();
-
 }
 
 function initGameSpace() {
@@ -365,8 +358,6 @@ function initGameSpace() {
   loadGameSyringe();
   initFooter();
   window.setTimeout(function() {d3.select(".gameMenuBox").style("right", "-10px"); d3.select(".gameVaxLogoDiv").style("left", "-12px")},1)
-
-
 
   vaccinateMode     = false ;
   quarantineMode    = false ;
@@ -633,48 +624,50 @@ function nodeSize(node) {
 }
 
 function nodeColor(node) {
-  var color = null;
-  if (node.status === "S") color = "#b7b7b7";
-  if (node.status === "E") color = "#ef5555";
-  if (node.status === "I") color = "#ef5555";
-  if (node.status === "R") color = "#9400D3";
-  if (node.status === "V") color = "#76A788";
-  if (node.status === "Q") color = "#d9d678";
-
   if (node.status === "S" && node.refuser) {
     color = "#fab45a"
   }
+  else if (node.status === "S") return "#b7b7b7";
+  else if (node.status === "E" || node.status === "I") return "#ef5555";
+  else if (node.status === "R") return  "#9400D3";
+  else if (node.status === "V") return  "#76A788";
+  else if (node.status === "Q") return  "#d9d678";
+  return null;
+}
 
-  return color;
+function ifVaccineMode(){
+  try {
+    pop.play()
+  }
+  catch(err){
+    console.log(err)
+  }
+  node.status = "V";
+  numberOfVaccines--;
+  numberVaccinated++;
+}
+
+function ifQuarantineMode(){
+  try {
+    pop.play()
+  }
+  catch(err){
+    console.log(err)
+  }
+  diseaseIsSpreading = true;
+  node.status = "Q";
+  numberQuarantined++;
 }
 
 function gameClick(node) {
-
-
   if (vaccinateMode) {
     if (node.refuser === true) return;
+    ifVaccineMode();
 
-    try {
-      pop.play()
-    }
-    catch(err){
-      console.log(err)
-    }
-    node.status = "V";
-    numberOfVaccines--;
-    numberVaccinated++;
   }
   else {
     if (quarantineMode && node.status === "S") {
-      try {
-        pop.play()
-      }
-      catch(err){
-        console.log(err)
-      }
-      diseaseIsSpreading = true;
-      node.status = "Q";
-      numberQuarantined++;
+      ifQuarantineMode()
       window.setTimeout(gameTimesteps, 500);
     }
   }
@@ -688,37 +681,16 @@ function gameClick(node) {
 function speedModeGameClick(node) {
   if (vaccinateMode) {
     if (node.refuser === true) return;
-
-    try {
-      pop.play()
-    }
-    catch(err){
-      console.log(err)
-    }
-    node.status = "V";
-    numberOfVaccines--;
-    numberVaccinated++;
+    ifVaccineMode()
   }
   else {
     if (quarantineMode && node.status === "S") {
       if (!diseaseIsSpreading) speedModeTimesteps();
-
-      try {
-        pop.play()
-      }
-      catch(err){
-        console.log(err)
-      }
-      diseaseIsSpreading = true;
-      node.status = "Q";
-      numberQuarantined++;
+      ifQuarantineMode()
     }
   }
-
   if (numberOfVaccines === 0 && !diseaseIsSpreading) loadGameQuarantine();
-
   gameUpdate();
-
 }
 
 
@@ -890,8 +862,6 @@ function detectGameCompletion() {
         if (node.status === "S") numberOfSusceptiblesPerGroup++;
         if (node.status === "I") numberOfInfectedPerGroup++;
         if (node.status === "E") numberOfInfectedPerGroup++;
-
-
       }
     }
     if (numberOfInfectedPerGroup > 0) {
