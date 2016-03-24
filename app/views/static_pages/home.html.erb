@@ -1,12 +1,20 @@
 <% provide(:title, "Accueil") %>
 <%= javascript_include_tag "static_pages" %>
+<% if logged_in? %>
 <script type="text/javascript">
 CountDownTimer('06/13/2016 10:00 AM');
 </script>
-<% if logged_in? %>
+
 <h1>Countdown to paradise</h1>
 
 <div class="clock">
 </div>
+<% else %>
+<h1>Welcome !</h1>
+
+<div>
+  Sign in to access all the features
+</div>
+
 <% end %>
 </div>
