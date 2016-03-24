@@ -1357,16 +1357,12 @@ function initGameSpace() {
 
 
     d3.select(".gameSVG").append("line")
-    .style("stroke", "#707070")
-    .style("stroke-width", "1px")
     .attr("x1", -35)
     .attr("x2", 200)
     .attr("y1", 470)
     .attr("y2", 470)
 
     d3.select(".gameSVG").append("line")
-    .style("stroke", "#707070")
-    .style("stroke-width", "1px")
     .attr("x1", -35)
     .attr("x2", -35)
     .attr("y1", 140)
@@ -1375,28 +1371,16 @@ function initGameSpace() {
     d3.select(".gameSVG").append("text")
     .attr("x", -83)
     .attr("y", 162)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("100%")
 
     d3.select(".gameSVG").append("text")
     .attr("x", -76)
     .attr("y", 310)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("50%")
 
     d3.select(".gameSVG").append("text")
     .attr("x", -72)
     .attr("y", 455)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("0%")
 
 
@@ -1434,26 +1418,17 @@ function initGameSpace() {
 
 
     d3.select(".gameSVG").append("text")
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("fill", "#707070")
     .attr("x", 180)
     .attr("y", 213)
     .text("Infected")
 
     d3.select(".gameSVG").append("text")
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("fill", "#707070")
     .attr("x", 180)
     .attr("y", 243)
     .text("Quarantined")
 
 
     d3.select(".gameSVG").append("text")
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("fill", "#707070")
     .attr("x", 180)
     .attr("y", 273)
     .text("Vaccinated")
@@ -1461,9 +1436,6 @@ function initGameSpace() {
 
 
     d3.select(".gameSVG").append("text")
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("fill", "#707070")
     .attr("x", 180)
     .attr("y", 303)
     .text("Uninfected")
@@ -1556,44 +1528,23 @@ function initGameSpace() {
     d3.select(".gameSVG").append("text")
     .attr("x", 359)
     .attr("y", 310)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("50%")
 
     d3.select(".gameSVG").append("text")
     .attr("x", 355)
     .attr("y", 455)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("0%")
 
     d3.select(".gameSVG").append("text")
     .attr("x", 430)
     .attr("y", 489)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("Current")
 
     d3.select(".gameSVG").append("text")
     .attr("x", 540)
     .attr("y", 489)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("Best")
-
-
-
-
-
-
+    
   }
 
   function initScoreRecap() {
@@ -1799,10 +1750,7 @@ function initGameSpace() {
       .on("mouseout", function() {
         d3.select(this).style("fill", "#707070")
       })
-
-
     }
-
   }
 
   function loadConclusionText() {

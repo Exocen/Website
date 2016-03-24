@@ -159,6 +159,19 @@
   font-family: "Nunito";
 }
 
+.gameSVG > text {
+  font-size: 15px;
+  font-weight: 500;
+  fill: #707070;
+  color: #707070;
+  
+}
+
+.gameSVG > line {
+  stroke: #707070
+  stroke-width: 1px
+}
+
 .difficultyHeader, .gameOptionsHeader{
   font-size: 22px;
   font-weight: 700;
@@ -168,13 +181,13 @@
 .recapBinaryText{
   font-size: 75px;
   font-weight: 500;
-  color: #707070;
+  fill: #707070;
 }
 
 .recapText1, .recapText2, .recapText3, .quarantineModeOptions{
   font-size: 20px;
   font-weight: 300;
-  color: #707070;
+  fill: #707070;
 }
 
 .quarantineModeOptions{
@@ -272,17 +285,8 @@
 
 }
 
-.recapText {
-  position: relative;
-  font-family: "Nunito";
-  fill: #707070;
-  font-weight: 300;
-  font-size: 25px;
-}
-
 .recapButton {
   position: relative;
-  font-family: "Nunito";
   fill: #707070;
   font-weight: 500;
   font-size: 28px;
