@@ -1041,33 +1041,19 @@ function initGameSpace() {
   }
 
   function outbreakDetected() {
-    d3.select(".gameSVG").append("rect")
+    defRext(50, 250, window.innerWidth/4 + 62 + 5 - 50, -100,  "#838383")
     .attr("class", "outbreakNotifyShadow")
-    .attr("x", window.innerWidth/4 + 62 + 5 - 50)
-    .attr("y", -100)
-    .attr("width", 250)
-    .attr("height", 50)
-    .attr("fill", "#838383")
-    .attr("opacity", 1)
+    .attr("opacity", 1);
 
-    d3.select(".gameSVG").append("rect")
+    defRext(50, 250, window.innerWidth/4 + 62 - 50, -100,  "#85bc99")
     .attr("class", "outbreakNotifyBox")
-    .attr("x", window.innerWidth/4 + 62 - 50)
-    .attr("y", -100)
-    .attr("width", 250)
-    .attr("height", 50)
-    .attr("fill", "#85bc99")
-    .attr("opacity", 1)
+    .attr("opacity", 1);
 
-    d3.select(".gameSVG").append("text")
+    defText( window.innerWidth/4 + 62 + 5 - 50 + 12, -100, "Outbreak Detected!")
     .attr("class", "outbreakNotifyText")
-    .attr("x", window.innerWidth/4 + 62 + 5 - 50 + 12)
-    .attr("y", -100)
-    .attr("fill", "white")
-    .style("font-family", "Nunito")
+    .attr("fill", "#FFFFFF")
     .style("font-size", "24px")
     .style("font-weight", 300)
-    .text("Outbreak Detected!")
     .attr("opacity", 1)
 
     outbreakDetected_manage(".outbreakNotifyText", 100 - 70 + 5 - 300 );
@@ -1180,38 +1166,34 @@ function initGameSpace() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
     if (difficultyString === "easy") {
+      $.cookie ('vaxEasyCompletion', (proportionSaved >= easyBar)+'');
       if (speed) {
         if ($.cookie ('vaxEasyHiScoreRT') < proportionSaved) $.cookie ('vaxEasyHiScoreRT', proportionSaved)
-        if (proportionSaved >= easyBar) $.cookie ('vaxEasyCompletion', 'true')
-
       }
       else {
         if ($.cookie ('vaxEasyHiScore') < proportionSaved) $.cookie ('vaxEasyHiScore', proportionSaved)
-        if (proportionSaved >= easyBar) $.cookie ('vaxEasyCompletion', 'true')
       }
 
     }
 
     if (difficultyString === "medium") {
+      $.cookie ('vaxMediumCompletion', (proportionSaved >= mediumBar)+'')
       if (speed) {
         if ($.cookie ('vaxMediumHiScoreRT') < proportionSaved) $.cookie ('vaxMediumHiScoreRT', proportionSaved)
-        if (proportionSaved >= mediumBar) $.cookie ('vaxMediumCompletion', 'true')
       }
       else {
         if ($.cookie ('vaxMediumHiScore') < proportionSaved) $.cookie ('vaxMediumHiScore', proportionSaved)
-        if (proportionSaved >= mediumBar) $.cookie ('vaxMediumCompletion', 'true')
       }
 
     }
 
     if (difficultyString === "hard") {
+      $.cookie ('vaxHardCompletion',  (proportionSaved >= hardBar)+'')
       if (speed) {
         if ($.cookie ('vaxHardHiScoreRT') < proportionSaved)$.cookie ('vaxHardHiScoreRT', proportionSaved)
-        if (proportionSaved >= hardBar) $.cookie ('vaxHardCompletion', 'true')
       }
       else {
         if ($.cookie ('vaxHardHiScore') < proportionSaved)$.cookie ('vaxHardHiScore', proportionSaved)
-        if (proportionSaved >= hardBar) $.cookie ('vaxHardCompletion', 'true')
       }
 
     }
@@ -1222,51 +1204,40 @@ function initGameSpace() {
 
     if (difficultyString === "easy") {
 
+      cookie.scores[0].push(proportionSaved);
+      vaxEasyCompletion = (proportionSaved > easyBar);
+
       if (speed) {
-        cookie.scoresRT[0].push(proportionSaved);
-        if (proportionSaved > easyBar) vaxEasyCompletion = true;
         vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
-
-
       }
       else {
-        cookie.scores[0].push(proportionSaved);
-        if (proportionSaved > easyBar) vaxEasyCompletion = true;
         vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
-
       }
 
     }
+
     if (difficultyString === "medium") {
+      cookie.scoresRT[1].push(proportionSaved);
+      vaxMediumCompletion = (proportionSaved > mediumBar);
+
       if (speed) {
-        cookie.scoresRT[1].push(proportionSaved);
-        if (proportionSaved > mediumBar) vaxMediumCompletion = true;
         vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
-
       }
       else {
-        cookie.scores[1].push(proportionSaved);
-        if (proportionSaved > mediumBar) vaxMediumCompletion = true;
         vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
-
       }
-
     }
-    if (difficultyString === "hard") {
-      if (speed) {
-        cookie.scoresRT[2].push(proportionSaved);
-        if (proportionSaved > hardBar) vaxHardCompletion = true;
-        vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
 
+    if (difficultyString === "hard") {
+      cookie.scoresRT[2].push(proportionSaved);
+      vaxHardCompletion = (proportionSaved > hardBar);
+
+      if (speed) {
+        vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
       }
       else {
-        cookie.scores[2].push(proportionSaved);
-        if (proportionSaved > hardBar) vaxHardCompletion = true;
         vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
-
       }
-
-
     }
     $.cookie .json = false;
 
@@ -1294,12 +1265,12 @@ function initGameSpace() {
 
   }
 
-  function defRext(y, fill){
+  function defRext(h, w, x, y, fill){
 
     return  d3.select(".gameSVG").append("rect")
-    .attr("height", 15)
-    .attr("width", 15)
-    .attr("x", 150)
+    .attr("height", h)
+    .attr("width", w)
+    .attr("x", x)
     .attr("y", y)
     .attr("fill", fill);
   }
@@ -1383,10 +1354,10 @@ function initGameSpace() {
     defText(-76, 310, "50%")
     defText(-72, 455, "0%")
 
-    defRext(200, "#ef5555")
-    defRext(230, "#d9d678")
-    defRext(260, "#85BC99")
-    defRext(290, "#b7b7b7")
+    defRext(15, 15, 150, 200, "#ef5555")
+    defRext(15, 15, 150, 230, "#d9d678")
+    defRext(15, 15, 150, 260, "#85BC99")
+    defRext(15, 15, 150, 290, "#b7b7b7")
 
     defText(180, 213, "Infected")
     defText(180, 243, "Quarantined")
