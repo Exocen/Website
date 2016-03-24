@@ -1461,7 +1461,7 @@ function initGameSpace() {
 
   }
 
-  s  function initScoreRecap() {
+  function initScoreRecap() {
     writeCookiesJSON();
 
     // remove game features from view
