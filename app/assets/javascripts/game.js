@@ -1029,11 +1029,7 @@ function initGameSpace() {
       .transition()
       .duration(500)
       .attr("y", -100)
-
-
-    }, 2500)
-
-
+    }, 1500)
   }
 
   function outbreakDetected_manage(clas, ad){
@@ -1077,7 +1073,7 @@ function initGameSpace() {
       .attr("y", -100)
 
 
-    }, 2000)
+    }, 1000)
 
   }
 
@@ -1203,39 +1199,37 @@ function initGameSpace() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
     if (difficultyString === "easy") {
-
-      cookie.scores[0].push(proportionSaved);
       vaxEasyCompletion = (proportionSaved > easyBar);
-
       if (speed) {
+        cookie.scoresRT[0].push(proportionSaved);
         vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
       }
       else {
+        cookie.scores[0].push(proportionSaved);
         vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
       }
-
     }
 
-    if (difficultyString === "medium") {
-      cookie.scoresRT[1].push(proportionSaved);
+    else if (difficultyString === "medium") {
       vaxMediumCompletion = (proportionSaved > mediumBar);
-
       if (speed) {
+        cookie.scoresRT[1].push(proportionSaved);
         vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
       }
       else {
+        cookie.scores[1].push(proportionSaved);
         vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
       }
     }
 
-    if (difficultyString === "hard") {
-      cookie.scoresRT[2].push(proportionSaved);
+    else if (difficultyString === "hard") {
       vaxHardCompletion = (proportionSaved > hardBar);
-
       if (speed) {
+        cookie.scoresRT[2].push(proportionSaved);
         vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
       }
       else {
+        cookie.scores[2].push(proportionSaved);
         vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
       }
     }
