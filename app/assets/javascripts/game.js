@@ -1382,7 +1382,6 @@ function initGameSpace() {
     defText(-76, 310, "50%")
     defText(-72, 455, "0%")
 
-
     defRext(200, "#ef5555")
     defRext(230, "#d9d678")
     defRext(260, "#85BC99")
@@ -1448,42 +1447,15 @@ function initGameSpace() {
     .attr("fill", "#707070")
     .text(total + "%")
 
-    d3.select(".gameSVG").append("line")
-    .attr("x1", 395)
-    .attr("x2", 625)
-    .attr("y1", 470)
-    .attr("y2", 470)
+    defLine(395, 625, 470, 470)
+    defLine(395, 395, 140, 470)
 
-    d3.select(".gameSVG").append("line")
-    .attr("x1", 395)
-    .attr("x2", 395)
-    .attr("y1", 140)
-    .attr("y2", 470)
+    defText( 347, 162, "100%")
+    defText( 359, 310, "50%")
+    defText( 355, 455, "0%")
 
-    d3.select(".gameSVG").append("text")
-    .attr("x", 347)
-    .attr("y", 162)
-    .text("100%")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 359)
-    .attr("y", 310)
-    .text("50%")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 355)
-    .attr("y", 455)
-    .text("0%")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 430)
-    .attr("y", 489)
-    .text("Current")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 540)
-    .attr("y", 489)
-    .text("Best")
+    defText( 430, 489, "Current")
+    defText( 540, 489, "Best")
 
   }
 
@@ -1597,29 +1569,10 @@ function initGameSpace() {
         return;
       }
 
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapBinaryText")
-      .attr("x", 700)
-      .attr("y", 180)
-      .text("Passed!")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText1")
-      .attr("x", 690)
-      .attr("y", 230)
-      .text("Well done! You exceeded the")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText2")
-      .attr("x", 690)
-      .attr("y", 255)
-      .text(bar + "% survival rate required to")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText3")
-      .attr("x", 690)
-      .attr("y", 280)
-      .text("move on to the next level.")
+      defText( 700, 180, "Passed!").attr("class", "recapBinaryText")
+      defText( 690, 230, "Well done! You exceeded the").attr("class", "recapText1")
+      defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
+      defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapButton")
@@ -1651,29 +1604,11 @@ function initGameSpace() {
 
     }
     else {
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapBinaryText")
-      .attr("x", 700)
-      .attr("y", 180)
-      .text("Try Again!")
 
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText1")
-      .attr("x", 690)
-      .attr("y", 225)
-      .text("You did not exceed the")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText2")
-      .attr("x", 690)
-      .attr("y", 250)
-      .text(bar + "% survival rate required to")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText3")
-      .attr("x", 690)
-      .attr("y", 273)
-      .text("move on to the next level.")
+      defText( 700, 180, "Try Again!").attr("class", "recapBinaryText")
+      defText( 690, 230, "You did not exceed the").attr("class", "recapText1")
+      defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
+      defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapButton")
