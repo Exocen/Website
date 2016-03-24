@@ -1378,9 +1378,9 @@ function initGameSpace() {
     defLine(-35, 200, 470, 470)
     defLine(-35, -35, 140, 470)
 
-    function defText(-83, 162, "100%")
-    function defText(-76, 310, "50%")
-    function defText(-72, 455, "0%")
+    defText(-83, 162, "100%")
+    defText(-76, 310, "50%")
+    defText(-72, 455, "0%")
 
 
     defRext(200, "#ef5555")
@@ -1388,10 +1388,10 @@ function initGameSpace() {
     defRext(260, "#85BC99")
     defRext(290, "#b7b7b7")
 
-    function defText(180, 213, "Infected")
-    function defText(180, 243, "Quarantined")
-    function defText(180, 273, "Vaccinated")
-    function defText(180, 303, "Uninfected")
+    defText(180, 213, "Infected")
+    defText(180, 243, "Quarantined")
+    defText(180, 273, "Vaccinated")
+    defText(180, 303, "Uninfected")
 
   }
 
