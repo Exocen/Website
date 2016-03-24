@@ -14,6 +14,7 @@ Todo
 * Docker integration + https2 on [Docker-rails](https://github.com/exocen/docker-rails)
 * Tests
 * Docker unicorn + Nginx implementation
+
 ---
 
 Gems
