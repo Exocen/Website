@@ -1134,7 +1134,6 @@ function initGameSpace() {
     .on("mouseover", function(d) {
 
       d3.select(this).style("fill", "#2692F2")
-      ²
     })
     .on("mouseout", function(d) {
       d3.select(this).style("fill", "white")
@@ -1645,7 +1644,7 @@ function initGameSpace() {
         d3.select(this).style("fill", "#707070")
       })
     }
-    
+
   }
 
   function retry() {
