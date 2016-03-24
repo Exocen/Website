@@ -120,7 +120,6 @@ $colHighlight   : #333333;
 @media (max-width: 1000px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
-      color: $colinverse;
       &:hover, &:focus {
         color: $colHighlight;
       }
@@ -140,7 +139,6 @@ and (max-device-width: 1000px)
 and (-webkit-device-pixel-ratio: 2) {
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
-      color: $colinverse;
       &:hover, &:focus {
         color: $colHighlight;
       }
