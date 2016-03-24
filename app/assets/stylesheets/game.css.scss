@@ -109,7 +109,6 @@
 
 .newGameHeader {
   font-size: 30px;
-  font-family: "Nunito";
   font-weight: 500;
   color: #707070;
 }
@@ -118,7 +117,6 @@
   position: relative;
   font-size: 32px;
   display: block;
-  font-family: "Nunito";
   font-weight: 300;
   color: #707070;
   margin-top: 30px;
@@ -129,7 +127,6 @@
   position: relative;
   font-size: 32px;
   display: block;
-  font-family: "Nunito";
   font-weight: 300;
   color: #BABABA;
   margin-top: 30px;
@@ -140,7 +137,6 @@
 .vaxLogoDiv {
   position:relative;
   background: #85bc99;
-  font-family: "Nunito";
   font-weight: 400;
   font-size: 28px;
   color: white;
@@ -163,7 +159,7 @@
   font-family: "Nunito";
 }
 
-.difficultyHeader, .gameOptionsHeader {
+.difficultyHeader, .gameOptionsHeader{
   font-size: 22px;
   font-weight: 700;
   color: #707070;
