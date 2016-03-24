@@ -1459,6 +1459,19 @@ function initGameSpace() {
 
   }
 
+  function difficulty_initScore_manage(bar, bestScore, diffset, txt){
+    if (speed) {
+      diffset = txt;
+      bestScore = vaxEasyHiScoreRT;
+      bar = easyBar;
+    }
+    else {
+      diffset = txt;
+      bestScore = vaxEasyHiScore;
+      bar = easyBar;
+    }
+  }
+
   function initScoreRecap() {
     writeCookiesJSON();
 
@@ -1477,47 +1490,13 @@ function initGameSpace() {
     var bestScore;
     var diffset;
     if (difficultyString === "easy") {
-      if (speed) {
-        diffset = "Easy";
-        bestScore = vaxEasyHiScoreRT;
-        bar = easyBar;
-      }
-      else {
-        diffset = "Easy";
-        bestScore = vaxEasyHiScore;
-        bar = easyBar;
-      }
-
+      difficulty_initScore_manage(bar, bestScore, diffset, "Easy");
     }
     if (difficultyString === "medium") {
-      if (speed) {
-        diffset = "Medium";
-        bestScore = vaxMediumHiScoreRT;
-        bar = mediumBar;
-
-      }
-      else {
-        diffset = "Medium";
-        bestScore = vaxMediumHiScore;
-        bar = mediumBar;
-
-      }
-
+      difficulty_initScore_manage(bar, bestScore, diffset, "Medium");
     }
     if (difficultyString === "hard") {
-      if (speed) {
-        diffset = "Hard";
-        bestScore = vaxHardHiScoreRT;
-        bar = hardBar;
-
-      }
-      else {
-        diffset = "Hard";
-        bestScore = vaxHardHiScore;
-        bar = hardBar;
-
-      }
-
+      difficulty_initScore_manage(bar, bestScore, diffset, "Hard");
     }
     if (difficultyString === null) {
       bestScore = currentScore;
@@ -1545,13 +1524,7 @@ function initGameSpace() {
     if (passed) {
 
       if (difficultyString === null) {
-        d3.select(".gameSVG").append("text")
-        .style("font-size", "55px")
-        .style("fill", "#707070")
-        .attr("class", "recapBinaryText")
-        .attr("x", 700)
-        .attr("y", 180)
-        .text("Play Again!")
+        defText( 700, 180,"Play Again!").attr("class", "recapBinaryText")
 
         d3.select(".gameSVG").append("text")
         .attr("class", "recapButton")
