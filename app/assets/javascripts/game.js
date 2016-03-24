@@ -1036,6 +1036,10 @@ function initGameSpace() {
 
   }
 
+  function outbreakDetected_manage(clas, ad){
+    return  d3.select(cal).transition().duration(500).attr("y", window.innerHeight/2 + ad)
+  }
+
   function outbreakDetected() {
     d3.select(".gameSVG").append("rect")
     .attr("class", "outbreakNotifyShadow")
@@ -1066,9 +1070,9 @@ function initGameSpace() {
     .text("Outbreak Detected!")
     .attr("opacity", 1)
 
-    d3.select(".outbreakNotifyText").transition().duration(500).attr("y", window.innerHeight/2 - 300 + 100 - 70 + 5)
-    d3.select(".outbreakNotifyBox").transition().duration(500).attr("y", window.innerHeight/2 - 300)
-    d3.select(".outbreakNotifyShadow").transition().duration(500).attr("y", window.innerHeight/2 - 300 + 7)
+    outbreakDetected_manage(".outbreakNotifyText", 100 - 70 + 5 - 300 );
+    outbreakDetected_manage(".outbreakNotifyBox", 0 - 300 );
+    outbreakDetected_manage(".outbreakNotifyShadow", 7 - 300 );
 
     window.setTimeout(function() {
       d3.select(".outbreakNotifyShadow")
@@ -1113,7 +1117,6 @@ function initGameSpace() {
     .attr("class", "endGameText")
     .attr("x", window.innerWidth/4 + 135 - 100)
     .attr("y", -100)
-    .style("font-family", "Nunito")
     .style("fill", "white")
     .style("font-weight", 500)
     .style("font-size", "25px")
@@ -1123,7 +1126,6 @@ function initGameSpace() {
     .attr("class", "endGameSUBMIT")
     .attr("x", window.innerWidth/4 + 275 - 90)
     .attr("y", -100)
-    .style("font-family", "Nunito")
     .style("fill", "white")
     .style("font-weight", 500)
     .style("font-size", "15px")
@@ -1152,10 +1154,10 @@ function initGameSpace() {
 
     })
 
-    d3.select(".endGameBox").transition().duration(500).attr("y", window.innerHeight/2 - 300)
-    d3.select(".endGameShadow").transition().duration(500).attr("y", window.innerHeight/2 - 300 + 7)
-    d3.select(".endGameText").transition().duration(500).attr("y", window.innerHeight/2 - 250)
-    d3.select(".endGameSUBMIT").transition().duration(500).attr("y", window.innerHeight/2 - 250 + 50)
+    outbreakDetected_manage(".endGameBox", - 300 );
+    outbreakDetected_manage(".endGameShadow", 7 - 300 );
+    outbreakDetected_manage(".endGameText", - 250 );
+    outbreakDetected_manage(".endGameSUBMIT", 50 - 250 );
 
   }
 
@@ -1459,20 +1461,7 @@ function initGameSpace() {
 
   }
 
-  function difficulty_initScore_manage(bar, bestScore, diffset, txt){
-    if (speed) {
-      diffset = txt;
-      bestScore = vaxEasyHiScoreRT;
-      bar = easyBar;
-    }
-    else {
-      diffset = txt;
-      bestScore = vaxEasyHiScore;
-      bar = easyBar;
-    }
-  }
-
-  function initScoreRecap() {
+  s  function initScoreRecap() {
     writeCookiesJSON();
 
     // remove game features from view
@@ -1488,15 +1477,17 @@ function initGameSpace() {
     var passed;
     var bar;
     var bestScore;
-    var diffset;
     if (difficultyString === "easy") {
-      difficulty_initScore_manage(bar, bestScore, diffset, "Easy");
+      bar = easyBar;
+      bestScore = speed ? vaxEasyHiScoreRT: vaxEasyHiScore;
     }
     if (difficultyString === "medium") {
-      difficulty_initScore_manage(bar, bestScore, diffset, "Medium");
+      bar = mediumBar;
+      bestScore = speed ? vaxMediumHiScoreRT: vaxMediumHiScore;
     }
     if (difficultyString === "hard") {
-      difficulty_initScore_manage(bar, bestScore, diffset, "Hard");
+      bar = hardBar;
+      bestScore = speed ? vaxHardHiScoreRT: vaxHardHiScore;
     }
     if (difficultyString === null) {
       bestScore = currentScore;
@@ -1628,13 +1619,7 @@ function initGameSpace() {
     .attr("y", 420)
     .text("Best Score: " + bestScore + "%");
 
-    var diffset;
-
-    if (difficultyString === "easy") diffset = "Easy";
-    if (difficultyString === "medium") diffset = "Medium";
-    if (difficultyString === "hard") diffset = "Hard";
     if (difficultyString === null) {
-      diffset = "Custom";
       bestScore = total;
     }
 
