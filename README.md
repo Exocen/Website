@@ -10,29 +10,29 @@ Todo
 * Js depedencies
 * Css + d3 Game
 * Video playlist
-* Docker integration
-* Better ReadMe (with samples)
-
+* Lsint game.js
+* Docker integration + https2 on [Docker-rails](https://github.com/exocen/docker-rails)
+* Tests
 ---
 
 Gems
 
 ```ruby
-gem 'gon'
-#Js graphic librairy 
+gem 'jquery-ui-rails'
+# Js graphic librairy
 gem 'd3-rails'
-#Cookies for game
+# Cookies for game
 gem 'jquery-cookie-rails'
-#Js countdown sample
+# Js countdown sample
 gem 'flipclockjs-rails'
-#dropzone for photos
+# Dropzone for photos
 gem 'dropzonejs-rails'
-#postgrepsql compatibiliy
+# Postgrepsql compatibiliy
 gem 'pg'
-#add carrousel
+# Add carrousel
 gem 'jquery-slick-rails'
-# paperclip database
+# Paperclip database
 gem "paperclip_database"
-#add paper-clip (pictures)
+# Add paper-clip (pictures)
 gem 'paperclip'
-``` 
+```
