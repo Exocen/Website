@@ -20,7 +20,6 @@
 
 #pinHeader {
   position: absolute;
-  top: 0px;
   font-family: "Nunito";
   font-weight: 500;
   font-size: 16px;
@@ -160,24 +159,36 @@
   transition-duration: 0.5s;
 }
 
+.gameSVG, .row{
+  font-family: "Nunito";
+}
 
 .difficultyHeader, .gameOptionsHeader {
   font-size: 22px;
-  font-family: "Nunito";
   font-weight: 700;
+  color: #707070;
+}
+
+.recapBinaryText{
+  font-size: 75px;
+  font-weight: 500;
+  color: #707070;
+}
+
+.recapText1, .recapText2, .recapText3, .quarantineModeOptions{
+  font-size: 20px;
+  font-weight: 300;
   color: #707070;
 }
 
 .quarantineModeOptions{
   font-size: 22px;
-  font-family: "Nunito";
   font-weight: 300;
   color: #707070;
 }
 
 .turnBasedTrue{
   font-size: 18px;
-  font-family: "Nunito";
   font-weight: 500;
   color: #2692F2;
   cursor: pointer;
@@ -185,7 +196,6 @@
 
 .realTimeTrue{
   font-size: 18px;
-  font-family: "Nunito";
   font-weight: 300;
   color: #BABABA;
   cursor: pointer;
@@ -193,7 +203,6 @@
 
 .difficultySelection{
   font-size: 20px;
-  font-family: "Nunito";
   font-weight: 500;
   color: #BABABA;
 }

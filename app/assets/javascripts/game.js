@@ -1,12 +1,12 @@
 var numberOfIndividuals, meanDegree, rewire = 0.1;
 var graph = {};
-var force,node, link;
+var force, node, link;
 var scenarioTitle;
 
 var resizingParameter = 2;
 var invisibleParameter = 1.9;
 
-var transmissionRate,recoveryRate;
+var transmissionRate, recoveryRate;
 var transmissionRates = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
 var recoveryRates = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
 var independentOutbreaks = 1;
@@ -17,7 +17,7 @@ var numberSaved;
 var numberInfected;
 var numberOfRefusers;
 
-var gameSVG ;
+var gameSVG;
 var width = 925;
 var height = 750 - 45 - 50;  // standard height - footer:height - footer:bottomMargin
 var charge = -900;
@@ -83,8 +83,8 @@ var best;
 var current;
 
 // fine tuning the drag versus click differentiation
-var originalLocation = [0,0];
-var newLocation = [0,0];
+var originalLocation = [0, 0];
+var newLocation = [0, 0];
 var dragStartDateObject;
 var dragStartMillis;
 var dragEndDateObject;
@@ -102,10 +102,10 @@ function initCookiesOnDelay() {
 }
 
 function readCookiesJSON() {
-  $.cookie .json = true;
-  var cookies = $.cookie ('vaxCookie')
+  $.cookie.json = true;
+  var cookies = $.cookie('vaxCookie');
 
-  if (cookies === null) initCookiesJSON();
+  if (cookies === null) {initCookiesJSON(); }
 
   cookie = $.cookie ('vaxCookie')
 
@@ -1709,10 +1709,6 @@ function initGameSpace() {
       }
 
       d3.select(".gameSVG").append("text")
-      .style("font-family", "Nunito")
-      .style("font-size", "75px")
-      .style("font-weight", "500")
-      .style("fill", "#707070")
       .attr("class", "recapBinaryText")
       .attr("x", 700)
       .attr("y", 180)
@@ -1722,30 +1718,18 @@ function initGameSpace() {
       .attr("class", "recapText1")
       .attr("x", 690)
       .attr("y", 230)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text("Well done! You exceeded the")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapText2")
       .attr("x", 690)
       .attr("y", 255)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text(bar + "% survival rate required to")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapText3")
       .attr("x", 690)
       .attr("y", 280)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text("move on to the next level.")
 
       d3.select(".gameSVG").append("text")
@@ -1779,10 +1763,6 @@ function initGameSpace() {
     }
     else {
       d3.select(".gameSVG").append("text")
-      .style("font-family", "Nunito")
-      .style("font-size", "55px")
-      .style("font-weight", "500")
-      .style("fill", "#707070")
       .attr("class", "recapBinaryText")
       .attr("x", 700)
       .attr("y", 180)
@@ -1792,30 +1772,18 @@ function initGameSpace() {
       .attr("class", "recapText1")
       .attr("x", 690)
       .attr("y", 225)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text("You did not exceed the")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapText2")
       .attr("x", 690)
       .attr("y", 250)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text(bar + "% survival rate required to")
 
       d3.select(".gameSVG").append("text")
       .attr("class", "recapText3")
       .attr("x", 690)
       .attr("y", 273)
-      .style("font-family", "Nunito")
-      .style("font-size", "20px")
-      .style("font-weight", "300")
-      .style("fill", "#707070")
       .text("move on to the next level.")
 
       d3.select(".gameSVG").append("text")
