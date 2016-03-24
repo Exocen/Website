@@ -943,9 +943,7 @@ function initGameSpace() {
     d3.select(".actionQuarantine").append("text")
     .attr("class", "quarantineCounterText")
     .style("font-size", "16px")
-    .style("font-family", "Nunito")
     .style("font-weight", 300)
-    .style("color", "white")
     .text("")
 
     d3.select(".quarantineCounterText").text("x" + numberQuarantined)
@@ -1007,7 +1005,6 @@ function initGameSpace() {
     .attr("x", window.innerWidth/4 + 62 + 5 - 50 + 15)
     .attr("y", -100)
     .attr("fill", "white")
-    .style("font-family", "Nunito")
     .style("font-size", "24px")
     .style("font-weight", 300)
     .text("Vaccine refusers present!")
@@ -1160,7 +1157,6 @@ function initGameSpace() {
     d3.select(".endGameText").transition().duration(500).attr("y", window.innerHeight/2 - 250)
     d3.select(".endGameSUBMIT").transition().duration(500).attr("y", window.innerHeight/2 - 250 + 50)
 
-
   }
 
   function addPeriod1() {
@@ -1205,7 +1201,6 @@ function initGameSpace() {
         if (proportionSaved >= mediumBar) $.cookie ('vaxMediumCompletion', 'true')
       }
 
-
     }
 
     if (difficultyString === "hard") {
@@ -1238,7 +1233,6 @@ function initGameSpace() {
         if (proportionSaved > easyBar) vaxEasyCompletion = true;
         vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
 
-
       }
 
     }
@@ -1255,8 +1249,6 @@ function initGameSpace() {
         vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
 
       }
-
-
 
     }
     if (difficultyString === "hard") {
@@ -1344,7 +1336,6 @@ function initGameSpace() {
     .attr("id", function(d,i) { if (i === 0) return "uninfected"; if (i === 1) return "infected"; if (i === 2) return "quarantined"; if (i === 3) return "vaccinated"})
 
 
-
     // Add a rect for each date.
     var rect = valgroup.selectAll("rect")
     .data(function(d){return d;})
@@ -1383,8 +1374,6 @@ function initGameSpace() {
     .attr("y", 455)
     .text("0%")
 
-
-
     d3.select(".gameSVG").append("rect")
     .attr("height", 15)
     .attr("width", 15)
@@ -1399,7 +1388,6 @@ function initGameSpace() {
     .attr("y", 230)
     .attr("fill", "#d9d678")
 
-
     d3.select(".gameSVG").append("rect")
     .attr("height", 15)
     .attr("width", 15)
@@ -1407,15 +1395,12 @@ function initGameSpace() {
     .attr("y", 260)
     .attr("fill", "#85BC99")
 
-
     d3.select(".gameSVG").append("rect")
     .attr("height", 15)
     .attr("width", 15)
     .attr("x", 150)
     .attr("y", 290)
     .attr("fill", "#b7b7b7")
-
-
 
     d3.select(".gameSVG").append("text")
     .attr("x", 180)
@@ -1483,34 +1468,24 @@ function initGameSpace() {
     d3.select(".gameSVG").append("text")
     .attr("x", best.node().getBBox().x + 426)
     .attr("y", best.node().getBBox().y + 145)
-    .style("font-family", "Nunito")
     .style("font-size", "30px")
-    .style("color", "#707070")
-    .attr("color", "#707070")
-    .attr("fill", "#707070")
     .text(bestScore + "%")
 
     d3.select(".gameSVG").append("text")
     .attr("x", current.node().getBBox().x + 427)
     .attr("y", current.node().getBBox().y + 145)
-    .style("font-family", "Nunito")
     .style("font-size", "30px")
-    .style("color", "#707070")
     .attr("color", "#707070")
     .attr("fill", "#707070")
     .text(total + "%")
 
     d3.select(".gameSVG").append("line")
-    .style("stroke", "#707070")
-    .style("stroke-width", "1px")
     .attr("x1", 395)
     .attr("x2", 625)
     .attr("y1", 470)
     .attr("y2", 470)
 
     d3.select(".gameSVG").append("line")
-    .style("stroke", "#707070")
-    .style("stroke-width", "1px")
     .attr("x1", 395)
     .attr("x2", 395)
     .attr("y1", 140)
@@ -1519,10 +1494,6 @@ function initGameSpace() {
     d3.select(".gameSVG").append("text")
     .attr("x", 347)
     .attr("y", 162)
-    .style("font-family", "Nunito")
-    .style("font-size", "15px")
-    .style("font-weight", "500")
-    .style("fill", "#707070")
     .text("100%")
 
     d3.select(".gameSVG").append("text")
@@ -1544,7 +1515,7 @@ function initGameSpace() {
     .attr("x", 540)
     .attr("y", 489)
     .text("Best")
-    
+
   }
 
   function initScoreRecap() {
@@ -1634,9 +1605,7 @@ function initGameSpace() {
 
       if (difficultyString === null) {
         d3.select(".gameSVG").append("text")
-        .style("font-family", "Nunito")
         .style("font-size", "55px")
-        .style("font-weight", "500")
         .style("fill", "#707070")
         .attr("class", "recapBinaryText")
         .attr("x", 700)
@@ -1756,7 +1725,6 @@ function initGameSpace() {
   function loadConclusionText() {
     var total = Math.round((((numberSaved + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0);
 
-
     d3.select(".popup_game_share").style("visibility", "visible")
 
     d3.select("#pinNodesDiv").remove()
@@ -1781,10 +1749,6 @@ function initGameSpace() {
     .attr("class", "bestScore")
     .attr("x", backX + 25)
     .attr("y", 420)
-    .style("font-family", "Nunito")
-    .style("fill", "#707070")
-    .style("font-size", "24px")
-    .style("font-weight", "500")
     .text("Best Score: " + bestScore + "%");
 
     var diffset;
@@ -1796,51 +1760,6 @@ function initGameSpace() {
       diffset = "Custom";
       bestScore = total;
     }
-
-    var twitterText = "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2F.vax.herokuapp.com&text=I just stopped an epidemic in its tracks! Can you can beat " + bestScore + "%25 on " + diffset + "? Fight the outbreak at&url=http%3A%2F%2Fvax.herokuapp.com";
-    var facebookText = "http://www.facebook.com/sharer.php?s=100&p[title]=Vax! | Gamifying Epidemic Prevention&p[summary]=I just stopped an epidemic in its tracks! Can you beat " + bestScore + "% on " + diffset + "?&p[url]=http://vax.herokuapp.com";
-
-
-    d3.select(".gameSVG").append("image")
-    .attr("x", 150)
-    .attr("y", 355)
-    .attr("height", "50px")
-    .attr("width", "50px")
-    .attr("xlink:href", "/assets/facebook_icon.png")
-    .attr("id", "facebook")
-    .style("padding", "12px 7px 0px 7px")
-    .style("cursor", "pointer")
-    .on("click", function() {
-      window.location.href = facebookText;
-    })
-
-    d3.select(".gameSVG").append("image")
-    .attr("x", 215)
-    .attr("y", 355)
-    .attr("height", "50px")
-    .attr("width", "50px")
-    .attr("xlink:href", "/assets/twitter_icon.png")
-    .attr("id", "twitter")
-    .style("padding", "12px 7px 0px 7px")
-    .style("width", "25px")
-    .style("cursor", "pointer")
-    .on("click", function() {
-      window.location.href = twitterText;
-    })
-
-    d3.select(".gameSVG").append("image")
-    .attr("x", 280)
-    .attr("y", 355)
-    .attr("height", "50px")
-    .attr("width", "50px")
-    .attr("xlink:href", "/assets/googleplus_icon.png")
-    .attr("id", "twitter")
-    .style("padding", "12px 7px 0px 7px")
-    .style("width", "25px")
-    .style("cursor", "pointer")
-    .on("click", function() {
-      window.location.href = "https://plus.google.com/share?url=http://vax.herokuapp.com";
-    })
 
 
     if (difficultyString === null) {
