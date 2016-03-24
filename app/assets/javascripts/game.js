@@ -1037,7 +1037,7 @@ function initGameSpace() {
   }
 
   function outbreakDetected_manage(clas, ad){
-    return  d3.select(cal).transition().duration(500).attr("y", window.innerHeight/2 + ad)
+    return  d3.select(clas).transition().duration(500).attr("y", window.innerHeight/2 + ad)
   }
 
   function outbreakDetected() {
