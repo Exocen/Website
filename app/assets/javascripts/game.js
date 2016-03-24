@@ -1134,7 +1134,7 @@ function initGameSpace() {
     .on("mouseover", function(d) {
 
       d3.select(this).style("fill", "#2692F2")
-
+      ²
     })
     .on("mouseout", function(d) {
       d3.select(this).style("fill", "white")
@@ -1611,31 +1611,32 @@ function initGameSpace() {
       bestScore = vaxHardHiScore;
       bar = hardBar;
     }
-    if (difficultyString === null) bestScore = total;
 
-    d3.select(".gameSVG").append("text")
-    .attr("class", "bestScore")
-    .attr("x", backX + 25)
-    .attr("y", 420)
-    .text("Best Score: " + bestScore + "%");
+    if (total > bar) {
 
-    if (difficultyString === null) {
-      bestScore = total;
+      defText(260, 525, "Well done, you saved " + total + "% of the network.").attr("class", "recapText");
+      defText(355, 590, "Retry").attr("class", "recapButton").on("click", retry)
+      .on("mouseover", function() {
+        d3.select(this).style("fill", "#2692F2")
+      })
+      .on("mouseout", function() {
+        d3.select(this).style("fill", "#707070")
+      });
+
+      defText(580, 590, "Next").attr("class", "recapButton").on("click", next)
+      .on("mouseover", function() {
+        d3.select(this).style("fill", "#2692F2")
+      })
+      .on("mouseout", function() {
+        d3.select(this).style("fill", "#707070")
+      });
+
+
     }
+    else {
+      defText(200, 525, "Save " + bar + "% of the network to unlock the next stage.").attr("class", "recapText");
 
-
-    if (difficultyString === null) {
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapText")
-      .attr("x", 260)
-      .attr("y", 525)
-      .text("Well done, you saved " + total + "% of the network.")
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapButton")
-      .attr("x", 470)
-      .attr("y", 590)
-      .text("Retry")
+      defText(470, 590, "Retry").attr("class", "recapButton")
       .on("click", retry)
       .on("mouseover", function() {
         d3.select(this).style("fill", "#2692F2")
@@ -1643,65 +1644,8 @@ function initGameSpace() {
       .on("mouseout", function() {
         d3.select(this).style("fill", "#707070")
       })
-
     }
-    else {
-      if (total > bar) {
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapText")
-        .attr("x", 260)
-        .attr("y", 525)
-        .text("Well done, you saved " + total + "% of the network.")
-
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapButton")
-        .attr("x", 355)
-        .attr("y", 590)
-        .text("Retry")
-        .on("click", retry)
-        .on("mouseover", function() {
-          d3.select(this).style("fill", "#2692F2")
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("fill", "#707070")
-        })
-
-
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapButton")
-        .attr("x", 580)
-        .attr("y", 590)
-        .text("Next")
-        .on("click", next)
-        .on("mouseover", function() {
-          d3.select(this).style("fill", "#2692F2")
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("fill", "#707070")
-        })
-
-      }
-      else {
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapText")
-        .attr("x", 200)
-        .attr("y", 525)
-        .text("Save " + bar + "% of the network to unlock the next stage.")
-
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapButton")
-        .attr("x", 470)
-        .attr("y", 590)
-        .text("Retry")
-        .on("click", retry)
-        .on("mouseover", function() {
-          d3.select(this).style("fill", "#2692F2")
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("fill", "#707070")
-        })
-      }
-    }
+    
   }
 
   function retry() {
