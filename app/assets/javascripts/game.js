@@ -1293,6 +1293,35 @@ function initGameSpace() {
 
   }
 
+  function defRext(y, fill){
+
+    return  d3.select(".gameSVG").append("rect")
+    .attr("height", 15)
+    .attr("width", 15)
+    .attr("x", 150)
+    .attr("y", y)
+    .attr("fill", fill);
+  }
+
+  function defLine(x1, x2, y1, y2){
+
+    return d3.select(".gameSVG").append("line")
+    .attr("x1", x1)
+    .attr("x2", x2)
+    .attr("y1", y1)
+    .attr("y2", y2);
+
+  }
+
+  function defText(x, y, text){
+
+    return d3.select(".gameSVG").append("text")
+    .attr("x", x)
+    .attr("y", y)
+    .text(text);
+
+  }
+
   function generateStackedBarChart() {
     var width = 125;
     var height = 320;
@@ -1346,84 +1375,24 @@ function initGameSpace() {
     .attr("width", x.rangeBand())
     .attr("id", function(d) {console.log(d)})
 
+    defLine(-35, 200, 470, 470)
+    defLine(-35, -35, 140, 470)
 
-    d3.select(".gameSVG").append("line")
-    .attr("x1", -35)
-    .attr("x2", 200)
-    .attr("y1", 470)
-    .attr("y2", 470)
-
-    d3.select(".gameSVG").append("line")
-    .attr("x1", -35)
-    .attr("x2", -35)
-    .attr("y1", 140)
-    .attr("y2", 470)
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", -83)
-    .attr("y", 162)
-    .text("100%")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", -76)
-    .attr("y", 310)
-    .text("50%")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", -72)
-    .attr("y", 455)
-    .text("0%")
-
-    d3.select(".gameSVG").append("rect")
-    .attr("height", 15)
-    .attr("width", 15)
-    .attr("x", 150)
-    .attr("y", 200)
-    .attr("fill", "#ef5555")
-
-    d3.select(".gameSVG").append("rect")
-    .attr("height", 15)
-    .attr("width", 15)
-    .attr("x", 150)
-    .attr("y", 230)
-    .attr("fill", "#d9d678")
-
-    d3.select(".gameSVG").append("rect")
-    .attr("height", 15)
-    .attr("width", 15)
-    .attr("x", 150)
-    .attr("y", 260)
-    .attr("fill", "#85BC99")
-
-    d3.select(".gameSVG").append("rect")
-    .attr("height", 15)
-    .attr("width", 15)
-    .attr("x", 150)
-    .attr("y", 290)
-    .attr("fill", "#b7b7b7")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 180)
-    .attr("y", 213)
-    .text("Infected")
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 180)
-    .attr("y", 243)
-    .text("Quarantined")
+    function defText(-83, 162, "100%")
+    function defText(-76, 310, "50%")
+    function defText(-72, 455, "0%")
 
 
-    d3.select(".gameSVG").append("text")
-    .attr("x", 180)
-    .attr("y", 273)
-    .text("Vaccinated")
+    defRext(200, "#ef5555")
+    defRext(230, "#d9d678")
+    defRext(260, "#85BC99")
+    defRext(290, "#b7b7b7")
 
+    function defText(180, 213, "Infected")
+    function defText(180, 243, "Quarantined")
+    function defText(180, 273, "Vaccinated")
+    function defText(180, 303, "Uninfected")
 
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", 180)
-    .attr("y", 303)
-    .text("Uninfected")
   }
 
   function generateUninfectedBar(total, bestScore) {
