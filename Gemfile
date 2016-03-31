@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'unicorn'
 gem 'jquery-ui-rails'
 #Js graphic librairy
 gem 'd3-rails'
