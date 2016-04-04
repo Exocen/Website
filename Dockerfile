@@ -1,5 +1,5 @@
 # Dockerfile
-FROM seapy/rails-nginx-unicorn
-MAINTAINER seapy(iamseapy@gmail.com)
+FROM exocen/docker-rails
+MAINTAINER Exocen
 
 EXPOSE 80
