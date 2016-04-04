@@ -4,7 +4,7 @@ CONTAINERNAME=ROR
 DB_PASSWORD=
 DB_IP=
 DB_USERNAME=
-
+SECRET=
 
 all: build run
 
@@ -12,9 +12,10 @@ build:
 	docker build -t $(MAINTAINERNAME)/$(IMAGENAME) .
 
 run:
-	docker run -d --name $(CONTAINERNAME)\
-	-p 80:80\
+	docker run -d --name $(CONTAINERNAME) \
+	-p 80:80 \
 	-e POSTGRES_USERNAME=$(DB_USERNAME) \
 	-e POSTGRES_PASSWORD=$(DB_PASSWORD) \
 	-e POSTGRES_IP=$(DB_IP) \
- $(MAINTAINERNAME)/$(IMAGENAME)
+	-e SECRET_KEY_BASE=$(SECRET) \
+	$(MAINTAINERNAME)/$(IMAGENAME)
