@@ -4,7 +4,7 @@ CONTAINERNAME=ROR
 DB_PASSWORD=
 DB_IP=
 DB_USERNAME=
-SECRET=
+SECRET:=$(shell date +%s | sha256sum | base64 | head -c 32; echo)
 
 all: build run
 
