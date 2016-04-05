@@ -3,7 +3,7 @@ before_action :logged_in_user
 
   def show
     #style = params[:style] ? params[:style] : 'med'
-    style = "med"
+    style = "large"
     record = Photo.find(params[:id])
     raise 'Error' unless record.image.exists?(style)
     send_data record.image.file_contents(style),
