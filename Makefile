@@ -21,6 +21,6 @@ run:
 	-e SECRET_KEY_BASE=$(SECRET) \
 	$(MAINTAINERNAME)/$(IMAGENAME)
 	
-db:
+dbd:
 	docker run --name $(DB_NAME) -e POSTGRES_PASSWORD=$(DB_PASSWORD) -d postgres
 	#docker exec pg pg_dump -U postgres -f /var/lib/postgresql/data/backup.sql
