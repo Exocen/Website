@@ -14,7 +14,7 @@ function GoCarrousel()
 function GoDropzone(){
   Dropzone.autoDiscover = false;
   $("#new_photo").dropzone({
-    maxFilesize: 1,
+    maxFilesize: 3,
     paramName: "photo[image]",
     success: function(file, response){
       $(file.previewTemplate).find('.dz-remove').attr('id', response.fileID);
