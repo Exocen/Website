@@ -6,21 +6,14 @@
 <%= javascript_include_tag "game.js" %>
 
 
-<audio id="audio">
-  <source src="/assets/pop.wav" type="audio/wav" />
-</audio>
-
-
 <div class="actionVax" onclick=activateGameVaccinationMode()>
   <div class="vaccineDepressedState"></div>
   <text id = "vaxShieldText"> VACCINES </text>
-  <img id="vaxShieldIcon" src="/assets/vaxShield.svg" onclick=activateGameVaccinationMode()>
 </div>
 
 <div class="actionQuarantine" onclick=activateGameQuarantineMode()>
   <div class="quarantineDepressedState"></div>
   <text id = "quarantineText"> QUARANTINE </text>
-  <img id="quarantineIcon" src="/assets/quarantine.svg" onclick=activateGameQuarantineMode()>
 </div>
 
 

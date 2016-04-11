@@ -412,7 +412,6 @@ function initGameSpace_Call(node){
 function initGameSpace() {
   d3.select(".vaxLogoDiv").remove();
 
-  pop = document.getElementById('audio');
   game = true;
 
   loadGameSyringe();
@@ -444,7 +443,7 @@ function initGameSpace() {
   else {
     gameSVG = d3.select(".jumbotron").append("svg")
     .attr({
-      "width": "80%",
+      "width": "60%",
       "height": "60%"  //footer takes ~12.5% of the page
     })
     .attr("viewBox", "0 0 " + width + " " + height )
