@@ -30,9 +30,9 @@
           </a>
           <ul class="dropdown-menu">
             <% if current_user.admin? %>
-            <li  class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Users", users_path %></li>
-            <li  class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign up", signup_path %></li>
-            <li  class="<%= 'active' if current_page?(current_user) %>"><%= link_to "Profile", current_user %></li>
+            <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Users", users_path %></li>
+            <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign up", signup_path %></li>
+            <li class="<%= 'active' if current_page?(current_user) %>"><%= link_to "Profile", current_user %></li>
             <% end %>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li class="divider"></li>
@@ -42,7 +42,7 @@
           </ul>
         </li>
         <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+        <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log in", login_path %></li>
         <% end %>
       </ul>
     </nav>
