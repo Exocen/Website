@@ -19,3 +19,8 @@
 //= require bootstrap-sprockets
 //= require jquery.slick
 //= require dropzone
+
+$(".nav a").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});
