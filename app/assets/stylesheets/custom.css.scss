@@ -63,6 +63,8 @@ $bginverse      : #00d27f;
 $bgHighlight    : #333333;
 $colinverse     : #ecf0f1;
 $colHighlight   : #333333;
+$activeGreen    : #00965a;
+$white          : #FFFFFF;
 .navbar-default {
   background-color: $bginverse;
   border-color: $bgHighlight;
@@ -86,8 +88,8 @@ $colHighlight   : #333333;
     }
     > .active {
       > a, > a:hover, > a:focus {
-        color: $colHighlight;
-        background-color: $bgHighlight;
+        color: $white;
+        background-color: $activeGreen;
       }
     }
     > .open {
