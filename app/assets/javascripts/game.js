@@ -655,7 +655,7 @@ function initGameSpace() {
     friction = 0.83;
 
     d3.select(".vaccineCounterText").text(numberOfVaccines)
-    d3.select(".quarantineCounterText").text("x" + numberQuarantined)
+    d3.select(".quarantineCounterText").text(numberQuarantined)
     var nodes = removeVaccinatedNodes(graph);
     var links = removeOldLinks(graph);
     graph.links = links;
@@ -945,7 +945,7 @@ function initGameSpace() {
     .style("font-weight", 300)
     .text("")
 
-    d3.select(".quarantineCounterText").text("x" + numberQuarantined)
+    d3.select(".quarantineCounterText").text(numberQuarantined)
 
     window.setTimeout(activateGameQuarantineMode, 1000);
   }

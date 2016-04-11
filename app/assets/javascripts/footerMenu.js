@@ -3,6 +3,8 @@
 //= require d3
 function initFooter() {
 
+ d3.select(".gameMenuBox").remove();
+
  d3.select("#helpNav").remove()
  d3.select("#newGameNav").remove();
  d3.select("body").append("div")

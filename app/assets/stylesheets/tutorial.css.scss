@@ -1,52 +1,24 @@
 #vaxShieldText {
-  // position:relative;
   font-family: "Nunito";
   font-size: 10px;
   font-weight: 300;
   color: "white";
-  // top: -32px;
-  // right: -20px;
 }
 
-.vaccineDepressedState {
-  // position: absolute;
-  // top: 0px;
-  // right: 17px;
-  // background: #77a989;
-  // width: 75px;
-  // height: 75px;
-  // visibility:hidden;
-}
 
 .vaccineCounterText {
-  // position:absolute;
-  // top: 54px;
-  // right: 37px;
-  // font-family: "Nunito";
-  // font-size: 16px;
-  // font-weight: 300;
   color: #ffffff;
 }
 
 #vaxShieldIcon {
-  // position: relative;
   width:85px;
-  // height:50px;
-  // right: -2px;
-  // top: -40px;
 }
 
 .actionVax {
-  // cursor: pointer;
   background: #85bc99;
-  // position:fixed;
   float:right;
   display: inline-block;
-  // width:100px;
-  // height: 45px;
   padding: 1%;
-  // padding-left: 12px;
-  // top:20px;
   box-shadow:5px 7px #838383;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -60,12 +32,7 @@
 .actionQuarantine {
   background: #85bc99;
   position:fixed;
-  // float:right;
   display: inline-block;
-  // width:115px;
-  // height: 45px;
-  // padding-top: 30px;
-  // padding-left: 12px;
   top:50%;
   padding: 1%;
   box-shadow:5px 7px #838383;
@@ -83,27 +50,11 @@
   font-size: 10px;
   font-weight: 300;
   color: "white";
-  // top: -32px;
-  right: -5%;
 }
 
-.quarantineDepressedState {
-  // position: absolute;
-  // top: 0px;
-  // right: 31px;
-  // background: #77a989;
-  // width: 75px;
-  // height: 75px;
-  // visibility:hidden;
-}
 
 .quarantineCounterText {
-  // position:absolute;
-  // top: 55px;
   right: 6px;
-  // font-family: "Nunito";
-  // font-size: 16px;
-  // font-weight: 300;
   color: #ffffff;
 }
 
@@ -111,8 +62,6 @@
   position: relative;
   width:85px;
   height:50px;
-  // right: -2px;
-  // top: -32px;
 }
 
 .menuItemNormal {
@@ -272,10 +221,6 @@
 
 .nextArrow, .backArrow{
   cursor: pointer;
-}
-
-.startButton {
-
 }
 
 
