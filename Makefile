@@ -14,7 +14,7 @@ build:
 
 run:
 	docker run -d --name $(CONTAINERNAME) \
-	-p 80:80 \
+	-p 80:80 -p 443:443 \
 	-e POSTGRES_USERNAME=$(DB_USERNAME) \
 	-e POSTGRES_PASSWORD=$(DB_PASSWORD) \
 	-e POSTGRES_IP=$(DB_IP) \
