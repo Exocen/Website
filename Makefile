@@ -24,3 +24,6 @@ run:
 dbd:
 	docker run --name $(DB_NAME) -e POSTGRES_PASSWORD=$(DB_PASSWORD) -d postgres
 	#docker exec pg pg_dump -U postgres -f /var/lib/postgresql/data/backup.sql
+	#git clone https://github.com/letsencrypt/letsencrypt
+	#./letsencrypt-auto --dry-run certonly -a webroot --webroot-path=/app/public/ --server https://acme-v01.api.letsencrypt.org/directory  -d sample.com -d www.sample.com --rsa-key-size 4096
+	#./letsencrypt-auto --dry-run renew -a webroot --webroot-path=/app/public/
