@@ -5,7 +5,7 @@ class VideosController < ApplicationController
 
   def index
     @playlist = Video.where(isPlaylist: true).order(created_at: :desc)
-    @videos = Video.where(!:isPlaylist).order(created_at: :desc)
+    @videos = Video.where(isPlaylist: false).order(created_at: :desc)
   end
 
   def create
