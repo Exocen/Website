@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+#Nginx compatibility
 gem 'unicorn'
+#Jquery for rails
 gem 'jquery-ui-rails'
 #Js graphic librairy
 gem 'd3-rails'
