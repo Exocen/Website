@@ -7,7 +7,7 @@ WebSite sample on Ror
 A Website sample build with Ruby on Rails
 
 Todo
-* Js depedencies
+* ~~Js depedencies~~
 * Add [Image Map](http://bl.ocks.org/nswamy14/df13d67b6efeb19eb640) with [D3](https://github.com/mbostock/d3)
 * Css + d3 Game
 * ~~Video playlist~~
