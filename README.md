@@ -13,7 +13,8 @@ Todo
 * ~~Video playlist~~
 * Lsint game.js
 * ~~Docker integration + https2 + https LetEncrypt on [Docker-rails](https://github.com/exocen/docker-rails)~~
-* https script-auto with CRON
+* Https script-auto with CRON on [Docker-rails](https://github.com/exocen/docker-rails)
+* Https on Random Kitten
 * Tests
 * ~~Docker unicorn + Nginx implementation~~
 
