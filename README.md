@@ -17,6 +17,7 @@ Todo
 * Https on Random Kitten
 * Tests
 * ~~Docker unicorn + Nginx implementation~~
+* Footer
 
 ---
 
