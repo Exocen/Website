@@ -1,15 +1,3 @@
-// From http://css-tricks.com/dont-overthink-it-grids/
-
-// The border-box box-sizing messes up other formatting on the site, e.g. the Vax! link
-// at the side of the faq page. It's needed for the grid guttering to work though,
-// so it'll need sorting out at some point.
-
-// *, *:after, *:before {
-//   -webkit-box-sizing: border-box;
-//   -moz-box-sizing: border-box;
-//   box-sizing: border-box;
-// }
-
 $pad: 20px;
 
 .clearfix:after {

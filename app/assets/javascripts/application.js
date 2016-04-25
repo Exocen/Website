@@ -17,5 +17,3 @@
 //= require jquery_ujs
 //= require jquery.cookie
 //= require bootstrap-sprockets
-//= require jquery.slick
-//= require dropzone

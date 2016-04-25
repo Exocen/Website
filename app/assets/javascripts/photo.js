@@ -1,3 +1,5 @@
+//= require dropzone
+//= require jquery.slick
 function GoCarrousel()
 {
   $('.carrousel').slick({
