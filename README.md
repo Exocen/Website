@@ -18,6 +18,7 @@ Todo
 * Tests
 * ~~Docker unicorn + Nginx implementation~~
 * Footer
+* Parameters in database (like countdown)
 
 ---
 
