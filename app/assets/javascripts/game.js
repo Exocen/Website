@@ -1474,25 +1474,29 @@ function initGameSpace() {
 
   }
 
+  function addTextRecapD3(x, y, text){
+    d3.select(".gameSVG").append("text")
+    .attr("class", "recapButton")
+    .attr("x", x)
+    .attr("y", y)
+    .text(text)
+    .style("font-size", "45px")
+    .on("click", retry)
+    .on("mouseover", function() {
+      d3.select(this).style("fill", "#2692F2")
+    })
+    .on("mouseout", function() {
+      d3.select(this).style("fill", "#707070")
+    })
+  }
+
   function addTextRecap(bar, passed) {
     if (passed) {
 
       if (difficultyString === null) {
         defText( 700, 180,"Play Again!").attr("class", "recapBinaryText")
 
-        d3.select(".gameSVG").append("text")
-        .attr("class", "recapButton")
-        .attr("x", 450)
-        .attr("y", 625)
-        .text("Retry")
-        .style("font-size", "45px")
-        .on("click", retry)
-        .on("mouseover", function() {
-          d3.select(this).style("fill", "#2692F2")
-        })
-        .on("mouseout", function() {
-          d3.select(this).style("fill", "#707070")
-        })
+        addTextRecapD3(450, 625, "Retry");
         return;
       }
 
@@ -1501,33 +1505,8 @@ function initGameSpace() {
       defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
       defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapButton")
-      .attr("x", 645)
-      .attr("y", 590)
-      .style("font-size", "45px")
-      .text("Next")
-      .on("click", next)
-      .on("mouseover", function() {
-        d3.select(this).style("fill", "#2692F2")
-      })
-      .on("mouseout", function() {
-        d3.select(this).style("fill", "#707070")
-      })
-
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapButton")
-      .style("font-size", "45px")
-      .attr("x", 240)
-      .attr("y", 590)
-      .text("Retry")
-      .on("click", retry)
-      .on("mouseover", function() {
-        d3.select(this).style("fill", "#2692F2")
-      })
-      .on("mouseout", function() {
-        d3.select(this).style("fill", "#707070")
-      })
+      addTextRecapD3(645, 590, "Next");
+      addTextRecapD3(240, 590, "Retry");
 
     }
     else {
@@ -1537,21 +1516,11 @@ function initGameSpace() {
       defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
       defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
-      d3.select(".gameSVG").append("text")
-      .attr("class", "recapButton")
-      .attr("x", 450)
-      .attr("y", 625)
-      .style("font-size", "45px")
-      .text("Retry")
-      .on("click", retry)
-      .on("mouseover", function() {
-        d3.select(this).style("fill", "#2692F2")
-      })
-      .on("mouseout", function() {
-        d3.select(this).style("fill", "#707070")
-      })
+      addTextRecapD3(450, 625, "Retry");
+
     }
   }
+
 
   function loadConclusionText() {
     var total = Math.round((((numberSaved + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0);
