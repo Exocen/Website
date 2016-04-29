@@ -518,9 +518,6 @@ function initGameSpace() {
       currentElement = null;
     }))
 
-    if (difficultyString === "hard") refusersPresent();
-    if (difficultyString === null || numberOfRefusers>0) refusersPresent();
-
     d3.enter().append("rect")
     .attr("class", "background")
     .style("visibility", "hidden")
@@ -615,26 +612,20 @@ function initGameSpace() {
     gameUpdate();
   }
 
-
+  function tickRef(a){
+    a.attr("cx", function(d) {
+      d.x = Math.max(8, Math.min(width - 8, d.x));
+      return d.x;
+    })
+    .attr("cy", function(d) {
+      d.y = Math.max(8, Math.min((height *.85), d.y));
+      return d.y;
+    });
+  }
   // tick function, which does the physics for each individual node & link.
   function tick() {
-    clickArea.attr("cx", function(d) {
-      d.x = Math.max(8, Math.min(width - 8, d.x));
-      return d.x;
-    })
-    .attr("cy", function(d) {
-      d.y = Math.max(8, Math.min((height *.85), d.y));
-      return d.y;
-    });
-
-    node.attr("cx", function(d) {
-      d.x = Math.max(8, Math.min(width - 8, d.x));
-      return d.x;
-    })
-    .attr("cy", function(d) {
-      d.y = Math.max(8, Math.min((height *.85), d.y));
-      return d.y;
-    });
+    tickRef(clickArea);
+    tickRef(node);
 
     link.attr("x1", function(d) { return d.source.x; })
     .attr("y1", function(d) { return d.source.y; })
@@ -976,105 +967,8 @@ function initGameSpace() {
 
     gameIndexPatients();
 
-    outbreakDetected();
-
   }
 
-  function refusersPresent() {
-    d3.select(".gameSVG").append("rect")
-    .attr("class", "refuserNotifyShadow")
-    .attr("x", window.innerWidth/4 + 62 + 5 - 50)
-    .attr("y", -100)
-    .attr("width", 325)
-    .attr("height", 50)
-    .attr("fill", "#838383")
-    .attr("opacity", 1)
-
-    d3.select(".gameSVG").append("rect")
-    .attr("class", "refuserNotifyBox")
-    .attr("x", window.innerWidth/4 + 62 - 50)
-    .attr("y", -100)
-    .attr("width", 325)
-    .attr("height", 50)
-    .attr("fill", "#85bc99")
-    .attr("opacity", 1)
-
-    d3.select(".gameSVG").append("text")
-    .attr("class", "refuserNotifyText")
-    .attr("x", window.innerWidth/4 + 62 + 5 - 50 + 15)
-    .attr("y", -100)
-    .attr("fill", "white")
-    .style("font-size", "24px")
-    .style("font-weight", 300)
-    .text("Vaccine refusers present!")
-    .attr("opacity", 1)
-
-    d3.select(".refuserNotifyText").transition().duration(500).attr("y", 200 + 32)
-    d3.select(".refuserNotifyBox").transition().duration(500).attr("y", 200)
-    d3.select(".refuserNotifyShadow").transition().duration(500).attr("y", 200 + 7)
-
-    window.setTimeout(function() {
-      d3.select(".refuserNotifyShadow")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-
-      d3.select(".refuserNotifyBox")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-
-      d3.select(".refuserNotifyText")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-    }, 1500)
-  }
-
-  function outbreakDetected_manage(clas, ad){
-    return  d3.select(clas).transition().duration(500).attr("y", window.innerHeight/2 + ad)
-  }
-
-  function outbreakDetected() {
-    defRext(50, 250, window.innerWidth/4 + 62 + 5 - 50, -100,  "#838383")
-    .attr("class", "outbreakNotifyShadow")
-    .attr("opacity", 1);
-
-    defRext(50, 250, window.innerWidth/4 + 62 - 50, -100,  "#85bc99")
-    .attr("class", "outbreakNotifyBox")
-    .attr("opacity", 1);
-
-    defText( window.innerWidth/4 + 62 + 5 - 50 + 12, -100, "Outbreak Detected!")
-    .attr("class", "outbreakNotifyText")
-    .attr("fill", "#FFFFFF")
-    .style("font-size", "24px")
-    .style("font-weight", 300)
-    .attr("opacity", 1)
-
-    outbreakDetected_manage(".outbreakNotifyText", 100 - 70 + 5 - 300 );
-    outbreakDetected_manage(".outbreakNotifyBox", 0 - 300 );
-    outbreakDetected_manage(".outbreakNotifyShadow", 7 - 300 );
-
-    window.setTimeout(function() {
-      d3.select(".outbreakNotifyShadow")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-
-      d3.select(".outbreakNotifyBox")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-
-      d3.select(".outbreakNotifyText")
-      .transition()
-      .duration(500)
-      .attr("y", -100)
-
-
-    }, 1000)
-
-  }
 
   function endGameSession() {
     d3.select(".gameSVG").append("rect")
@@ -1126,35 +1020,27 @@ function initGameSpace() {
       .attr("x", window.innerWidth/4 + 85)
       .text("Reticulating splines.")
 
-      window.setTimeout(addPeriod1, 350)
+      window.setTimeout(addPeriod, 350)
 
-      window.setTimeout(addPeriod2, 800)
+      window.setTimeout(addPeriod, 800)
 
       window.setTimeout(initScoreRecap, 1200)
 
     })
 
-    outbreakDetected_manage(".endGameBox", - 300 );
-    outbreakDetected_manage(".endGameShadow", 7 - 300 );
-    outbreakDetected_manage(".endGameText", - 250 );
-    outbreakDetected_manage(".endGameSUBMIT", 50 - 250 );
+    outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
+    outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
+    outbreakDetected_manage(".endGameText", window.innerHeight/2 - 250 );
+    outbreakDetected_manage(".endGameSUBMIT", window.innerHeight/2 + 50 - 250 );
 
   }
 
-  function addPeriod1() {
+  function addPeriod() {
     d3.select(".endGameText")
     .transition()
     .duration(250)
     .attr("x", window.innerWidth/4 + 85)
     .text("Reticulating splines..")
-  }
-
-  function addPeriod2() {
-    d3.select(".endGameText")
-    .transition()
-    .duration(250)
-    .attr("x", window.innerWidth/4 + 85)
-    .text("Reticulating splines...")
   }
 
   function setCookies() {
@@ -1474,14 +1360,14 @@ function initGameSpace() {
 
   }
 
-  function addTextRecapD3(x, y, text){
+  function addTextRecapD3(x, y, text, link){
     d3.select(".gameSVG").append("text")
     .attr("class", "recapButton")
     .attr("x", x)
     .attr("y", y)
     .text(text)
     .style("font-size", "45px")
-    .on("click", retry)
+    .on("click", link)
     .on("mouseover", function() {
       d3.select(this).style("fill", "#2692F2")
     })
@@ -1496,7 +1382,7 @@ function initGameSpace() {
       if (difficultyString === null) {
         defText( 700, 180,"Play Again!").attr("class", "recapBinaryText")
 
-        addTextRecapD3(450, 625, "Retry");
+        addTextRecapD3(450, 625, "Retry", retry);
         return;
       }
 
@@ -1505,8 +1391,8 @@ function initGameSpace() {
       defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
       defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
-      addTextRecapD3(645, 590, "Next");
-      addTextRecapD3(240, 590, "Retry");
+      addTextRecapD3(645, 590, "Next", next);
+      addTextRecapD3(240, 590, "Retry", retry);
 
     }
     else {
@@ -1516,7 +1402,7 @@ function initGameSpace() {
       defText( 690, 255, bar + "% survival rate required to").attr("class", "recapText2")
       defText( 690, 280, "move on to the next level.").attr("class", "recapText3")
 
-      addTextRecapD3(450, 625, "Retry");
+      addTextRecapD3(450, 625, "Retry", retry);
 
     }
   }
