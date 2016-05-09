@@ -873,6 +873,10 @@ function initGameSpace() {
     }
     gameUpdate();
   }
+  
+  function outbreakDetected_manage(clas, ad){
+    return  d3.select(clas).transition().duration(500).attr("y",ad)
+  }
 
   function loadGameSyringe() {
     d3.select(".actionVax").style("visibility", "visible");
