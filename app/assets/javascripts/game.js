@@ -77,7 +77,6 @@ var currentNode;
 var currentElement;
 
 var cookie = {};
-var pop;
 
 var best;
 var current;
@@ -557,24 +556,12 @@ function initGameSpace() {
   }
 
   function ifVaccineMode(node){
-    try {
-      pop.play()
-    }
-    catch(err){
-      console.log(err)
-    }
     node.status = "V";
     numberOfVaccines--;
     numberVaccinated++;
   }
 
   function ifQuarantineMode(node){
-    try {
-      pop.play()
-    }
-    catch(err){
-      console.log(err)
-    }
     diseaseIsSpreading = true;
     node.status = "Q";
     numberQuarantined++;
