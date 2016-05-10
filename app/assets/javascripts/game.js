@@ -1082,6 +1082,7 @@ function initGameSpace() {
       hiScore.value = Math.max.apply( Math, cookie.scores[num])
     }
   }
+
   
   function writeCookiesJSON() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
