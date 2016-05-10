@@ -51,17 +51,17 @@ var easyBar = 70;
 var mediumBar = 50;
 var hardBar = 40;
 
-var vaxEasyCompletion = {value:0};
-var vaxMediumCompletion = {value:0};
-var vaxHardCompletion = {value:0};
+var vaxEasyCompletion = {value:null};
+var vaxMediumCompletion = {value:null};
+var vaxHardCompletion = {value:null};
 
-var vaxEasyHiScore = {value:0};
-var vaxMediumHiScore = {value:0};
-var vaxHardHiScore = {value:0};
+var vaxEasyHiScore = {value:null};
+var vaxMediumHiScore = {value:null};
+var vaxHardHiScore = {value:null};
 
-var vaxEasyHiScoreRT = {value:0};
-var vaxMediumHiScoreRT = {value:0};
-var vaxHardHiScoreRT = {value:0};
+var vaxEasyHiScoreRT = {value:null};
+var vaxMediumHiScoreRT = {value:null};
+var vaxHardHiScoreRT = {value:null};
 
 var easyScores;
 var mediumScores;
