@@ -86,13 +86,23 @@ function initBasicMenu() {
     if (vaxEasyHiScore.value !== -Infinity){
       d3.select(".easyHi").text("(Best: " + vaxEasyHiScore.value + "%)")
     }
+    else {
+      d3.select(".easyHi").text("")
+    }
 
     if (vaxMediumHiScore.value !== -Infinity) {
       d3.select(".mediumHi").text("(Best: " + vaxMediumHiScore.value + "%)")
     }
+    else {
+      d3.select(".mediumHi").text("")
+    }
     if (vaxHardHiScore.value !== -Infinity) {
       d3.select(".hardHi").text("(Best: " + vaxHardHiScore.value + "%)")
     }
+    else {
+      d3.select(".hardHi").text("")
+    }
+
   })
 
   d3.select(".gameOptions").append("div")
