@@ -1034,40 +1034,30 @@ function initGameSpace() {
     .text("Reticulating splines..")
   }
 
+  function setCookies_manage(proportionSaved, vaxCompletion, bar, vaxHiScore, vaxHiScoreRT){
+    $.cookie (vaxCompletion, (proportionSaved >= bar)+'');
+    if (speed) {
+      if ($.cookie (vaxHiScoreRT) < proportionSaved) $.cookie (vaxHiScoreRT, proportionSaved)
+    }
+    else {
+      if ($.cookie (vaxHiScore) < proportionSaved) $.cookie (vaxHiScore, proportionSaved)
+    }
+
+  }
+
   function setCookies() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
     if (difficultyString === "easy") {
-      $.cookie ('vaxEasyCompletion', (proportionSaved >= easyBar)+'');
-      if (speed) {
-        if ($.cookie ('vaxEasyHiScoreRT') < proportionSaved) $.cookie ('vaxEasyHiScoreRT', proportionSaved)
-      }
-      else {
-        if ($.cookie ('vaxEasyHiScore') < proportionSaved) $.cookie ('vaxEasyHiScore', proportionSaved)
-      }
-
+      setCookies_manage(proportionSaved, 'vaxEasyCompletion', easyBar, 'vaxEasyHiScore', 'vaxEasyHiScoreRT');
     }
 
     if (difficultyString === "medium") {
-      $.cookie ('vaxMediumCompletion', (proportionSaved >= mediumBar)+'')
-      if (speed) {
-        if ($.cookie ('vaxMediumHiScoreRT') < proportionSaved) $.cookie ('vaxMediumHiScoreRT', proportionSaved)
-      }
-      else {
-        if ($.cookie ('vaxMediumHiScore') < proportionSaved) $.cookie ('vaxMediumHiScore', proportionSaved)
-      }
-
+      setCookies_manage(proportionSaved, 'vaxMediumCompletion', mediumBar, 'vaxMediumHiScore', 'vaxMediumHiScoreRT');
     }
 
     if (difficultyString === "hard") {
-      $.cookie ('vaxHardCompletion',  (proportionSaved >= hardBar)+'')
-      if (speed) {
-        if ($.cookie ('vaxHardHiScoreRT') < proportionSaved)$.cookie ('vaxHardHiScoreRT', proportionSaved)
-      }
-      else {
-        if ($.cookie ('vaxHardHiScore') < proportionSaved)$.cookie ('vaxHardHiScore', proportionSaved)
-      }
-
+      setCookies_manage(proportionSaved, 'vaxHardCompletion', hardBar, 'vaxHardHiScore', 'vaxHardHiScoreRT');
     }
   }
 
@@ -1083,7 +1073,7 @@ function initGameSpace() {
     }
   }
 
-  
+
   function writeCookiesJSON() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
