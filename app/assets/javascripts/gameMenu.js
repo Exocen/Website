@@ -30,16 +30,6 @@ function difficultySelectionOver(clas, id, text, ds){
   })
 }
 
-function initBasicMenu_manage(vaxHiScore, place){
-
-  if (vaxHiScore.value !== -Infinity){
-    d3.select(place).text("(Best: " + vaxHiScore.value + "%)")
-  }
-  else {
-    d3.select(place).text("")
-  }
-
-
 function initBasicMenu() {
 
   d3.select(".vaxLogoDiv")
@@ -93,9 +83,9 @@ function initBasicMenu() {
 
     speed = false;
 
-    initBasicMenu_manage(vaxEasyHiScore, ".easyHi");
-    initBasicMenu_manage(vaxMediumHiScore, ".mediumHi");
-    initBasicMenu_manage(vaxHardHiScore, ".hardHi");
+    displayScore(vaxEasyHiScore.value, ".easyHi");
+    displayScore(vaxMediumHiScore.value, ".mediumHi");
+    displayScore(vaxHardHiScore.value, ".hardHi");
 
   })
 
