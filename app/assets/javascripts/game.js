@@ -873,7 +873,7 @@ function initGameSpace() {
     }
     gameUpdate();
   }
-  
+
   function outbreakDetected_manage(clas, ad){
     return  d3.select(clas).transition().duration(500).attr("y",ad)
   }
@@ -1071,43 +1071,55 @@ function initGameSpace() {
     }
   }
 
+  function writeCookiesJSON_easy(proportionSaved){
+    vaxEasyCompletion = (proportionSaved > easyBar);
+    if (speed) {
+      cookie.scoresRT[0].push(proportionSaved);
+      vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
+    }
+    else {
+      cookie.scores[0].push(proportionSaved);
+      vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
+    }
+  }
+
+  function writeCookiesJSON_medium(proportionSaved){
+    vaxMediumCompletion = (proportionSaved > mediumBar);
+    if (speed) {
+      cookie.scoresRT[1].push(proportionSaved);
+      vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
+    }
+    else {
+      cookie.scores[1].push(proportionSaved);
+      vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
+    }
+  }
+
+  function writeCookiesJSON_hard(proportionSaved){
+    vaxHardCompletion = (proportionSaved > hardBar);
+    if (speed) {
+      cookie.scoresRT[2].push(proportionSaved);
+      vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
+    }
+    else {
+      cookie.scores[2].push(proportionSaved);
+      vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
+    }
+  }
+
   function writeCookiesJSON() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
     if (difficultyString === "easy") {
-      vaxEasyCompletion = (proportionSaved > easyBar);
-      if (speed) {
-        cookie.scoresRT[0].push(proportionSaved);
-        vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
-      }
-      else {
-        cookie.scores[0].push(proportionSaved);
-        vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
-      }
+      writeCookiesJSON_easy(proportionSaved);
     }
 
     else if (difficultyString === "medium") {
-      vaxMediumCompletion = (proportionSaved > mediumBar);
-      if (speed) {
-        cookie.scoresRT[1].push(proportionSaved);
-        vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
-      }
-      else {
-        cookie.scores[1].push(proportionSaved);
-        vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
-      }
+      writeCookiesJSON_medium(proportionSaved);
     }
 
     else if (difficultyString === "hard") {
-      vaxHardCompletion = (proportionSaved > hardBar);
-      if (speed) {
-        cookie.scoresRT[2].push(proportionSaved);
-        vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
-      }
-      else {
-        cookie.scores[2].push(proportionSaved);
-        vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
-      }
+      writeCookiesJSON_hard(proportionSaved);
     }
     $.cookie .json = false;
 
