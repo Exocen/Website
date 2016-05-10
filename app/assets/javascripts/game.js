@@ -51,17 +51,17 @@ var easyBar = 70;
 var mediumBar = 50;
 var hardBar = 40;
 
-var vaxEasyCompletion;
-var vaxMediumCompletion;
-var vaxHardCompletion;
+var vaxEasyCompletion = {value:0};
+var vaxMediumCompletion = {value:0};
+var vaxHardCompletion = {value:0};
 
-var vaxEasyHiScore;
-var vaxMediumHiScore;
-var vaxHardHiScore;
+var vaxEasyHiScore = {value:0};
+var vaxMediumHiScore = {value:0};
+var vaxHardHiScore = {value:0};
 
-var vaxEasyHiScoreRT;
-var vaxMediumHiScoreRT;
-var vaxHardHiScoreRT;
+var vaxEasyHiScoreRT = {value:0};
+var vaxMediumHiScoreRT = {value:0};
+var vaxHardHiScoreRT = {value:0};
 
 var easyScores;
 var mediumScores;
@@ -108,13 +108,13 @@ function readCookiesJSON() {
 
   cookie = $.cookie ('vaxCookie')
 
-  vaxEasyCompletion = cookie.easy;
-  vaxMediumCompletion = cookie.medium;
-  vaxHardCompletion = cookie.hard;
+  vaxEasyCompletion.value = cookie.easy;
+  vaxMediumCompletion.value = cookie.medium;
+  vaxHardCompletion.value = cookie.hard;
 
-  vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
-  vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
-  vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
+  vaxEasyHiScore.value = Math.max.apply( Math, cookie.scores[0])
+  vaxMediumHiScore.value = Math.max.apply( Math, cookie.scores[1])
+  vaxHardHiScore.value = Math.max.apply( Math, cookie.scores[2])
 
   if (cookie.scoresRT === undefined) {
     var easyScoresRT = [];
@@ -126,9 +126,9 @@ function readCookiesJSON() {
 
   }
 
-  vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
-  vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
-  vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
+  vaxEasyHiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[0])
+  vaxMediumHiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[1])
+  vaxHardHiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[2])
 
   $.cookie .json = false;
   customNodeChoice = parseInt($.cookie ().customNodes,10);
@@ -278,9 +278,9 @@ function cookieBasedModeSelection_manage2(completion, dS, difficultyClass){
 
 function cookieBasedModeSelection() {
 
-  cookieBasedModeSelection_manage(vaxEasyHiScore, vaxEasyHiScoreRT)
-  cookieBasedModeSelection_manage(vaxMediumHiScore, vaxMediumHiScoreRT)
-  cookieBasedModeSelection_manage(vaxHardHiScore, vaxHardHiScoreRT)
+  cookieBasedModeSelection_manage(vaxEasyHiScore.value, vaxEasyHiScoreRT.value)
+  cookieBasedModeSelection_manage(vaxMediumHiScore.value, vaxMediumHiScoreRT.value)
+  cookieBasedModeSelection_manage(vaxHardHiScore.value, vaxHardHiScoreRT.value)
 
   d3.select("#difficultyEasy")
   .on("mouseover", function() {
@@ -291,13 +291,13 @@ function cookieBasedModeSelection() {
   })
 
   // set medium based on easy
-  cookieBasedModeSelection_manage2(vaxEasyCompletion, "medium", "#difficultyMedium")
+  cookieBasedModeSelection_manage2(vaxEasyCompletion.value, "medium", "#difficultyMedium")
 
   // set hard based on medium
-  cookieBasedModeSelection_manage2(vaxMediumCompletion, "hard", "#difficultyHard")
+  cookieBasedModeSelection_manage2(vaxMediumCompletion.value, "hard", "#difficultyHard")
 
   // set custom based on hard
-  cookieBasedModeSelection_manage2(vaxHardCompletion, "hard", "#difficultyHard")
+  cookieBasedModeSelection_manage2(vaxHardCompletion.value, "hard", "#difficultyHard")
 
 }
 
@@ -1071,56 +1071,33 @@ function initGameSpace() {
     }
   }
 
-  function writeCookiesJSON_easy(proportionSaved){
-    vaxEasyCompletion = (proportionSaved > easyBar);
+  function writeCookiesJSON_manage(proportionSaved, bar, num, hiScore, hiScoreRT){
+    vaxEasyCompletion.value = (proportionSaved > bar);
     if (speed) {
-      cookie.scoresRT[0].push(proportionSaved);
-      vaxEasyHiScoreRT = Math.max.apply( Math, cookie.scoresRT[0])
+      cookie.scoresRT[num].push(proportionSaved);
+      hiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[num])
     }
     else {
-      cookie.scores[0].push(proportionSaved);
-      vaxEasyHiScore = Math.max.apply( Math, cookie.scores[0])
+      cookie.scores[num].push(proportionSaved);
+      hiScore.value = Math.max.apply( Math, cookie.scores[num])
     }
   }
-
-  function writeCookiesJSON_medium(proportionSaved){
-    vaxMediumCompletion = (proportionSaved > mediumBar);
-    if (speed) {
-      cookie.scoresRT[1].push(proportionSaved);
-      vaxMediumHiScoreRT = Math.max.apply( Math, cookie.scoresRT[1])
-    }
-    else {
-      cookie.scores[1].push(proportionSaved);
-      vaxMediumHiScore = Math.max.apply( Math, cookie.scores[1])
-    }
-  }
-
-  function writeCookiesJSON_hard(proportionSaved){
-    vaxHardCompletion = (proportionSaved > hardBar);
-    if (speed) {
-      cookie.scoresRT[2].push(proportionSaved);
-      vaxHardHiScoreRT = Math.max.apply( Math, cookie.scoresRT[2])
-    }
-    else {
-      cookie.scores[2].push(proportionSaved);
-      vaxHardHiScore = Math.max.apply( Math, cookie.scores[2])
-    }
-  }
-
+  
   function writeCookiesJSON() {
     var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
 
     if (difficultyString === "easy") {
-      writeCookiesJSON_easy(proportionSaved);
+      writeCookiesJSON_manage(proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
     }
 
     else if (difficultyString === "medium") {
-      writeCookiesJSON_medium(proportionSaved);
+      writeCookiesJSON_manage(proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
     }
 
     else if (difficultyString === "hard") {
-      writeCookiesJSON_hard(proportionSaved);
+      writeCookiesJSON_manage(proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
     }
+
     $.cookie .json = false;
 
     if (difficultyString === undefined) {
@@ -1141,7 +1118,7 @@ function initGameSpace() {
     var hardScoresRT = cookie.scoresRT[2];
     var scoreRT = [easyScoresRT, mediumScoresRT, hardScoresRT];
 
-    var newCookie = {easy: vaxEasyCompletion, medium: vaxMediumCompletion, hard: vaxHardCompletion, scores: score, scoresRT: scoreRT}
+    var newCookie = {easy: vaxEasyCompletion.value, medium: vaxMediumCompletion.value, hard: vaxHardCompletion.value, scores: score, scoresRT: scoreRT}
     $.removeCookie('vaxCookie')
     $.cookie ('vaxCookie', JSON.stringify(newCookie), { expires: 365, path: '/' })
 
@@ -1331,15 +1308,15 @@ function initGameSpace() {
     var bestScore;
     if (difficultyString === "easy") {
       bar = easyBar;
-      bestScore = speed ? vaxEasyHiScoreRT: vaxEasyHiScore;
+      bestScore = speed ? vaxEasyHiScoreRT.value: vaxEasyHiScore.value;
     }
     if (difficultyString === "medium") {
       bar = mediumBar;
-      bestScore = speed ? vaxMediumHiScoreRT: vaxMediumHiScore;
+      bestScore = speed ? vaxMediumHiScoreRT.value: vaxMediumHiScore.value;
     }
     if (difficultyString === "hard") {
       bar = hardBar;
-      bestScore = speed ? vaxHardHiScoreRT: vaxHardHiScore;
+      bestScore = speed ? vaxHardHiScoreRT.value: vaxHardHiScore.value;
     }
     if (difficultyString === null) {
       bestScore = currentScore;
@@ -1421,15 +1398,15 @@ function initGameSpace() {
     var bar;
     var bestScore;
     if (difficultyString === "easy") {
-      bestScore = vaxEasyHiScore;
+      bestScore = vaxEasyHiScore.value;
       bar = easyBar;
     }
     if (difficultyString === "medium") {
-      bestScore = vaxMediumHiScore;
+      bestScore = vaxMediumHiScore.value;
       bar = mediumBar;
     }
     if (difficultyString === "hard") {
-      bestScore = vaxHardHiScore;
+      bestScore = vaxHardHiScore.value;
       bar = hardBar;
     }
 
