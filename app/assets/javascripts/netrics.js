@@ -791,14 +791,7 @@ function generateFrontGraph() {
   frontGraph.nodes = frontNodes;
   frontGraph.links = frontLinks;
 
-  frontForce = d3.layout.force()
-  .nodes(frontGraph.nodes)
-  .links(frontGraph.links)
-  .size([width, height])
-  .charge(frontCharge)
-  .friction(0.80)
-  .on("tick", frontTick)
-  .start();
+  frontForce = getFriction(frontGraph.nodes, frontGraph.links, frontCharge, 0.80, frontTick);
 
   // associate empty SVGs with link data. assign attributes.
   frontLink = frontManager(".link", frontGraph.links, "line", "link", "10px", "#d5d5d5")
@@ -826,21 +819,37 @@ function frontManager(selectAl, frontgraph, append, clas, strow, strok){
 }
 
 function frontTick() {
+  getCxCy(frontNode, width - 50, 500 - 50);
+  getAttribute(frontLink);
+}
 
-  frontNode.attr("cx", function(d) {
-    d.x = Math.max(8, Math.min(width - 50, d.x));
-    return d.x;
-  })
-  .attr("cy", function(d) {
-    d.y = Math.max(8, Math.min(500 - 50, d.y));
-    return d.y;
-  });
-
-
-  frontLink.attr("x1", function(d) { return d.source.x; })
+function getAttribute(obj){
+  return obj.attr("x1", function(d) { return d.source.x; })
   .attr("y1", function(d) { return d.source.y; })
   .attr("x2", function(d) { return d.target.x; })
   .attr("y2", function(d) { return d.target.y; });
 
+}
 
+function  getCxCy(obj, w, h){
+  return obj.attr("cx", function(d) {
+    d.x = Math.max(8, Math.min(w, d.x));
+    return d.x;
+  })
+  .attr("cy", function(d) {
+    d.y = Math.max(8, Math.min(h, d.y));
+    return d.y;
+  });
+
+}
+
+function getFriction(nod, link, charg, fric, tic){
+  return d3.layout.force()
+  .nodes(nod)
+  .links(link)
+  .size([width, height])
+  .charge(charg)
+  .friction(fric)
+  .on("tick", tic)
+  .start();
 }

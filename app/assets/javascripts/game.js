@@ -453,14 +453,7 @@ function initGameSpace() {
   }
 
   // initialize force layout. point to nodes & links.  size based on prior height and width.  set particle charge. setup step-wise force settling.
-  force = d3.layout.force()
-  .nodes(graph.nodes)
-  .links(graph.links)
-  .size([width, height])
-  .charge(charge)
-  .friction(friction)
-  .on("tick", tick)
-  .start();
+  force = getFriction(graph.nodes, graph.links, charge, friction, tick);
 
   // associate empty SVGs with link data. assign attributes.
   link = gameSVG.selectAll(".link")
@@ -600,25 +593,14 @@ function initGameSpace() {
   }
 
   function tickRef(a){
-    a.attr("cx", function(d) {
-      d.x = Math.max(8, Math.min(width - 8, d.x));
-      return d.x;
-    })
-    .attr("cy", function(d) {
-      d.y = Math.max(8, Math.min((height *.85), d.y));
-      return d.y;
-    });
+    getCxCy(a, width - 8, height *.85);
   }
   // tick function, which does the physics for each individual node & link.
   function tick() {
     tickRef(clickArea);
     tickRef(node);
 
-    link.attr("x1", function(d) { return d.source.x; })
-    .attr("y1", function(d) { return d.source.y; })
-    .attr("x2", function(d) { return d.target.x; })
-    .attr("y2", function(d) { return d.target.y; });
-
+    getAttribute(link);
   }
 
   function countSavedGAME() {
