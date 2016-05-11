@@ -1023,8 +1023,8 @@ function setCookies() {
   }
 }
 
-function writeCookiesJSON_manage(proportionSaved, bar, num, hiScore, hiScoreRT){
-  vaxEasyCompletion.value = (proportionSaved > bar);
+function writeCookiesJSON_manage(completion, proportionSaved, bar, num, hiScore, hiScoreRT){
+  completion.value = (proportionSaved > bar);
   if (speed) {
     writeCookiesJSON_manage2(proportionSaved, cookie.scoresRT, hiScoreRT, num);
   }
@@ -1043,15 +1043,15 @@ function writeCookiesJSON() {
   var proportionSaved = getScore();
 
   if (difficultyString === "easy") {
-    writeCookiesJSON_manage(proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
+    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
   else if (difficultyString === "medium") {
-    writeCookiesJSON_manage(proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
   }
 
   else if (difficultyString === "hard") {
-    writeCookiesJSON_manage(proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
+    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
   }
 
   $.cookie .json = false;
