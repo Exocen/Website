@@ -1108,11 +1108,9 @@ function initGameSpace() {
 
   function defRext(h, w, x, y, fill){
 
-    return  d3.select(".gameSVG").append("rect")
+    return defAll(".gameSVG", "rect", x ,y)
     .attr("height", h)
     .attr("width", w)
-    .attr("x", x)
-    .attr("y", y)
     .attr("fill", fill);
   }
 
@@ -1135,8 +1133,8 @@ function initGameSpace() {
 
   }
 
-  function defTextFs(x, y, text, fs){
-    return defText(x, y, text)
+  function defTextFs(x, y, text, fs, obj){
+    return defText(obj.node().getBBox().x + x, obj.node().getBBox().y + y, text)
     .style("font-size", fs);
   }
 
@@ -1152,14 +1150,18 @@ function initGameSpace() {
     })
   }
 
+  function defAll(clas, append, x ,y){
+    return d3.select(clas)
+    .attr("x", x)
+    .attr("y", y)
+    .append(append);
+  }
+
   function defSvg(clas, width, height, x, y){
-    return d3.select(".gameSVG")
-    .append("svg")
+    return  defAll(".gameSVG", "svg", x, y)
     .attr("class", "stacked")
     .attr("width", width)
-    .attr("height", height)
-    .attr("x", x)
-    .attr("y", y);
+    .attr("height", height);
   }
 
   function generateStackedBarChart() {
@@ -1257,11 +1259,11 @@ function initGameSpace() {
     var best = d3.select(".best")
     var current = d3.select(".current")
 
-    defTextFs( best.node().getBBox().x + 426, best.node().getBBox().y + 145, bestScore + "%", "30px");
+    defTextFs(426, 145, bestScore + "%", "30px", best);
 
-    defTextFs(current.node().getBBox().x + 427, current.node().getBBox().y + 145, total + "%", "30px")
+    defTextFs(427, 145, total + "%", "30px", current)
     .attr("color", "#707070")
-    .attr("fill", "#707070")
+    .attr("fill", "#707070");
 
     defLine(395, 625, 470, 470)
     defLine(395, 395, 140, 470)
@@ -1330,11 +1332,8 @@ function initGameSpace() {
   }
 
   function addTextRecapD3(x, y, text, link){
-    d3.select(".gameSVG").append("text")
+    return defText(x, y, text)
     .attr("class", "recapButton")
-    .attr("x", x)
-    .attr("y", y)
-    .text(text)
     .style("font-size", "45px")
     .on("click", link)
     .on("mouseover", function() {
