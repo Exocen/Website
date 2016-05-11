@@ -972,7 +972,7 @@ function initGameSpace() {
   }
 
   function outbreak_text2(x, fw, fs, txt){
-    return outbreak_text(x, fw, fs, txt).
+    return outbreak_text(x, fw, fs, txt)
     .style("cursor", "pointer")
     .on("mouseover", function(d) {
 
@@ -1018,7 +1018,7 @@ function initGameSpace() {
 
     outbreak_text(window.innerWidth/4 + 135 - 100, 500, "25px", "Outbreak has run its course.");
     outbreak_text2(window.innerWidth/4 + 135 - 100, 500, "15px", "Submit");
-    
+
     outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
     outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
     outbreakDetected_manage(".endGameText", window.innerHeight/2 - 250 );
