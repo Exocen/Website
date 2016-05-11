@@ -828,15 +828,14 @@ function getAttribute(obj){
 }
 
 function  getCxCy(obj, w, h){
-  return obj.attr("cx", function(d) {
-    d.x = Math.max(8, Math.min(w, d.x));
-    return d.x;
-  })
-  .attr("cy", function(d) {
-    d.y = Math.max(8, Math.min(h, d.y));
-    return d.y;
-  });
+  return addFunctiontoC(addFunctiontoC(obj, d.x, "cx", w), d.y, "cy", h);
+}
 
+function addFunctiontoC(obj, obj2, c, min){
+  return obj.attr(c, function(d) {
+      obj2 = Math.max(8, Math.min(min, obj2));
+      return obj2;
+    });
 }
 
 function getFriction(nod, link, charg, fric, tic){
