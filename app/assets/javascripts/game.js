@@ -238,14 +238,14 @@ function allAccess() {
 
 }
 
-function cookieBasedModeSelection_manage(score, scoreRT){
+function cookieBasedModeSelection_manage(score, scoreRT, select){
   if (score !== -Infinity)  {
     if (speed) {
-      d3.select(".easyHi")
+      d3.select(select)
       .text("(Best: " + scoreRT + "%)")
     }
     else {
-      d3.select(".easyHi")
+      d3.select(select)
       .text("(Best: " + score + "%)")
     }
   }
@@ -278,9 +278,9 @@ function cookieBasedModeSelection_manage2(completion, dS, difficultyClass){
 
 function cookieBasedModeSelection() {
 
-  cookieBasedModeSelection_manage(vaxEasyHiScore.value, vaxEasyHiScoreRT.value)
-  cookieBasedModeSelection_manage(vaxMediumHiScore.value, vaxMediumHiScoreRT.value)
-  cookieBasedModeSelection_manage(vaxHardHiScore.value, vaxHardHiScoreRT.value)
+  cookieBasedModeSelection_manage(vaxEasyHiScore.value, vaxEasyHiScoreRT.value, ".easyHi")
+  cookieBasedModeSelection_manage(vaxMediumHiScore.value, vaxMediumHiScoreRT.value, ".mediumHi")
+  cookieBasedModeSelection_manage(vaxHardHiScore.value, vaxHardHiScoreRT.value, ".hardHi")
 
   d3.select("#difficultyEasy")
   .on("mouseover", function() {
@@ -460,7 +460,7 @@ function initGameSpace() {
 
   // associate empty SVGs with node data. assign attributes. call force.drag to make them moveable.
 
-  clickArea = initGameSpace_Call( gameSVGManager("clickArea")
+  clickArea = initGameSpace_Call( gameSVGManager("clickArea", "none")
   .attr("r", function(node) {
     var clickAreaSize;
 
@@ -479,9 +479,8 @@ function initGameSpace() {
     else gameClick(node);
   }))
 
-  node = initGameSpace_Call( gameSVGManager("node")
+  node = initGameSpace_Call( gameSVGManager("node", nodeColor)
   .attr("r", nodeSize)
-  .attr("fill", nodeColor)
   .on("click", function(d) {
     if (speed) speedModeGameClick(d);
     else gameClick(d);
@@ -515,8 +514,8 @@ function initGameSpace() {
 
 }
 
-function gameSVGManager(clas){
-  return defData(gameSVG, ".node", graph.nodes, "circle", clas, "none");
+function gameSVGManager(clas, color){
+  return defData(gameSVG, ".node", graph.nodes, "circle", clas, color);
 }
 
 function nodeSize(node) {
