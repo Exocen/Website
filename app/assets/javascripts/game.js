@@ -903,12 +903,16 @@ function initGameSpace() {
 
   }
 
-  function hideGameSyringe() {
-    vaccinationMode = false;
-    d3.select(".actionVax").style("right", "-200px")
+  function hideStuff(clas1, clas2){
+    d3.select(clas1).style("right", "-200px")
     d3.select(".gameSVG").style("cursor", 'pointer');
     d3.selectAll(".node").style("cursor", 'pointer');
-    d3.select(".vaccineDepressedState").style("visibility", "hidden")
+    d3.select(clas2).style("visibility", "hidden")
+  }
+
+  function hideGameSyringe() {
+    vaccinationMode = false;
+    hideStuff(".actionVax", ".vaccineDepressedState");
   }
 
   function loadGameQuarantine() {
@@ -934,16 +938,11 @@ function initGameSpace() {
 
   function hideGameQuarantine() {
     quarantineMode = false;
-    d3.select(".actionQuarantine").style("right", "-200px")
-    d3.select(".gameSVG").style("cursor", 'pointer');
-    d3.selectAll(".node").style("cursor", 'pointer');
-    d3.select(".quarantineDepressedState").style("visibility", "hidden")
+    hideStuff(".actionQuarantine", ".quarantineDepressedState");
   }
 
   function activateGameVaccinationMode() {
     vaccinateMode = true;
-    d3.selectAll(".node").style("cursor", 'url(/assets/vax_cursor.cur)');
-    d3.select(".gameSVG").style("cursor", 'url(/assets/vax_cursor.cur)');
     d3.select(".vaccineCounterText").text(numberOfVaccines);
     d3.select(".vaccineDepressedState").style("visibility", "visible")
 
@@ -952,8 +951,6 @@ function initGameSpace() {
   function activateGameQuarantineMode() {
     vaccinateMode = false;
     quarantineMode = true;
-    d3.selectAll(".node").style("cursor", 'url(/assets/vax_cursor.cur)');
-    d3.select(".gameSVG").style("cursor", 'url(/assets/vax_cursor.cur)');
     d3.select(".quarantineDepressedState").style("visibility", "visible")
 
     gameIndexPatients();
@@ -1017,7 +1014,7 @@ function initGameSpace() {
     .attr("fill", "#85bc99")
 
     outbreak_text(window.innerWidth/4 + 135 - 100, "endGameText", 500, "25px", "Outbreak has run its course.");
-    outbreak_text2(window.innerWidth/4 + 135 - 100, "endGameSUBMIT", 500, "15px", "Submit");
+    outbreak_text2(window.innerWidth/4 + 275 - 90, "endGameSUBMIT", 500, "15px", "Submit");
 
     outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
     outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
@@ -1142,6 +1139,18 @@ function initGameSpace() {
     .attr("y", y)
     .text(text);
 
+  }
+
+  function defText2(x, y, text, clas, onclick){
+    return defText(x, y, text)
+    .attr("class", clas)
+    .on("click", onclick)
+    .on("mouseover", function() {
+      d3.select(this).style("fill", "#2692F2")
+    })
+    .on("mouseout", function() {
+      d3.select(this).style("fill", "#707070")
+    })
   }
 
   function generateStackedBarChart() {
@@ -1412,29 +1421,15 @@ function initGameSpace() {
         d3.select(this).style("fill", "#707070")
       });
 
-      defText(580, 590, "Next").attr("class", "recapButton").on("click", next)
-      .on("mouseover", function() {
-        d3.select(this).style("fill", "#2692F2")
-      })
-      .on("mouseout", function() {
-        d3.select(this).style("fill", "#707070")
-      });
+      defText2(580, 590, "Next", "recapButton", next);
 
 
     }
     else {
       defText(200, 525, "Save " + bar + "% of the network to unlock the next stage.").attr("class", "recapText");
+      defText2(470, 590, "Retry", "recapButton", retry);
 
-      defText(470, 590, "Retry").attr("class", "recapButton")
-      .on("click", retry)
-      .on("mouseover", function() {
-        d3.select(this).style("fill", "#2692F2")
-      })
-      .on("mouseout", function() {
-        d3.select(this).style("fill", "#707070")
-      })
     }
-
   }
 
   function retry() {
