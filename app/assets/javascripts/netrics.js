@@ -809,7 +809,7 @@ function generateFrontGraph() {
 }
 
 function frontManager(obj, selectAl, frontgraph, append, clas, strow, strok){
-  return defData(obj, selectAl, frontgraph, append, clas, "none")
+  return defData(obj, selectAl, frontgraph, append, clas, strok)
   .style("stroke-width", strow)
   .style("stroke", strok);
 }
