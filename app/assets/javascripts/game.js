@@ -886,10 +886,6 @@ function initGameSpace() {
 
     d3.select(".actionVax").append("text")
     .attr("class", "vaccineCounterText")
-    .style("font-size", "16px")
-    .style("font-family", "Nunito")
-    .style("font-weight", 300)
-    .style("color", "white")
     .text("")
     .style("right", function() {
       if (numberOfVaccines.toString().length === 1) return "49px"
@@ -927,8 +923,6 @@ function initGameSpace() {
 
     d3.select(".actionQuarantine").append("text")
     .attr("class", "quarantineCounterText")
-    .style("font-size", "16px")
-    .style("font-weight", 300)
     .text("")
 
     d3.select(".quarantineCounterText").text(numberQuarantined)
