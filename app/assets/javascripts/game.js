@@ -817,18 +817,22 @@ function initGameSpace() {
     .attr("cy", function(d) { return d.receiverY} );
   }
 
+  function defData(type, group, data, append, clas, fill){
+    return type.selectAll(group)
+    .data(data)
+    .enter()
+    .append(append)
+    .attr("class", clas)
+    .style("fill", fill);
+  }
+
   function createGamePathogens() {
     xyCoords = getPathogen_xyCoords(newInfections);
 
-    var pathogen = gameSVG.selectAll(".pathogen")
-    .data(xyCoords)
-    .enter()
-    .append("circle")
-    .attr("class", "pathogen")
+    var pathogen = defData(gameSVG, ".pathogen", xyCoords, "circle", "pathogen", "black")
     .attr("cx", function(d) { return d.transmitterX })
     .attr("cy", function(d) { return d.transmitterY })
     .attr("r", 4)
-    .style("fill", "black")
   }
 
   function getPathogen_xyCoords(newInfections) {
@@ -1033,7 +1037,7 @@ function initGameSpace() {
   }
 
   function setCookies() {
-    var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
+    var proportionSaved = getScore();
 
     if (difficultyString === "easy") {
       setCookies_manage(proportionSaved, 'vaxEasyCompletion', easyBar, 'vaxEasyHiScore', 'vaxEasyHiScoreRT');
@@ -1062,7 +1066,7 @@ function initGameSpace() {
 
 
   function writeCookiesJSON() {
-    var proportionSaved = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0)
+    var proportionSaved = getScore();
 
     if (difficultyString === "easy") {
       writeCookiesJSON_manage(proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
@@ -1188,11 +1192,7 @@ function initGameSpace() {
 
 
     // Add a group for each column.
-    var valgroup = stackedSVG.selectAll("g.valgroup")
-    .data(stacked)
-    .enter().append("svg:g")
-    .attr("class", "valgroup")
-    .style("fill", function(d, i) { return z(i); })
+    var valgroup = defData(stackedSVG, "g.valgroup", stacked, "svg:g", "valgroup", function(d, i) { return z(i); })
     .attr("id", function(d,i) { if (i === 0) return "uninfected"; if (i === 1) return "infected"; if (i === 2) return "quarantined"; if (i === 3) return "vaccinated"})
 
 
@@ -1275,6 +1275,10 @@ function initGameSpace() {
 
   }
 
+  function getScore(){
+    return Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0);
+  }
+
   function initScoreRecap() {
     writeCookiesJSON();
 
@@ -1287,7 +1291,7 @@ function initGameSpace() {
     d3.select(".gameSVG").select("g").style("visibility", "hidden")
     hideGameQuarantine();
 
-    var currentScore = Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0);
+    var currentScore = getScore();
     var passed;
     var bar;
     var bestScore;
