@@ -1126,12 +1126,8 @@ function initGameSpace() {
   }
 
   function defText(x, y, text){
-
-    return d3.select(".gameSVG").append("text")
-    .attr("x", x)
-    .attr("y", y)
+    return defAll(".gameSVG", "text", x ,y)
     .text(text);
-
   }
 
   function defTextFs(x, y, text, fs, obj){
