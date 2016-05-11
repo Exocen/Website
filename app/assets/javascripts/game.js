@@ -1040,15 +1040,15 @@ function writeCookiesJSON() {
   var proportionSaved = getScore();
 
   if (difficultyString === "easy") {
-    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
+    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
   else if (difficultyString === "medium") {
-    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
   }
 
   else if (difficultyString === "hard") {
-    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
+    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
   }
 
   $.cookie .json = false;
