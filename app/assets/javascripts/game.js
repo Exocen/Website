@@ -1053,16 +1053,16 @@ function initGameSpace() {
   function writeCookiesJSON_manage(proportionSaved, bar, num, hiScore, hiScoreRT){
     vaxEasyCompletion.value = (proportionSaved > bar);
     if (speed) {
-      writeCookiesJSON_manage2(proportionSaved, scoresRT, hiScoreRT, num);
+      writeCookiesJSON_manage2(proportionSaved, cookie.scoresRT, hiScoreRT, num);
     }
     else {
-      writeCookiesJSON_manage2(proportionSaved, scores, hiScore, num);
+      writeCookiesJSON_manage2(proportionSaved, cookie.scores, hiScore, num);
     }
   }
 
   function writeCookiesJSON_manage2(proportionSaved, scoreTyp, hiScoreTyp, num){
-    cookie.scoreTyp[num].push(proportionSaved);
-    hiScoreTyp.value = Math.max.apply( Math, cookie.scoreTyp[num])
+    scoreTyp[num].push(proportionSaved);
+    hiScoreTyp.value = Math.max.apply( Math, scoreTyp[num])
   }
 
 
