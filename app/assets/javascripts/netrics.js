@@ -833,9 +833,9 @@ function  getCxCy(obj, w, h){
 
 function addFunctiontoC(obj, obj2, c, min){
   return obj.attr(c, function(d) {
-      obj2 = Math.max(8, Math.min(min, obj2));
-      return obj2;
-    });
+    obj2 = Math.max(8, Math.min(min, obj2));
+    return obj2;
+  });
 }
 
 function getFriction(nod, link, charg, fric, tic){
