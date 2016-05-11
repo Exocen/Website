@@ -979,11 +979,7 @@ function initGameSpace() {
       d3.select(this).style("fill", "white")
     })
     .on("click", function() {
-      d3.select(".endGameText")
-      .transition()
-      .duration(250)
-      .attr("x", window.innerWidth/4 + 85)
-      .text("Reticulating splines.")
+      addPeriod();
 
       window.setTimeout(addPeriod, 350)
 
@@ -1024,7 +1020,7 @@ function initGameSpace() {
   }
 
   function addPeriod() {
-    d3.select(".endGameText")
+    return d3.select(".endGameText")
     .transition()
     .duration(250)
     .attr("x", window.innerWidth/4 + 85)
@@ -1139,6 +1135,11 @@ function initGameSpace() {
     .attr("y", y)
     .text(text);
 
+  }
+
+  function defTextFs(x, y, text, fs){
+    return defText(x, y, text)
+    .style("font-size", fs);
   }
 
   function defText2(x, y, text, clas, onclick){
@@ -1262,13 +1263,11 @@ function initGameSpace() {
     var best = d3.select(".best")
     var current = d3.select(".current")
 
-    defText( best.node().getBBox().x + 426, best.node().getBBox().y + 145, bestScore + "%")
-    .style("font-size", "30px")
+    defTextFs( best.node().getBBox().x + 426, best.node().getBBox().y + 145, bestScore + "%", "30px");
 
-    defText(current.node().getBBox().x + 427, current.node().getBBox().y + 145, total + "%")
+    defTextFs(current.node().getBBox().x + 427, current.node().getBBox().y + 145, total + "%", "30px")
     .attr("color", "#707070")
     .attr("fill", "#707070")
-    .style("font-size", "30px")
 
     defLine(395, 625, 470, 470)
     defLine(395, 395, 140, 470)
