@@ -1044,11 +1044,11 @@ function writeCookiesJSON() {
   }
 
   else if (difficultyString === "medium") {
-    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
   }
 
   else if (difficultyString === "hard") {
-    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
+    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, mediumBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
   }
 
   $.cookie .json = false;
