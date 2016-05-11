@@ -960,20 +960,20 @@ function initGameSpace() {
 
   }
 
-  function outbreak_text(x, fw, fs, txt){
+  function outbreak_text(x, clas, fw, fs, txt){
     return d3.select(".gameSVG").append("text")
-    .attr("class", "endGameText")
+    .attr("class", clas)
     .attr("x", x)
     .attr("y", -100)
     .style("fill", "white")
     .style("font-weight", fw)
     .style("font-size", fs)
-    .style("cursor", "pointer")
     .text(txt)
   }
 
-  function outbreak_text2(x, fw, fs, txt){
-    return outbreak_text(x, fw, fs, txt)
+  function outbreak_text2(x, clas,  fw, fs, txt){
+    return outbreak_text(x, clas,  fw, fs, txt)
+    .style("cursor", "pointer")
     .on("mouseover", function(d) {
 
       d3.select(this).style("fill", "#2692F2")
@@ -1016,8 +1016,8 @@ function initGameSpace() {
     .attr("height", 125)
     .attr("fill", "#85bc99")
 
-    outbreak_text(window.innerWidth/4 + 135 - 100, 500, "25px", "Outbreak has run its course.");
-    outbreak_text2(window.innerWidth/4 + 135 - 100, 500, "15px", "Submit");
+    outbreak_text(window.innerWidth/4 + 135 - 100, 500, "endGameText", "25px", "Outbreak has run its course.");
+    outbreak_text2(window.innerWidth/4 + 135 - 100, 500, "endGameSUBMIT", "15px", "Submit");
 
     outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
     outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
