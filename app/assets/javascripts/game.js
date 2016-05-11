@@ -1153,16 +1153,21 @@ function initGameSpace() {
     })
   }
 
+  function defSvg(clas, width, height, x, y){
+    return d3.select(".gameSVG")
+    .append("svg")
+    .attr("class", "stacked")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("x", x)
+    .attr("y", y);
+  }
+
   function generateStackedBarChart() {
     var width = 125;
     var height = 320;
 
-    var stackedSVG = d3.select(".gameSVG").append("svg")
-    .attr("class", "stacked")
-    .attr("width", width)
-    .attr("height", height)
-    .attr("x", 20)
-    .attr("y", 150)
+    var stackedSVG = defSvg("stacked", width, height, 20, 150)
     .append("svg:g")
     .attr("transform", "translate(10,320)");
 
@@ -1240,13 +1245,7 @@ function initGameSpace() {
     rangeRound([0, height]);
 
     // add the canvas to the DOM
-    var barDemo = d3.select(".gameSVG").
-    append("svg").
-    attr("class", "barSVG").
-    attr("width", width).
-    attr("height", height).
-    attr("x", 420).
-    attr("y", 150)
+    var barDemo = defSvg("barSVG", width, height, 420, 150);
 
     barDemo.selectAll("rect").
     data(data).
@@ -1267,9 +1266,9 @@ function initGameSpace() {
     .style("font-size", "30px")
 
     defText(current.node().getBBox().x + 427, current.node().getBBox().y + 145, total + "%")
-    .style("font-size", "30px")
     .attr("color", "#707070")
     .attr("fill", "#707070")
+    .style("font-size", "30px")
 
     defLine(395, 625, 470, 470)
     defLine(395, 395, 140, 470)
