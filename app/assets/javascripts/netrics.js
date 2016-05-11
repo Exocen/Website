@@ -794,11 +794,11 @@ function generateFrontGraph() {
   frontForce = getFriction(frontGraph.nodes, frontGraph.links, frontCharge, 0.80, frontTick);
 
   // associate empty SVGs with link data. assign attributes.
-  frontLink = frontManager(".link", frontGraph.links, "line", "link", "10px", "#d5d5d5")
+  frontLink = frontManager(homeSVG,".link", frontGraph.links, "line", "link", "10px", "#d5d5d5")
   .style("fill", "#707070");
 
   // associate empty SVGs with node data. assign attributes. call force.drag to make them moveable.
-  frontNode = frontManager(".node", frontGraph.nodes, "circle", "node", "10px", "#b7b7b7")
+  frontNode = frontManager(homeSVG, ".node", frontGraph.nodes, "circle", "node", "10px", "#b7b7b7")
   .attr("r", 50)
   .attr("fill", function(d) {
     if (d.id === 3) return "#f1d2d2"
@@ -808,12 +808,8 @@ function generateFrontGraph() {
 
 }
 
-function frontManager(selectAl, frontgraph, append, clas, strow, strok){
-  return homeSVG.selectAll(selectAl)
-  .data(frontgraph)
-  .enter()
-  .append(append)
-  .attr("class", clas)
+function frontManager(obj, selectAl, frontgraph, append, clas, strow, strok){
+  return defData(obj, selectAl, frontgraph, append, clas, "none")
   .style("stroke-width", strow)
   .style("stroke", strok);
 }
