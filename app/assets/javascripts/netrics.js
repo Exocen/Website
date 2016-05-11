@@ -801,11 +801,11 @@ function generateFrontGraph() {
   .start();
 
   // associate empty SVGs with link data. assign attributes.
-  frontLink = frontManager(".link", frontGraph.links, "line", "link", "10px"; "#d5d5d5")
+  frontLink = frontManager(".link", frontGraph.links, "line", "link", "10px", "#d5d5d5")
   .style("fill", "#707070");
 
   // associate empty SVGs with node data. assign attributes. call force.drag to make them moveable.
-  frontNode = frontManager(".node", frontGraph.nodes, "circle", "node", "10px"; "#b7b7b7")
+  frontNode = frontManager(".node", frontGraph.nodes, "circle", "node", "10px", "#b7b7b7")
   .attr("r", 50)
   .attr("fill", function(d) {
     if (d.id === 3) return "#f1d2d2"
