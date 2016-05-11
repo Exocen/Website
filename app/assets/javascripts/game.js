@@ -456,10 +456,7 @@ function initGameSpace() {
   force = getFriction(graph.nodes, graph.links, charge, friction, tick);
 
   // associate empty SVGs with link data. assign attributes.
-  link = gameSVG.selectAll(".link")
-  .data(graph.links)
-  .enter().append("line")
-  .attr("class", "link");
+  link = defData(gameSVG, ".link", graph.links, "line", "link", "none");
 
   // associate empty SVGs with node data. assign attributes. call force.drag to make them moveable.
 
@@ -519,11 +516,7 @@ function initGameSpace() {
 }
 
 function gameSVGManager(clas){
-  return gameSVG.selectAll(".node")
-  .data(graph.nodes)
-  .enter()
-  .append("circle")
-  .attr("class", clas)
+  return defData(gameSVG, ".node", graph.nodes, "circle", clas, "none");
 }
 
 function nodeSize(node) {
