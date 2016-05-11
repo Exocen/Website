@@ -74,35 +74,26 @@ function initBasicMenu() {
   .attr("class", "quarantineModeOptions")
   .text("Quarantine Phase")
 
-  d3.select(".gameOptions").append("div")
-  .attr("class", "turnBasedTrue")
-  .text("Turn-based")
-  .on("click", function() {
-    d3.select(".turnBasedTrue").style("color", "#2692F2").style("font-weight", "500")
-    d3.select(".realTimeTrue").style("color", "#BABABA").style("font-weight", "300")
-
-    speed = false;
-
-    displayScore(vaxEasyHiScore.value, ".easyHi");
-    displayScore(vaxMediumHiScore.value, ".mediumHi");
-    displayScore(vaxHardHiScore.value, ".hardHi");
-
-  })
-
-  d3.select(".gameOptions").append("div")
-  .attr("class", "realTimeTrue")
-  .text("Real-time")
-  .on("click", function() {
-    d3.select(".turnBasedTrue").style("color", "#BABABA").style("font-weight", "300")
-    d3.select(".realTimeTrue").style("color", "#2692F2").style("font-weight", "500")
-
-    speed = true;
-    displayScore(vaxEasyHiScoreRT.value, ".easyHi");
-    displayScore(vaxMediumHiScoreRT.value, ".mediumHi");
-    displayScore(vaxHardHiScoreRT.value, ".hardHi");
-  })
-
+  displayGameOption("turnBasedTrue", "Turn-based", false, ".turnBasedTrue", ".realTimeTrue", vaxEasyHiScore, vaxMediumHiScore, vaxHardHiScore);
+  
+  displayGameOption("realTimeTrue", "Real-time", true, ".realTimeTrue", ".turnBasedTrue", vaxEasyHiScoreRT, vaxMediumHiScoreRT, vaxHardHiScoreRT);
 }
+
+function displayGameOption(clas, txt, speedBool, big, small, easyhiscore, mediumhiscore, hardhiscore){
+  d3.select(".gameOptions").append("div")
+  .attr("class", clas)
+  .text(txt)
+  .on("click", function() {
+    d3.select(small).style("color", "#BABABA").style("font-weight", "300")
+    d3.select(big).style("color", "#2692F2").style("font-weight", "500")
+
+    speed = speedBool;
+    displayScore(easyhiscore.value, ".easyHi");
+    displayScore(mediumhiscore.value, ".mediumHi");
+    displayScore(hardhiscore.value, ".hardHi");
+  })
+}
+
 function displayScore(score, clas){
   if (score < 0) d3.select(clas).text("")
   else d3.select(clas).text("(Best: " + score + "%)")
