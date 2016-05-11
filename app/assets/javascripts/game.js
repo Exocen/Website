@@ -968,12 +968,12 @@ function initGameSpace() {
     .style("fill", "white")
     .style("font-weight", fw)
     .style("font-size", fs)
+    .style("cursor", "pointer")
     .text(txt)
   }
 
   function outbreak_text2(x, fw, fs, txt){
     return outbreak_text(x, fw, fs, txt)
-    .style("cursor", "pointer")
     .on("mouseover", function(d) {
 
       d3.select(this).style("fill", "#2692F2")
