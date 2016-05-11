@@ -956,10 +956,8 @@ function initGameSpace() {
   }
 
   function outbreak_text(x, clas, fw, fs, txt){
-    return d3.select(".gameSVG").append("text")
+    return defText(x, -100, txt)
     .attr("class", clas)
-    .attr("x", x)
-    .attr("y", -100)
     .style("fill", "white")
     .style("font-weight", fw)
     .style("font-size", fs)
@@ -1055,13 +1053,16 @@ function initGameSpace() {
   function writeCookiesJSON_manage(proportionSaved, bar, num, hiScore, hiScoreRT){
     vaxEasyCompletion.value = (proportionSaved > bar);
     if (speed) {
-      cookie.scoresRT[num].push(proportionSaved);
-      hiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[num])
+      writeCookiesJSON_manage2(proportionSaved, scoresRT, hiScoreRT, num);
     }
     else {
-      cookie.scores[num].push(proportionSaved);
-      hiScore.value = Math.max.apply( Math, cookie.scores[num])
+      writeCookiesJSON_manage2(proportionSaved, scores, hiScore, num);
     }
+  }
+
+  function writeCookiesJSON_manage2(proportionSaved, scoreTyp, hiScoreTyp, num){
+    cookie.scoreTyp[num].push(proportionSaved);
+    hiScoreTyp.value = Math.max.apply( Math, cookie.scoreTyp[num])
   }
 
 
@@ -1317,11 +1318,10 @@ function initGameSpace() {
     if (currentScore >= bar) passed = true
     else passed = false;
 
+    defText(0, 90, "Network Size: " + numberOfIndividuals)
     d3.select(".gameSVG").append("text")
     .attr("class", "networkSizeText")
-    .attr("y", 90)
-    .style("font-size", "40px")
-    .text("Network Size: " + numberOfIndividuals);
+    .style("font-size", "40px");
 
     generateStackedBarChart();
 
