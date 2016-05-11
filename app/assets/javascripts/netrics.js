@@ -801,29 +801,28 @@ function generateFrontGraph() {
   .start();
 
   // associate empty SVGs with link data. assign attributes.
-  frontLink = homeSVG.selectAll(".link")
-  .data(frontGraph.links)
-  .enter().append("line")
-  .attr("class", "link")
-  .style("fill", "#707070")
-  .style("stroke-width", "10px")
-  .style("stroke", "#d5d5d5")
+  frontLink = frontManager(".link", frontGraph.links, "line", "link", "10px"; "#d5d5d5")
+  .style("fill", "#707070");
 
   // associate empty SVGs with node data. assign attributes. call force.drag to make them moveable.
-  frontNode = homeSVG.selectAll(".node")
-  .data(frontGraph.nodes)
-  .enter().append("circle")
-  .attr("class", "node")
+  frontNode = frontManager(".node", frontGraph.nodes, "circle", "node", "10px"; "#b7b7b7")
   .attr("r", 50)
-  .style("stroke", "#b7b7b7")
-  .style("stroke-width", "10px")
   .attr("fill", function(d) {
     if (d.id === 3) return "#f1d2d2"
     else return "#d5d5d5"
   })
-  .call(frontForce.drag)
+  .call(frontForce.drag);
 
+}
 
+function frontManager(selectAl, frontgraph, append, clas, strow; strok){
+  return homeSVG.selectAll(selectAl)
+  .data(frontgraph)
+  .enter()
+  .append(append)
+  .attr("class", clas)
+  .style("stroke-width", strow)
+  .style("stroke", strok);
 }
 
 function frontTick() {

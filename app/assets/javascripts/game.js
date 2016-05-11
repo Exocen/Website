@@ -1148,10 +1148,9 @@ function initGameSpace() {
   }
 
   function defAll(clas, append, x ,y){
-    return d3.select(clas)
+    return d3.select(clas).append(append)
     .attr("x", x)
-    .attr("y", y)
-    .append(append);
+    .attr("y", y);
   }
 
   function defSvg(clas, width, height, x, y){
