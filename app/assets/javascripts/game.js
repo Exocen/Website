@@ -533,9 +533,6 @@ function nodeColor(node) {
   }
   else if (node.status === "S") return "#b7b7b7";
   else if (node.status === "E" || node.status === "I") return "#ef5555";
-  else if (node.status === "R") return  "#9400D3";
-  else if (node.status === "V") return  "#76A788";
-  else if (node.status === "Q") return  "#d9d678";
   return null;
 }
 
@@ -1043,11 +1040,11 @@ function writeCookiesJSON() {
   var proportionSaved = getScore();
 
   if (difficultyString === "easy") {
-    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
+    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
   else if (difficultyString === "medium") {
-    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
   }
 
   else if (difficultyString === "hard") {
