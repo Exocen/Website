@@ -815,7 +815,7 @@ function generateFrontGraph() {
 
 }
 
-function frontManager(selectAl, frontgraph, append, clas, strow; strok){
+function frontManager(selectAl, frontgraph, append, clas, strow, strok){
   return homeSVG.selectAll(selectAl)
   .data(frontgraph)
   .enter()
