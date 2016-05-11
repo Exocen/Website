@@ -960,43 +960,20 @@ function initGameSpace() {
 
   }
 
-
-  function endGameSession() {
-    d3.select(".gameSVG").append("rect")
-    .attr("class", "endGameShadow")
-    .attr("x", window.innerWidth/4 + 62 + 5 - 100)
-    .attr("y", -100)
-    .attr("width", 500)
-    .attr("height", 125)
-    .attr("fill", "#838383")
-
-
-    d3.select(".gameSVG").append("rect")
-    .attr("class", "endGameBox")
-    .attr("x", window.innerWidth/4 + 62 - 100)
-    .attr("y", -100)
-    .attr("width", 500)
-    .attr("height", 125)
-    .attr("fill", "#85bc99")
-
-    d3.select(".gameSVG").append("text")
+  function outbreak_text(x, fw, fs, txt){
+    return d3.select(".gameSVG").append("text")
     .attr("class", "endGameText")
-    .attr("x", window.innerWidth/4 + 135 - 100)
+    .attr("x", x)
     .attr("y", -100)
     .style("fill", "white")
-    .style("font-weight", 500)
-    .style("font-size", "25px")
-    .text("Outbreak has run its course.")
+    .style("font-weight", fw)
+    .style("font-size", fs)
+    .text(txt)
+  }
 
-    d3.select(".gameSVG").append("text")
-    .attr("class", "endGameSUBMIT")
-    .attr("x", window.innerWidth/4 + 275 - 90)
-    .attr("y", -100)
-    .style("fill", "white")
-    .style("font-weight", 500)
-    .style("font-size", "15px")
+  function outbreak_text2(x, fw, fs, txt){
+    return outbreak_text(x, fw, fs, txt).
     .style("cursor", "pointer")
-    .text("Submit")
     .on("mouseover", function(d) {
 
       d3.select(this).style("fill", "#2692F2")
@@ -1017,8 +994,31 @@ function initGameSpace() {
 
       window.setTimeout(initScoreRecap, 1200)
 
-    })
+    });
+  }
 
+
+  function endGameSession() {
+    d3.select(".gameSVG").append("rect")
+    .attr("class", "endGameShadow")
+    .attr("x", window.innerWidth/4 + 62 + 5 - 100)
+    .attr("y", -100)
+    .attr("width", 500)
+    .attr("height", 125)
+    .attr("fill", "#838383")
+
+
+    d3.select(".gameSVG").append("rect")
+    .attr("class", "endGameBox")
+    .attr("x", window.innerWidth/4 + 62 - 100)
+    .attr("y", -100)
+    .attr("width", 500)
+    .attr("height", 125)
+    .attr("fill", "#85bc99")
+
+    outbreak_text(window.innerWidth/4 + 135 - 100, 500, "25px", "Outbreak has run its course.");
+    outbreak_text2(window.innerWidth/4 + 135 - 100, 500, "15px", "Submit");
+    
     outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
     outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
     outbreakDetected_manage(".endGameText", window.innerHeight/2 - 250 );
