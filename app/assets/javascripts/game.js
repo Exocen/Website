@@ -1016,8 +1016,8 @@ function initGameSpace() {
     .attr("height", 125)
     .attr("fill", "#85bc99")
 
-    outbreak_text(window.innerWidth/4 + 135 - 100, 500, "endGameText", "25px", "Outbreak has run its course.");
-    outbreak_text2(window.innerWidth/4 + 135 - 100, 500, "endGameSUBMIT", "15px", "Submit");
+    outbreak_text(window.innerWidth/4 + 135 - 100, "endGameText", 500, "25px", "Outbreak has run its course.");
+    outbreak_text2(window.innerWidth/4 + 135 - 100, "endGameSUBMIT", 500, "15px", "Submit");
 
     outbreakDetected_manage(".endGameBox", window.innerHeight/2 - 300 );
     outbreakDetected_manage(".endGameShadow", window.innerHeight/2 + 7 - 300 );
