@@ -1263,20 +1263,13 @@ function initGameSpace() {
     var best = d3.select(".best")
     var current = d3.select(".current")
 
-
-    d3.select(".gameSVG").append("text")
-    .attr("x", best.node().getBBox().x + 426)
-    .attr("y", best.node().getBBox().y + 145)
+    defText( best.node().getBBox().x + 426, best.node().getBBox().y + 145, bestScore + "%")
     .style("font-size", "30px")
-    .text(bestScore + "%")
 
-    d3.select(".gameSVG").append("text")
-    .attr("x", current.node().getBBox().x + 427)
-    .attr("y", current.node().getBBox().y + 145)
+    defText(current.node().getBBox().x + 427, current.node().getBBox().y + 145, total + "%")
     .style("font-size", "30px")
     .attr("color", "#707070")
     .attr("fill", "#707070")
-    .text(total + "%")
 
     defLine(395, 625, 470, 470)
     defLine(395, 395, 140, 470)
@@ -1422,7 +1415,6 @@ function initGameSpace() {
       });
 
       defText2(580, 590, "Next", "recapButton", next);
-
 
     }
     else {
