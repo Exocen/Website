@@ -1043,7 +1043,7 @@ function writeCookiesJSONBegin_Manage(proportionSaved){
     writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
   }
 
-  else (difficultyString === "hard") {
+  else if (difficultyString === "hard") {
     writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
   }
 }
@@ -1054,7 +1054,7 @@ function writeCookiesJSON() {
     writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
-  else if {
+  else {
     writeCookiesJSONBegin_Manage(proportionSaved);
   }
 
