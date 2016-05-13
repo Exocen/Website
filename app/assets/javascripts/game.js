@@ -690,7 +690,7 @@ function speedModeTimesteps() {
 
 }
 
-function updateCommunities(numberOfInfectedPerGroup, numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities){
+function updateCommunity(numberOfInfectedPerGroup, numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities){
   if (numberOfInfectedPerGroup > 0) {
     if (numberOfSusceptiblesPerGroup > 0) {
       numberOf_AtRisk_communities++;
@@ -720,7 +720,7 @@ function detectGameCompletion() {
     var numberOf = {numberOfSusceptiblesPerGroup:0, numberOfInfectedPerGroup:0};
 
     numberOf = updateGroup(numberOf, groupIndex);
-    numberOf_AtRisk_communities = updateCommunities(numberOf.numberOfInfectedPerGroup, numberOf.numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities);
+    numberOf_AtRisk_communities = updateCommunity(numberOf.numberOfInfectedPerGroup, numberOf.numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities);
 
   }
 
