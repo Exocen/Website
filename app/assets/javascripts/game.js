@@ -1054,10 +1054,10 @@ function writeCookiesJSON() {
     writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
-  else {
+  else if {
     writeCookiesJSONBegin_Manage(proportionSaved);
   }
-  
+
 
   $.cookie .json = false;
 
