@@ -278,15 +278,7 @@ function initBasicGame_manage(numberOfIndividuals2, meanDegree2, numberOfVaccine
   recoveryRate = recoveryRate2;
 }
 
-function initBasicGame(difficulty) {
-  d3.select(".row").remove();
-  d3.select(".newGameHeader").remove();
-  d3.select("#customMenuDiv").remove();
-
-  graph             = {}    ;
-  graph.nodes       = []    ;
-  graph.links       = []    ;
-
+function setGameComplexity(difficulty){
   if (difficulty === "easy") {
     initBasicGame_manage(50, 3, 5, 1,  transmissionRates[7], recoveryRates[0]);
   }
@@ -299,6 +291,19 @@ function initBasicGame(difficulty) {
     charge = -300;
     initBasicGame_manage(100, 4, 15, 3,  transmissionRates[4], recoveryRates[0]);
   }
+
+}
+
+function initBasicGame(difficulty) {
+  d3.select(".row").remove();
+  d3.select(".newGameHeader").remove();
+  d3.select("#customMenuDiv").remove();
+
+  graph             = {}    ;
+  graph.nodes       = []    ;
+  graph.links       = []    ;
+
+  setGameComplexity(difficulty);
 
   graph = generateSmallWorld(numberOfIndividuals, rewire, meanDegree);
 
