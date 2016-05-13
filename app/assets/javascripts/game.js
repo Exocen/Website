@@ -1237,15 +1237,15 @@ function initScoreRecap() {
     bar = easyBar;
     bestScore = speed ? vaxEasyHiScoreRT.value: vaxEasyHiScore.value;
   }
-  if (difficultyString === "medium") {
+  else if (difficultyString === "medium") {
     bar = mediumBar;
     bestScore = speed ? vaxMediumHiScoreRT.value: vaxMediumHiScore.value;
   }
-  if (difficultyString === "hard") {
+  else if (difficultyString === "hard") {
     bar = hardBar;
     bestScore = speed ? vaxHardHiScoreRT.value: vaxHardHiScore.value;
   }
-  if (difficultyString === null) {
+  else if (difficultyString === null) {
     bestScore = currentScore;
     bar = 0;
   }
