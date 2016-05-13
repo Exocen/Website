@@ -265,7 +265,7 @@ function cookieBasedModeSelection() {
   cookieBasedModeSelection_manage2(vaxMediumCompletion.value, "hard", "#difficultyHard")
 
   // set custom based on hard
-  cookieBasedModeSelection_manage2(vaxHardCompletion.value, "hard", "#difficultyHard")
+  //cookieBasedModeSelection_manage2(vaxHardCompletion.value, "hard", "#difficultyHard")
 
 }
 
