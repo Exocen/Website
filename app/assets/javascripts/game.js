@@ -533,6 +533,9 @@ function nodeColor(node) {
   }
   else if (node.status === "S") return "#b7b7b7";
   else if (node.status === "E" || node.status === "I") return "#ef5555";
+  else if (node.status === "R") return  "#9400D3";
+  else if (node.status === "V") return  "#76A788";
+  else if (node.status === "Q") return  "#d9d678";
   return null;
 }
 
@@ -1035,31 +1038,28 @@ function writeCookiesJSON_manage2(proportionSaved, scoreTyp, hiScoreTyp, num){
   hiScoreTyp.value = Math.max.apply( Math, scoreTyp[num])
 }
 
+function writeCookiesJSONBegin_Manage(proportionSaved){
+  if (difficultyString === "medium") {
+    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, mediumBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+  }
 
+  else (difficultyString === "hard") {
+    writeCookiesJSON_manage(vaxHardCompletion, proportionSaved, hardBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
+  }
+}
 function writeCookiesJSON() {
   var proportionSaved = getScore();
 
   if (difficultyString === "easy") {
-    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
+    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, easyBar, 0, vaxEasyHiScore, vaxEasyHiScoreRT);
   }
 
-  else if (difficultyString === "medium") {
-    writeCookiesJSON_manage(vaxEasyCompletion, proportionSaved, easyBar, 1, vaxMediumHiScore, vaxMediumHiScoreRT);
+  else {
+    writeCookiesJSONBegin_Manage(proportionSaved);
   }
-
-  else if (difficultyString === "hard") {
-    writeCookiesJSON_manage(vaxMediumCompletion, proportionSaved, mediumBar, 2, vaxHardHiScore, vaxHardHiScoreRT);
-  }
+  
 
   $.cookie .json = false;
-
-  if (difficultyString === undefined) {
-    $.cookie ('customNodes', customNodeChoice);
-    $.cookie ('customNeighbors', customNeighborChoice);
-    $.cookie ('customVaccines', customVaccineChoice);
-    $.cookie ('customOutbreaks', customOutbreakChoice);
-    $.cookie ('customRefusers', customRefuserChoice);
-  }
 
   var easyScores = cookie.scores[0];
   var mediumScores = cookie.scores[1];
