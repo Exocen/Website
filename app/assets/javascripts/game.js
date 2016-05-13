@@ -690,28 +690,37 @@ function speedModeTimesteps() {
 
 }
 
+function updateCommunities(numberOfInfectedPerGroup, numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities){
+  if (numberOfInfectedPerGroup > 0) {
+    if (numberOfSusceptiblesPerGroup > 0) {
+      numberOf_AtRisk_communities++;
+    }
+  }
+  return numberOf_AtRisk_communities;
+}
+
+function updateGroup(numberOf, groupIndex){
+  for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
+    var node = graph.nodes[nodeIndex];
+    if (parseFloat(node.group) === groupIndex) {
+      if (node.status === "S") numberOf.numberOfSusceptiblesPerGroup++;
+      if (node.status === "I") numberOf.numberOfInfectedPerGroup++;
+      if (node.status === "E") numberOf.numberOfInfectedPerGroup++;
+    }
+  }
+  return numberOf;
+}
+
 function detectGameCompletion() {
   if (timeToStop || !diseaseIsSpreading) return
 
   updateCommunities();
   var numberOf_AtRisk_communities = 0;
   for (var groupIndex = 1; groupIndex < numberOfCommunities+1; groupIndex++) {
-    var numberOfSusceptiblesPerGroup = 0;
-    var numberOfInfectedPerGroup = 0;
+    var numberOf = {numberOfSusceptiblesPerGroup:0, numberOfInfectedPerGroup:0};
 
-    for (var nodeIndex = 0; nodeIndex < graph.nodes.length; nodeIndex++) {
-      var node = graph.nodes[nodeIndex];
-      if (parseFloat(node.group) === groupIndex) {
-        if (node.status === "S") numberOfSusceptiblesPerGroup++;
-        if (node.status === "I") numberOfInfectedPerGroup++;
-        if (node.status === "E") numberOfInfectedPerGroup++;
-      }
-    }
-    if (numberOfInfectedPerGroup > 0) {
-      if (numberOfSusceptiblesPerGroup > 0) {
-        numberOf_AtRisk_communities++;
-      }
-    }
+    numberOf = updateGroup(numberOf, groupIndex);
+    numberOf_AtRisk_communities = updateCommunities(numberOf.numberOfInfectedPerGroup, numberOf.numberOfSusceptiblesPerGroup, numberOf_AtRisk_communities);
 
   }
 
