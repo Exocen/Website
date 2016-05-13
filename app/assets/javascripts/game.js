@@ -130,38 +130,6 @@ function readCookiesJSON() {
   vaxMediumHiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[1])
   vaxHardHiScoreRT.value = Math.max.apply( Math, cookie.scoresRT[2])
 
-  $.cookie .json = false;
-  customNodeChoice = parseInt($.cookie ().customNodes,10);
-  customNeighborChoice = parseInt($.cookie ().customNeighbors,10);
-  customVaccineChoice = parseInt($.cookie ().customVaccines,10);
-  customOutbreakChoice = parseInt($.cookie ().customOutbreaks,10);
-  customRefuserChoice = parseInt($.cookie ().customRefusers,10);
-
-
-  if (isNaN(customNodeChoice)) {
-    customNodeChoice = 75;
-    $.cookie ('customNodes', 75)
-  }
-  if (isNaN(customNeighborChoice)) {
-    customNeighborChoice = 3;
-    $.cookie ('customNeighbors', 3)
-
-  }
-  if (isNaN(customVaccineChoice)) {
-    customVaccineChoice = 10;
-    $.cookie ('customVaccines', 10)
-
-  }
-  if (isNaN(customOutbreakChoice)) {
-    customOutbreakChoice = 2;
-    $.cookie ('customOutbreaks', 2)
-  }
-  if (isNaN(customRefuserChoice)) {
-    customRefuserChoice = 0.05;
-    $.cookie ('customRefusers', 0.05)
-
-  }
-
   $.cookie .json = true;
 
   cookieBasedModeSelection();
