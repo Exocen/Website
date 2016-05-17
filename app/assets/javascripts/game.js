@@ -1226,6 +1226,11 @@ function getScore(){
   return Math.round((((countSavedGAME() + numberQuarantined + numberVaccinated)/numberOfIndividuals)*100)).toFixed(0);
 }
 
+function initScoreRecap_manage(objRT, obj, speed) {
+  return speed ? objRT.value: obj.value;
+}
+
+
 function initScoreRecap() {
   writeCookiesJSON();
 
@@ -1244,15 +1249,15 @@ function initScoreRecap() {
   var bestScore;
   if (difficultyString === "easy") {
     bar = easyBar;
-    bestScore = speed ? vaxEasyHiScoreRT.value: vaxEasyHiScore.value;
+    bestScore = initScoreRecap_manage(vaxEasyHiScoreRT, vaxEasyHiScore, speed);
   }
   else if (difficultyString === "medium") {
     bar = mediumBar;
-    bestScore = speed ? vaxMediumHiScoreRT.value: vaxMediumHiScore.value;
+    bestScore = initScoreRecap_manage(vaxMediumHiScoreRT, vaxMediumHiScore, speed) ;
   }
   else if (difficultyString === "hard") {
     bar = hardBar;
-    bestScore = speed ? vaxHardHiScoreRT.value: vaxHardHiScore.value;
+    bestScore = initScoreRecap_manage(vaxHardHiScoreRT, vaxHardHiScore, speed);
   }
   else if (difficultyString === null) {
     bestScore = currentScore;
