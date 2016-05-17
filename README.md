@@ -10,6 +10,7 @@ Todo
 * ~~Js depedencies~~
 * Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
 * Css + d3 Game
+* Add github GPG
 * ~~Video playlist~~
 * Lsint game.js
 * ~~Docker integration + https2 + https LetEncrypt on [Docker-rails](https://github.com/exocen/docker-rails)~~
