@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-#Add Pagination
+# Pagination
 gem 'will_paginate'
+# Pagination css
+gem 'will_paginate-bootstrap'
 #Nginx compatibility
 gem 'unicorn'
 #Jquery for rails

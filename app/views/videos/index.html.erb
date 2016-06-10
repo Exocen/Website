@@ -13,12 +13,15 @@ function showDeleteButton(){
   method: :delete %>
   <% end %>
   <hr>
+  <%= will_paginate @videos, renderer: BootstrapPagination::Rails%>
+  <br />
   <% @videos.each do |video| %>
   <%= getLinkedVideo(video) %>
   <br />
   <%= link_to 'Remove', video_path(video), class: 'btn btn-danger removeVideo',
   method: :delete %>
   <% end %>
+  <%= will_paginate @videos, renderer: BootstrapPagination::Rails%>
 </div>
 <div class="row">
   <% if current_user.admin? %>

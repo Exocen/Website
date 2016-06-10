@@ -5,7 +5,7 @@ class VideosController < ApplicationController
 
   def index
     @playlist = Video.where(isPlaylist: true).order(created_at: :desc)
-    @videos = Video.where(isPlaylist: false).order(created_at: :desc).page(params[:page]).per_page(5)
+    @videos = Video.where(isPlaylist: false).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   def create
