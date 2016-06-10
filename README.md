@@ -7,25 +7,29 @@ WebSite sample on Ror
 A Website sample build with Ruby on Rails
 
 Todo
-* ~~Js depedencies~~
-* Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
-* Css + d3 Game
-* Add github GPG 2
-* ~~Video playlist~~
-* Lsint game.js
-* ~~Docker integration + https2 + https LetEncrypt on [Docker-rails](https://github.com/exocen/docker-rails)~~
-* Https script-auto with CRON on [Docker-rails](https://github.com/exocen/docker-rails)
-* Https on Random Kitten
-* Tests
-* ~~Docker unicorn + Nginx implementation~~
-* Footer
-* Parameters in database (like countdown)
+* [x] Js depedencies
+* [ ] Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
+* [ ] Css + d3 Game
+* [ ] Add github GPG 2
+* [x] Video playlist
+* [ ] Lsint game.js
+* [x] Docker integration + https2 + https LetEncrypt on [Docker-rails](https://github.com/exocen/docker-rails)
+* [ ] Https script-auto with CRON on [Docker-rails](https://github.com/exocen/docker-rails)
+* [ ] Https on Random Kitten
+* [ ] Tests
+* [x] Docker unicorn + Nginx implementation
+* [ ] Footer
+* [ ] Parameters in database (like countdown)
 
 ---
 
 Gems
 
 ```ruby
+# Pagination
+gem 'will_paginate'
+# Pagination css
+gem 'will_paginate-bootstrap'
 #Nginx compatibility
 gem 'unicorn'
 #Jquery for rails
