@@ -9,7 +9,7 @@ A Website sample build with Ruby on Rails
 Todo
 * [x] Js depedencies
 * [ ] Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
-* [ ] Css + d3 Game
+* [x] Css + d3 Game
 * [ ] Add github GPG 2
 * [x] Video playlist
 * [ ] Lsint game.js
@@ -18,6 +18,8 @@ Todo
 * [ ] Https on Random Kitten
 * [ ] Tests
 * [x] Docker unicorn + Nginx implementation
+* [x] Video pagination
+* [ ] Better header (design)
 * [ ] Footer
 * [ ] Parameters in database (like countdown)
 
