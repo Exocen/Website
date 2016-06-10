@@ -12,7 +12,7 @@ Todo
 * [x] Css + d3 Game
 * [ ] Add github GPG 2
 * [x] Video playlist
-* [x] Lsint game.js
+* [ ] Lsint game.js
 * [x] Docker integration + https2 + https LetEncrypt on [Docker-rails](https://github.com/exocen/docker-rails)
 * [ ] Https script-auto with CRON on [Docker-rails](https://github.com/exocen/docker-rails)
 * [ ] Https on Random Kitten
