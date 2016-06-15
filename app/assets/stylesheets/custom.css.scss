@@ -136,8 +136,10 @@ $white          : #FFFFFF;
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .navbar-collapse.collapse {
+
+
+@media screen and (max-width: 1000px) and (min-width: 768px) {
+  .container > .collapse {
     display: none !important;
   }
   .navbar-toggle{
@@ -153,8 +155,17 @@ $white          : #FFFFFF;
   .navbar-header {
     float: none;
   }
-}
 
+  .navbar-right {
+      float: none !important;
+    }
+
+    .navbar-nav {
+    float:  none;;
+    margin: 7.5px -15px;
+  }
+
+}
 @media screen
 and (min-device-width: 320px)
 and (max-device-width: 1000px)
