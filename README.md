@@ -19,8 +19,9 @@ Todo
 * [ ] Tests
 * [x] Docker unicorn + Nginx implementation
 * [x] Video pagination
-* [ ] Better header (design)
+* [x] Better header (responsive)
 * [ ] Footer
+* [ ] CV Update (and alterable)
 * [ ] Parameters in database (like countdown)
 
 ---
@@ -32,25 +33,25 @@ Gems
 gem 'will_paginate'
 # Pagination css
 gem 'will_paginate-bootstrap'
-#Nginx compatibility
+# Nginx compatibility
 gem 'unicorn'
-#Jquery for rails
+# Jquery for rails
 gem 'jquery-ui-rails'
-#Js graphic librairy
+# Js graphic librairy
 gem 'd3-rails'
-#Cookies for game
+# Cookies for game
 gem 'jquery-cookie-rails'
-#Js countdown sample
+# Js countdown sample
 gem 'flipclockjs-rails'
-#dropzone for photos
+# Photos Dropzone
 gem 'dropzonejs-rails'
-#postgrepsql compatibiliy
+# Postgrepsql compatibiliy
 gem 'pg'
-#add carrousel
+# Add carrousel
 gem 'jquery-slick-rails'
-# paperclip database
+# Paperclip database
 gem "paperclip_database"
-#add paper-clip (pictures)
+# Add paper-clip (pictures)
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -58,4 +59,16 @@ gem 'rails'
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
+# Bootstrap
+gem 'bootstrap-sass'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Turbolinks makes following links in your web application faster
+gem 'turbolinks'
+# Build JSON APIs with ease.
+gem 'jbuilder'
+# Bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', group: :doc
+# Use ActiveModel has_secure_password
+gem 'bcrypt'
 ```
