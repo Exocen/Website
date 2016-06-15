@@ -17,7 +17,7 @@
 }
 
 .removeVideo {
-    display: none;
+  display: none;
 }
 
 
@@ -133,6 +133,25 @@ $white          : #FFFFFF;
         background-color: $bgHighlight;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-toggle{
+    display: inline;
+  }
+  .container > .navbar-header,
+  .container > .navbar-collapse,
+  .container-fluid > .navbar-header,
+  .container-fluid > .navbar-collapse {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  .navbar-header {
+    float: none;
   }
 }
 
