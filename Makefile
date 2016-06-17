@@ -28,5 +28,5 @@ dbd:
 	# openssl dhparam -dsaparam -out dhparam.pem 4096
 	# git clone https://github.com/letsencrypt/letsencrypt
 	# export TERM=xterm
-	# ./letsencrypt-auto --dry-run certonly -a webroot -w /app/public/ -d sample.com -d www.sample.com --rsa-key-size 4096 --register-unsafely-without-email
+	# ./letsencrypt-auto --dry-run certonly -a webroot -w /app/public/ -d sample.com -d www.sample.com  --agree-dev-preview --agree-tos --rsa-key-size 4096 --register-unsafely-without-email
 	# ./letsencrypt-auto --dry-run renew
