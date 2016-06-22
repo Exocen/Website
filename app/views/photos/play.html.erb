@@ -1,8 +1,5 @@
 <% provide(:title,"PhotoPlay") %>
 <%= javascript_include_tag "koala" %>
-<div style="display: none">
-  <%= link_to image_tag(@photo.image.url(:large)), @photo.image.url%>
-</div>
 
 <div id="center">
   <div id="cont">
@@ -11,13 +8,6 @@
       JavaScript is needed to view this site.
     </noscript>
     <div id="dots"></div>
-    <div id="next" style="display: none">
-      <div class="msg">
-        Awesome stuff! Now make your own and share the link.<br>
-        Paste an image URL bellow and press enter.
-      </div>
-      <input placeholder= <%= @photo.image.url %>/>
-    </div>
   </div>
 </div>
 
@@ -163,8 +153,7 @@ var _fastrack_account = 'FT-1000001';
         location.href = '//' + location.host + location.pathname + '?' + utf8_to_b64(string);
       }
 
-      function basicLoad(location) {
-        var possible = ['<%= @photo.image.url %>'];
+      function basicLoad() {
         var file =   "<%= @photo.image.url(:large)%>"
         return {
           file: file,
@@ -178,7 +167,7 @@ var _fastrack_account = 'FT-1000001';
 
         idx = href.indexOf('?');
         if (idx === -1 || idx === href.length - 1) {
-          return basicLoad(location); // Case 1
+          return basicLoad(); // Case 1
         }
 
         param = href.substr(idx + 1);
@@ -186,23 +175,6 @@ var _fastrack_account = 'FT-1000001';
           // Does not look base64
           goToHidden(location, param);
           return null;
-        }
-
-        // Case 2
-        try {
-          param = b64_to_utf8(param);
-        } catch (e) {
-          return basicLoad(location); // Invalid base64, do a basic load
-        }
-
-        try {
-          param = JSON.parse(param);
-        } catch (e) {
-          // Case 2a
-          return {
-            file: param,
-            shownFile: param
-          };
         }
 
         // At this point param is a JS object
@@ -227,7 +199,7 @@ var _fastrack_account = 'FT-1000001';
         }
 
         // Fall though
-        return basicLoad(location);
+        return basicLoad();
       }
 
       var parse = parseUrl(location);
@@ -300,26 +272,7 @@ var _fastrack_account = 'FT-1000001';
       track('Problemo', String(e.message));
     }
 
-    // Local download functionality
-    var saveNumber = 0;
-    d3.select('#love').on('click', function() {
-      saveNumber++;
-      track('SaveSVG', saveNumber);
-      svgData = d3.select('#dots').html();
-      if (svgData.indexOf('<svg') !== -1) {
-        prefix = [
-          '<?xml version="1.0" encoding="utf-8"?>',
-          '<!-- Generator: KoalasToTheMax.com -->',
-          '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'
-        ];
-        saveAs(new Blob(
-          [svgData.replace('<svg', prefix.join(' ') + '<svg')],
-          {type: "text/plain;charset=utf-8"}
-        ), "KoalasToTheMax.svg");
-      } else {
-        track('SaveSVG', 'Fail');
-      }
-    });
+  
 
   })();
 </script>

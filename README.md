@@ -8,7 +8,8 @@ A Website sample build with Ruby on Rails
 
 Todo
 * [x] Js depedencies
-* [ ] Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
+* [x] Add [Image Map](https://github.com/vogievetsky/KoalasToTheMax) with [D3](https://github.com/mbostock/d3)
+* [ ] PhotoPlay optimization
 * [x] Css + d3 Game
 * [ ] Add github GPG 2
 * [x] Video playlist
