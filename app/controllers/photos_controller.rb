@@ -12,6 +12,10 @@ before_action :logged_in_user
     .image_content_type
   end
 
+  def play
+    @photo =  Photo.where("user_id = ?", current_user).offset(rand(Photo.count)).first
+  end
+
   def index
     @photos = Photo.where("user_id = ?", current_user)
   end

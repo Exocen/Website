@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get 'kitty' => 'static_pages#kitty'
   get 'game' => 'static_pages#game'
 
+
   get 'photo' => 'photos#index'
   get 'new_photo' => 'photos#new'
   get 'delete_photo' => 'photos#delete'
-
+  get 'photoplay' => 'photos#play'
 
   get 'videos' => 'videos#index'
 
