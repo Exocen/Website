@@ -60,7 +60,7 @@
       }
 
       function basicLoad() {
-        var file =   "<%= @photo.image.url(:large)%>"
+        var file =   "<%= @photo.image.url(:large) if @photo%>"
         return {
           file: file,
           shownFile: location.protocol + '//' + location.host + location.pathname + file
