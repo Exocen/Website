@@ -25,6 +25,7 @@ Todo
 * [ ] CV Update (and alterable)
 * [ ] Parameters in database (like countdown)
 * [ ] Add an share photo service for users
+* [ ] Hug awesome girlfriend !
 
 ---
 
