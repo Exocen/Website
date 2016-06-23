@@ -296,4 +296,4 @@ var koala = {
     .on('touchend.koala', onTouchEnd)
     .on('touchcancel.koala', onTouchEnd);
   };
-})();
+}());
