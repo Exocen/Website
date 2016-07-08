@@ -1,8 +1,8 @@
 MAINTAINERNAME=exo
 IMAGENAME=rorimage
-DB_NAME=pg
+DB_NAME=db
 CONTAINERNAME=ROR
-DB_PASSWORD=
+DB_PASSWORD=zazaza
 DB_USERNAME=postgres
 SECRET:=$(shell date +%s | sha256sum | base64 | head -c 32; echo)
 

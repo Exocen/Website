@@ -13,7 +13,7 @@ before_action :logged_in_user
   end
 
   def play
-    @photo =  Photo.where("user_id = ?", current_user).offset(rand(Photo.count)).first
+    @photo =  Photo.where("user_id = ?", current_user).offset(rand(Photo.where("user_id = ?", current_user).count)).first
   end
 
   def index
