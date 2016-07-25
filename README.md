@@ -26,7 +26,7 @@ Todo
 * [ ] Parameters in database (like countdown)
 * [ ] Add an share photo service for users
 * [ ] Counter off if negative
-* [x] Hug awesome girlfriend !
+* [x] Hug awesome wife !
 
 ---
 
