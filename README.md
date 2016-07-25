@@ -27,6 +27,7 @@ Todo
 * [ ] Add an share photo service for users
 * [ ] Counter off if negative
 * [x] Hug awesome wife !
+* [ ] Rails 5
 
 ---
 
