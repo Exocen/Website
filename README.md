@@ -25,7 +25,7 @@ Todo
 * [ ] CV Update (and alterable)
 * [ ] Parameters in database (like countdown)
 * [ ] Add an share photo service for users
-* [ ] Counter off if negative
+* [x] Counter off if negative
 * [x] Hug awesome wife !
 * [ ] Rails 5
 
