@@ -9,7 +9,7 @@ gem 'unicorn'
 # Jquery for rails
 gem 'jquery-ui-rails'
 # Js graphic librairy
-gem 'd3-rails'
+gem 'd3-rails', '~> 3.5', '>= 3.5.17'
 # Cookies for game
 gem 'jquery-cookie-rails'
 # Js countdown sample

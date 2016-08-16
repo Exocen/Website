@@ -57,7 +57,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
-    d3-rails (4.1.0)
+    d3-rails (3.5.17)
       railties (>= 3.1)
     debug_inspector (0.0.2)
     dropzonejs-rails (0.7.3)
@@ -187,7 +187,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   byebug
-  d3-rails
+  d3-rails (~> 3.5, >= 3.5.17)
   dropzonejs-rails
   flipclockjs-rails
   jbuilder
