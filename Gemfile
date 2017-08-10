@@ -23,7 +23,7 @@ gem 'jquery-slick-rails'
 # Paperclip database
 gem "paperclip_database"
 # Add paper-clip (pictures)
-gem 'paperclip', '~>4.3.7'
+gem 'paperclip', '~>5.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use SCSS for stylesheets
